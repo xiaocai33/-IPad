@@ -11,8 +11,15 @@
 #import "UIBarButtonItem+Extent.h"
 #import "UIView+Extension.h"
 #import "MTHomeLeftTopItem.h"
+#import "MTCategoryViewController.h"
 
 @interface MTHomeCollectionController ()
+/** 分类 */
+@property (nonatomic, weak) UIBarButtonItem *categoryItem;
+/** 地区 */
+@property (nonatomic, weak) UIBarButtonItem *districtTopView;
+/** 排序 */
+@property (nonatomic, weak) UIBarButtonItem *sortedItem;
 
 @end
 
@@ -45,32 +52,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupRightNav];//右边内容
     [self setupLeftNav];//左边内容
     
+    
+    
 }
 
 #pragma mark - 设置导航栏按内容
-/**
- *  设置导航栏左边的内容
- */
-- (void)setupLeftNav{
-    // 1.设置logo
-    UIBarButtonItem *logoItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_meituan_logo" highlightedImage:nil];
-    logoItem.enabled = NO;
-    
-    // 2.类别
-    MTHomeLeftTopItem *categoryTopView = [MTHomeLeftTopItem item];
-    UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryTopView];
-    
-    // 3.地区
-    MTHomeLeftTopItem *districtTopView = [MTHomeLeftTopItem item];
-    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopView];
-    
-    // 4.排序
-    MTHomeLeftTopItem *sortedTopView = [MTHomeLeftTopItem item];
-    UIBarButtonItem *sortedItem = [[UIBarButtonItem alloc] initWithCustomView:sortedTopView];
-    
-    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortedItem];
-}
-
 /**
  *  设置导航栏右边的内容
  */
@@ -83,6 +69,54 @@ static NSString * const reuseIdentifier = @"Cell";
     searchItem.customView.width = 60;
     
     self.navigationItem.rightBarButtonItems = @[mapItem, searchItem];
+}
+
+
+/**
+ *  设置导航栏左边的内容
+ */
+- (void)setupLeftNav{
+    // 1.设置logo
+    UIBarButtonItem *logoItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_meituan_logo" highlightedImage:nil];
+    logoItem.enabled = NO;
+    
+    // 2.类别
+    MTHomeLeftTopItem *categoryTopView = [MTHomeLeftTopItem item];
+    [categoryTopView addTarget:self action:@selector(categoryAction)];
+    UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryTopView];
+    self.categoryItem = categoryItem;
+    
+    // 3.地区
+    MTHomeLeftTopItem *districtTopView = [MTHomeLeftTopItem item];
+    [districtTopView addTarget:self action:@selector(districtAction)];
+    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopView];
+    self.districtTopView = districtItem;
+    
+    // 4.排序
+    MTHomeLeftTopItem *sortedTopView = [MTHomeLeftTopItem item];
+    [sortedTopView addTarget:self action:@selector(sortedAction)];
+    UIBarButtonItem *sortedItem = [[UIBarButtonItem alloc] initWithCustomView:sortedTopView];
+    self.sortedItem = sortedItem;
+    
+    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortedItem];
+}
+
+#pragma mark - 监听事件
+/**
+ *  监听点击事件
+ */
+- (void)categoryAction{
+    UIPopoverController *popoverC = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
+
+    [popoverC presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+- (void)districtAction{
+
+}
+
+- (void)sortedAction{
+
 }
 
 

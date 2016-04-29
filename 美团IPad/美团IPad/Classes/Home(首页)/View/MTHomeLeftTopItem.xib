@@ -61,6 +61,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconBtn" destination="PyK-zv-fwr" id="EIh-87-tC4"/>
+            </connections>
             <point key="canvasLocation" x="396" y="236.5"/>
         </view>
     </objects>
