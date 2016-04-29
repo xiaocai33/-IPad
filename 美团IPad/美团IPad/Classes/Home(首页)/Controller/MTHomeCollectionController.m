@@ -7,6 +7,10 @@
 //
 
 #import "MTHomeCollectionController.h"
+#import "MTConstant.h"
+#import "UIBarButtonItem+Extent.h"
+#import "UIView+Extension.h"
+#import "MTHomeLeftTopItem.h"
 
 @interface MTHomeCollectionController ()
 
@@ -27,7 +31,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     //注意在collection中self.view == self.collectionView.superview;
-    self.collectionView.backgroundColor = [UIColor grayColor];
+    self.collectionView.backgroundColor = MTHomeBg;
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,22 +40,52 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    
+    //设置导航栏内容
+    [self setupRightNav];//右边内容
+    [self setupLeftNav];//左边内容
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 设置导航栏按内容
+/**
+ *  设置导航栏左边的内容
+ */
+- (void)setupLeftNav{
+    // 1.设置logo
+    UIBarButtonItem *logoItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_meituan_logo" highlightedImage:nil];
+    logoItem.enabled = NO;
+    
+    // 2.类别
+    MTHomeLeftTopItem *categoryTopView = [MTHomeLeftTopItem item];
+    UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryTopView];
+    
+    // 3.地区
+    MTHomeLeftTopItem *districtTopView = [MTHomeLeftTopItem item];
+    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopView];
+    
+    // 4.排序
+    MTHomeLeftTopItem *sortedTopView = [MTHomeLeftTopItem item];
+    UIBarButtonItem *sortedItem = [[UIBarButtonItem alloc] initWithCustomView:sortedTopView];
+    
+    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortedItem];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/**
+ *  设置导航栏右边的内容
+ */
+- (void)setupRightNav{
+    
+    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highlightedImage:@"icon_map_highlighted"];
+    mapItem.customView.width = 60;
+    
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
+    searchItem.customView.width = 60;
+    
+    self.navigationItem.rightBarButtonItems = @[mapItem, searchItem];
 }
-*/
+
+
 
 #pragma mark <UICollectionViewDataSource>
 

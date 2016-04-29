@@ -23,12 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //设置导航栏右边的按钮
+    
+    //设置导航栏左边的按钮
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 

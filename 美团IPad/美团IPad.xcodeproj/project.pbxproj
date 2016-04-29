@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3318960E1CD3845D00C59260 /* MTNavigationController.m */; };
 		3334C3421CD38B6900D42F7C /* MTHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */; };
+		3334C3451CD38DD000D42F7C /* MTConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3441CD38DD000D42F7C /* MTConstant.m */; };
+		3334C3481CD3912900D42F7C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3471CD3912900D42F7C /* UIView+Extension.m */; };
+		3334C34B1CD3915800D42F7C /* UIBarButtonItem+Extent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C34A1CD3915800D42F7C /* UIBarButtonItem+Extent.m */; };
+		3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C34D1CD397A500D42F7C /* MTHomeLeftTopItem.m */; };
+		3334C3501CD397C000D42F7C /* MTHomeLeftTopItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3334C34F1CD397C000D42F7C /* MTHomeLeftTopItem.xib */; };
 		335AD73C1CD37FE700335CC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335AD73B1CD37FE700335CC3 /* Assets.xcassets */; };
 		335AD74A1CD37FE700335CC3 /* __IPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD7491CD37FE700335CC3 /* __IPadTests.m */; };
 		335AD7551CD37FE700335CC3 /* __IPadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD7541CD37FE700335CC3 /* __IPadUITests.m */; };
@@ -38,6 +43,15 @@
 		3318960E1CD3845D00C59260 /* MTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNavigationController.m; sourceTree = "<group>"; };
 		3334C3401CD38B6900D42F7C /* MTHomeCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeCollectionController.h; sourceTree = "<group>"; };
 		3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeCollectionController.m; sourceTree = "<group>"; };
+		3334C3431CD38DD000D42F7C /* MTConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTConstant.h; sourceTree = "<group>"; };
+		3334C3441CD38DD000D42F7C /* MTConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTConstant.m; sourceTree = "<group>"; };
+		3334C3461CD3912900D42F7C /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		3334C3471CD3912900D42F7C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		3334C3491CD3915800D42F7C /* UIBarButtonItem+Extent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Extent.h"; path = "../UIBarButtonItem+Extent.h"; sourceTree = "<group>"; };
+		3334C34A1CD3915800D42F7C /* UIBarButtonItem+Extent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Extent.m"; path = "../UIBarButtonItem+Extent.m"; sourceTree = "<group>"; };
+		3334C34C1CD397A500D42F7C /* MTHomeLeftTopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeLeftTopItem.h; sourceTree = "<group>"; };
+		3334C34D1CD397A500D42F7C /* MTHomeLeftTopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeLeftTopItem.m; sourceTree = "<group>"; };
+		3334C34F1CD397C000D42F7C /* MTHomeLeftTopItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTHomeLeftTopItem.xib; sourceTree = "<group>"; };
 		335AD72C1CD37FE700335CC3 /* 美团IPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "美团IPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		335AD73B1CD37FE700335CC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		335AD7401CD37FE700335CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,6 +186,9 @@
 		335AD7661CD3815700335CC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3334C34C1CD397A500D42F7C /* MTHomeLeftTopItem.h */,
+				3334C34D1CD397A500D42F7C /* MTHomeLeftTopItem.m */,
+				3334C34F1CD397C000D42F7C /* MTHomeLeftTopItem.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +208,10 @@
 		335AD7681CD3815700335CC3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				3334C3491CD3915800D42F7C /* UIBarButtonItem+Extent.h */,
+				3334C34A1CD3915800D42F7C /* UIBarButtonItem+Extent.m */,
+				3334C3461CD3912900D42F7C /* UIView+Extension.h */,
+				3334C3471CD3912900D42F7C /* UIView+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -198,6 +219,8 @@
 		335AD7691CD3815700335CC3 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				3334C3431CD38DD000D42F7C /* MTConstant.h */,
+				3334C3441CD38DD000D42F7C /* MTConstant.m */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -340,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335AD73C1CD37FE700335CC3 /* Assets.xcassets in Resources */,
+				3334C3501CD397C000D42F7C /* MTHomeLeftTopItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,8 +388,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3334C3481CD3912900D42F7C /* UIView+Extension.m in Sources */,
+				3334C3451CD38DD000D42F7C /* MTConstant.m in Sources */,
 				335AD7711CD3815700335CC3 /* main.m in Sources */,
+				3334C34B1CD3915800D42F7C /* UIBarButtonItem+Extent.m in Sources */,
 				3334C3421CD38B6900D42F7C /* MTHomeCollectionController.m in Sources */,
+				3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,
 				3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */,
 			);
