@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MTNavigationController.h"
+#import "MTHomeCollectionController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //UICollectionViewController在创建的时候必须指定布局类型
+    MTHomeCollectionController *homeVc = [[MTHomeCollectionController alloc] init];
+    
+    self.window = [[UIWindow alloc] init];
+    
+    self.window.rootViewController = [[MTNavigationController alloc] initWithRootViewController:homeVc];
+    
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 

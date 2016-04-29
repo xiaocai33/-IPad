@@ -16,7 +16,9 @@
 
 //类第一次加载的时候会调用这个方法,只调一次
 + (void)initialize{
-
+    //设置所有导航栏的样式
+    UINavigationBar *bar = [UINavigationBar appearance];
+    [bar setBackgroundImage:[UIImage imageNamed:@"bg_navigationBar_normal"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidLoad {

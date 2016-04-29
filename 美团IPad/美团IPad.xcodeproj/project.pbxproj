@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3318960E1CD3845D00C59260 /* MTNavigationController.m */; };
+		3334C3421CD38B6900D42F7C /* MTHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */; };
 		335AD73C1CD37FE700335CC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335AD73B1CD37FE700335CC3 /* Assets.xcassets */; };
 		335AD74A1CD37FE700335CC3 /* __IPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD7491CD37FE700335CC3 /* __IPadTests.m */; };
 		335AD7551CD37FE700335CC3 /* __IPadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD7541CD37FE700335CC3 /* __IPadUITests.m */; };
@@ -35,6 +36,8 @@
 /* Begin PBXFileReference section */
 		3318960D1CD3845D00C59260 /* MTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNavigationController.h; sourceTree = "<group>"; };
 		3318960E1CD3845D00C59260 /* MTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNavigationController.m; sourceTree = "<group>"; };
+		3334C3401CD38B6900D42F7C /* MTHomeCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeCollectionController.h; sourceTree = "<group>"; };
+		3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeCollectionController.m; sourceTree = "<group>"; };
 		335AD72C1CD37FE700335CC3 /* 美团IPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "美团IPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		335AD73B1CD37FE700335CC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		335AD7401CD37FE700335CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 		335AD7641CD3815700335CC3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3334C3401CD38B6900D42F7C /* MTHomeCollectionController.h */,
+				3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335AD7711CD3815700335CC3 /* main.m in Sources */,
+				3334C3421CD38B6900D42F7C /* MTHomeCollectionController.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,
 				3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */,
 			);
