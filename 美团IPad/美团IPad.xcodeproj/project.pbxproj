@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3318960E1CD3845D00C59260 /* MTNavigationController.m */; };
 		335AD73C1CD37FE700335CC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335AD73B1CD37FE700335CC3 /* Assets.xcassets */; };
 		335AD74A1CD37FE700335CC3 /* __IPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD7491CD37FE700335CC3 /* __IPadTests.m */; };
 		335AD7551CD37FE700335CC3 /* __IPadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD7541CD37FE700335CC3 /* __IPadUITests.m */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3318960D1CD3845D00C59260 /* MTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNavigationController.h; sourceTree = "<group>"; };
+		3318960E1CD3845D00C59260 /* MTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNavigationController.m; sourceTree = "<group>"; };
 		335AD72C1CD37FE700335CC3 /* 美团IPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "美团IPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		335AD73B1CD37FE700335CC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		335AD7401CD37FE700335CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 		335AD76A1CD3815700335CC3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3318960D1CD3845D00C59260 /* MTNavigationController.h */,
+				3318960E1CD3845D00C59260 /* MTNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 		335AD7241CD37FE700335CC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MT;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = xiaocai;
 				TargetAttributes = {
@@ -355,6 +361,7 @@
 			files = (
 				335AD7711CD3815700335CC3 /* main.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,
+				3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "美团IPad/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -489,7 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "美团IPad/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -565,6 +572,7 @@
 				335AD75B1CD37FE700335CC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		335AD75C1CD37FE700335CC3 /* Build configuration list for PBXNativeTarget "美团IPadTests" */ = {
 			isa = XCConfigurationList;
@@ -573,6 +581,7 @@
 				335AD75E1CD37FE700335CC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		335AD75F1CD37FE700335CC3 /* Build configuration list for PBXNativeTarget "美团IPadUITests" */ = {
 			isa = XCConfigurationList;
@@ -581,6 +590,7 @@
 				335AD7611CD37FE700335CC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
