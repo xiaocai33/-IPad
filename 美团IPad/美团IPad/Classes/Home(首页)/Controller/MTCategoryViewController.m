@@ -9,6 +9,8 @@
 #import "MTCategoryViewController.h"
 #import "MJExtension.h"
 #import "MTCategory.h"
+#import "MTHomeDropdownView.h"
+#import "UIView+SDAutoLayout.h"
 
 @interface MTCategoryViewController ()
 
@@ -21,14 +23,23 @@
     
     self.view.backgroundColor = [UIColor grayColor];
     
+    MTHomeDropdownView *dropdownView = [[MTHomeDropdownView alloc] init];
+    
+    [self.view addSubview:dropdownView];
+    
+    dropdownView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    dropdownView.sd_layout
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .topEqualToView(self.view)
+    .bottomEqualToView(self.view);
+    
     //得到模型数据
     //NSArray *categories = [MTCategory objectWithFilename:@"categories.plist"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 @end
