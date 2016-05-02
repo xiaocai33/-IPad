@@ -43,6 +43,7 @@
 		33864DF21CD72587007ED5A1 /* MTSubHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF11CD72587007ED5A1 /* MTSubHomeTableCell.m */; };
 		33864DF51CD73E10007ED5A1 /* MTCityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF41CD73E10007ED5A1 /* MTCityGroups.m */; };
 		33864DF81CD73EA8007ED5A1 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */; };
+		33864DFB1CD7499C007ED5A1 /* MTCityChangedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,8 @@
 		33864DF41CD73E10007ED5A1 /* MTCityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroups.m; sourceTree = "<group>"; };
 		33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
 		33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
+		33864DF91CD7499C007ED5A1 /* MTCityChangedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityChangedViewController.h; sourceTree = "<group>"; };
+		33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityChangedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +289,8 @@
 				3334C3801CD3A7CC00D42F7C /* MTCategoryViewController.m */,
 				33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */,
 				33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */,
+				33864DF91CD7499C007ED5A1 /* MTCityChangedViewController.h */,
+				33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33864DFB1CD7499C007ED5A1 /* MTCityChangedViewController.m in Sources */,
 				3334C3481CD3912900D42F7C /* UIView+Extension.m in Sources */,
 				3334C37D1CD3A4DB00D42F7C /* NSObject+MJKeyValue.m in Sources */,
 				3334C38B1CD3ABB500D42F7C /* UIView+SDAutoLayout.m in Sources */,

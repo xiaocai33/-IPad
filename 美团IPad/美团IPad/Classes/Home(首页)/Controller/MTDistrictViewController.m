@@ -10,7 +10,8 @@
 #import "UIView+SDAutoLayout.h"
 #import "MTHomeDropdownView.h"
 #import "MJExtension.h"
-#import "MTCategory.h"
+#import "MTCityChangedViewController.h"
+#import "MTNavigationController.h"
 
 @interface MTDistrictViewController ()
 
@@ -63,6 +64,8 @@
     //设置按钮内边距和标题的内边距
     cityChangeBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     cityChangeBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    [cityChangeBtn addTarget:self action:@selector(cityChanged) forControlEvents:UIControlEventTouchUpInside];
 
     [contentView addSubview:cityChangeBtn];
     
@@ -96,12 +99,18 @@
     .rightEqualToView(self.view)
     .topSpaceToView(contentView, 0)
     .bottomEqualToView(self.view);
-    
-    //得到模型数据
-    dropView.categories = [MTCategory objectArrayWithFilename:@"categories.plist"];
 
 }
 
-
+/**
+ *  切换城市
+ */
+- (void)cityChanged{
+    MTCityChangedViewController *cityVc = [[MTCityChangedViewController alloc] init];
+    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:cityVc];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentViewController:nav animated:YES completion:nil];
+}
 
 @end
