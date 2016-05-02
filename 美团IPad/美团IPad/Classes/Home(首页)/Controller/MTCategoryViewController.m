@@ -21,14 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     MTHomeDropdownView *dropdownView = [[MTHomeDropdownView alloc] init];
     
     //根据 dropdownView 的尺寸, 设置popover的尺寸
     self.preferredContentSize = CGSizeMake(dropdownView.width, CGRectGetMaxY(dropdownView.frame));
     
-    [self.view addSubview:dropdownView];
+    //[self.view addSubview:dropdownView];
+    self.view = dropdownView;
     
     dropdownView.translatesAutoresizingMaskIntoConstraints = NO;
     

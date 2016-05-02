@@ -10,18 +10,43 @@
 #import "UIView+SDAutoLayout.h"
 #import "MTCityGroups.h"
 #import "MJExtension.h"
+#import "MTConstant.h"
 
 const int MTCoverTag = 1111;
 
 @interface MTCityChangedViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
-
+/** 城市分组数据 */
 @property (nonatomic, strong) NSArray *cityGroups;
-
+/** 城市详情显示表 */
 @property (nonatomic, weak) UITableView *cityTableView;
-
+/** 搜索框 */
+@property (nonatomic, weak) UISearchBar *searchBar;
+/** 按钮蒙版 */
+@property (nonatomic, weak) UIButton *coverBtn;
 @end
 
 @implementation MTCityChangedViewController
+
+- (UIButton *)coverBtn{
+    if (_coverBtn == nil) {
+        UIButton *coverBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        coverBtn.backgroundColor = [UIColor blackColor];
+        [coverBtn addTarget:self action:@selector(coverBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:coverBtn];
+        
+        //自动布局
+        coverBtn.sd_layout
+        .leftEqualToView(self.cityTableView)
+        .rightEqualToView(self.cityTableView)
+        .topEqualToView(self.cityTableView)
+        .bottomEqualToView(self.cityTableView);
+        
+        _coverBtn = coverBtn;
+        
+        
+    }
+    return _coverBtn;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,11 +71,14 @@ const int MTCoverTag = 1111;
     searchBar.backgroundImage = [UIImage imageNamed:@"bg_login_textfield"];
     
     searchBar.delegate = self;
+    //设置搜索框取消按钮颜色
+    searchBar.tintColor = MTHomeColor(32, 191, 179);
     
     [self.view addSubview:searchBar];
+    self.searchBar = searchBar;
     
     //自动布局
-    searchBar.translatesAutoresizingMaskIntoConstraints = NO;
+    //searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     
     searchBar.sd_layout
     .topSpaceToView(self.view, 10)
@@ -81,6 +109,13 @@ const int MTCoverTag = 1111;
     
 }
 
+/**
+ *  取消蒙版
+ */
+- (void)coverBtnClick{
+    [self.searchBar resignFirstResponder];
+}
+
 #pragma mark - UISearchBar代理方法
 /**
  *  开始搜索
@@ -89,27 +124,35 @@ const int MTCoverTag = 1111;
     // 1. 隐藏导航栏
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
-    // 2. 添加蒙版
-    UIView *coverView = [[UIView alloc] init];
-    coverView.backgroundColor = [UIColor blackColor];
-    coverView.alpha = 0.5;
-    coverView.tag = MTCoverTag;
+    // 2. 添加蒙版(方案1)
+//    UIView *coverView = [[UIView alloc] init];
+//    coverView.backgroundColor = [UIColor blackColor];
+//    coverView.alpha = 0.5;
+//    coverView.tag = MTCoverTag;
+//    
+//    //点击蒙版,取消搜索框(点击手势完成--UITapGestureRecognizer)
+//    //调用seatchBar注销键盘的操作,会自动调用结束编辑的代理方法
+//    [coverView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:searchBar action:@selector(resignFirstResponder)]];
+//    
+//    [self.view addSubview:coverView];
+//    
+//    coverView.translatesAutoresizingMaskIntoConstraints = NO;
+//    
+//    coverView.sd_layout
+//    .leftEqualToView(self.cityTableView)
+//    .rightEqualToView(self.cityTableView)
+//    .topEqualToView(self.cityTableView)
+//    .bottomEqualToView(self.cityTableView);
     
-    //点击蒙版,取消搜索框(点击手势完成--UITapGestureRecognizer)
-    //调用seatchBar注销键盘的操作,会自动调用结束编辑的代理方法
-    [coverView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:searchBar action:@selector(resignFirstResponder)]];
+    // 2. 添加蒙版(方案2) 用按钮实现蒙版技术
+    [UIView animateWithDuration:0.25 animations:^{
+        self.coverBtn.alpha = 0.5;
+    }];
     
-    [self.view addSubview:coverView];
+    // 3 显示取消按钮
+    [searchBar setShowsCancelButton:YES animated:YES];
     
-    coverView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    coverView.sd_layout
-    .leftEqualToView(self.cityTableView)
-    .rightEqualToView(self.cityTableView)
-    .topEqualToView(self.cityTableView)
-    .bottomEqualToView(self.cityTableView);
-    
-    // 3. 更换搜索框的背景
+    // 4. 更换搜索框的背景
     searchBar.backgroundImage = [UIImage imageNamed:@"bg_login_textfield_hl"];
 }
 
@@ -121,10 +164,23 @@ const int MTCoverTag = 1111;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     // 2. 移除蒙版
-    [[self.view viewWithTag:MTCoverTag] removeFromSuperview];
+    //[[self.view viewWithTag:MTCoverTag] removeFromSuperview];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.coverBtn.alpha = 0.0;
+    }];
     
-    // 3. 恢复搜索框的背景
+    // 3 隐藏取消按钮
+    [searchBar setShowsCancelButton:NO animated:YES];
+    
+    // 4. 恢复搜索框的背景
     searchBar.backgroundImage = [UIImage imageNamed:@"bg_login_textfield"];
+}
+
+/**
+ *  取消按钮被点击
+ */
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
 }
 
 
