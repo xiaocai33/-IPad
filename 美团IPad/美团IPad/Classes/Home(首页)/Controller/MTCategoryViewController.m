@@ -20,8 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor grayColor];
+    //设置popover的尺寸
+    self.preferredContentSize = CGSizeMake(320, 480);
     
     MTHomeDropdownView *dropdownView = [[MTHomeDropdownView alloc] init];
     
@@ -36,7 +36,7 @@
     .bottomEqualToView(self.view);
     
     //得到模型数据
-    //NSArray *categories = [MTCategory objectWithFilename:@"categories.plist"];
+    dropdownView.categories = [MTCategory objectArrayWithFilename:@"categories.plist"];
 }
 
 

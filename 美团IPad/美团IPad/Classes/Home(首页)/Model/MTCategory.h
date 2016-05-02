@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSString *name;
 
 /** 子类别:里面都是字符串(子类别的名称) */
-@property (nonatomic, copy) NSString *subcategories;
+@property (nonatomic, strong) NSArray *subcategories;
 
 /** 显示在下拉菜单的小图标 */
 @property (nonatomic, copy) NSString *small_highlighted_icon;

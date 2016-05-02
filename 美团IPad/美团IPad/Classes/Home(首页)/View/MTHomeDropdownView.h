@@ -10,4 +10,6 @@
 
 @interface MTHomeDropdownView : UIView
 
+@property (nonatomic, strong) NSArray *categories;
+
 @end
