@@ -41,6 +41,8 @@
 		335AD7711CD3815700335CC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 335AD76F1CD3815700335CC3 /* main.m */; };
 		33864DEF1CD72576007ED5A1 /* MTMainHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DEE1CD72576007ED5A1 /* MTMainHomeTableCell.m */; };
 		33864DF21CD72587007ED5A1 /* MTSubHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF11CD72587007ED5A1 /* MTSubHomeTableCell.m */; };
+		33864DF51CD73E10007ED5A1 /* MTCityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF41CD73E10007ED5A1 /* MTCityGroups.m */; };
+		33864DF81CD73EA8007ED5A1 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,10 @@
 		33864DEE1CD72576007ED5A1 /* MTMainHomeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainHomeTableCell.m; sourceTree = "<group>"; };
 		33864DF01CD72587007ED5A1 /* MTSubHomeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSubHomeTableCell.h; sourceTree = "<group>"; };
 		33864DF11CD72587007ED5A1 /* MTSubHomeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSubHomeTableCell.m; sourceTree = "<group>"; };
+		33864DF31CD73E10007ED5A1 /* MTCityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroups.h; sourceTree = "<group>"; };
+		33864DF41CD73E10007ED5A1 /* MTCityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroups.m; sourceTree = "<group>"; };
+		33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
+		33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +284,8 @@
 				3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */,
 				3334C37F1CD3A7CC00D42F7C /* MTCategoryViewController.h */,
 				3334C3801CD3A7CC00D42F7C /* MTCategoryViewController.m */,
+				33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */,
+				33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,6 +295,8 @@
 			children = (
 				3334C3591CD3A3F100D42F7C /* MTCategory.h */,
 				3334C35A1CD3A3F100D42F7C /* MTCategory.m */,
+				33864DF31CD73E10007ED5A1 /* MTCityGroups.h */,
+				33864DF41CD73E10007ED5A1 /* MTCityGroups.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -527,6 +537,7 @@
 				3334C35B1CD3A3F100D42F7C /* MTCategory.m in Sources */,
 				3334C3791CD3A4DB00D42F7C /* MJMethod.m in Sources */,
 				3334C34B1CD3915800D42F7C /* UIBarButtonItem+Extent.m in Sources */,
+				33864DF81CD73EA8007ED5A1 /* MTDistrictViewController.m in Sources */,
 				3334C3841CD3A9E900D42F7C /* MTHomeDropdownView.m in Sources */,
 				3334C38A1CD3ABB500D42F7C /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				3334C37E1CD3A4DB00D42F7C /* NSObject+MJMember.m in Sources */,
@@ -538,6 +549,7 @@
 				3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,
 				3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */,
+				33864DF51CD73E10007ED5A1 /* MTCityGroups.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,6 @@
     if (self = [super initWithFrame:frame]) {
         //设置view不随父控件伸缩
         self.autoresizingMask = UIViewAutoresizingNone;
-        
         //添加主表和附表
         [self setUpTableView];
         

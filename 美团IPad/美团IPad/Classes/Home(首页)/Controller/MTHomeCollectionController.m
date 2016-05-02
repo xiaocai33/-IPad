@@ -12,6 +12,7 @@
 #import "UIView+Extension.h"
 #import "MTHomeLeftTopItem.h"
 #import "MTCategoryViewController.h"
+#import "MTDistrictViewController.h"
 
 @interface MTHomeCollectionController ()
 /** 分类 */
@@ -112,7 +113,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)districtAction{
-
+    UIPopoverController *popoverC = [[UIPopoverController alloc] initWithContentViewController:[[MTDistrictViewController alloc] init]];
+    
+    [popoverC presentPopoverFromBarButtonItem:self.districtTopView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (void)sortedAction{
