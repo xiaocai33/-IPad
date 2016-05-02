@@ -46,6 +46,7 @@
 		33864DFB1CD7499C007ED5A1 /* MTCityChangedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */; };
 		33864DFE1CD769E6007ED5A1 /* MTCitiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DFD1CD769E6007ED5A1 /* MTCitiy.m */; };
 		33864E011CD78814007ED5A1 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E001CD78814007ED5A1 /* MTRegion.m */; };
+		33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		33864DFD1CD769E6007ED5A1 /* MTCitiy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitiy.m; sourceTree = "<group>"; };
 		33864DFF1CD78814007ED5A1 /* MTRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegion.h; sourceTree = "<group>"; };
 		33864E001CD78814007ED5A1 /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
+		33864E021CD79CDA007ED5A1 /* MTSearchResultTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSearchResultTableController.h; sourceTree = "<group>"; };
+		33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSearchResultTableController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,8 @@
 				33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */,
 				33864DF91CD7499C007ED5A1 /* MTCityChangedViewController.h */,
 				33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */,
+				33864E021CD79CDA007ED5A1 /* MTSearchResultTableController.h */,
+				33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				3334C37A1CD3A4DB00D42F7C /* MJType.m in Sources */,
 				3334C37C1CD3A4DB00D42F7C /* NSObject+MJCoding.m in Sources */,
 				3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */,
+				33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,
 				3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */,
 				33864DF51CD73E10007ED5A1 /* MTCityGroups.m in Sources */,

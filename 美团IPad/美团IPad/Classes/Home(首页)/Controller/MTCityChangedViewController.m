@@ -11,21 +11,47 @@
 #import "MTCityGroups.h"
 #import "MJExtension.h"
 #import "MTConstant.h"
+#import "MTSearchResultTableController.h"
 
 const int MTCoverTag = 1111;
 
 @interface MTCityChangedViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 /** 城市分组数据 */
 @property (nonatomic, strong) NSArray *cityGroups;
+
 /** 城市详情显示表 */
 @property (nonatomic, weak) UITableView *cityTableView;
+
 /** 搜索框 */
 @property (nonatomic, weak) UISearchBar *searchBar;
+
 /** 按钮蒙版 */
 @property (nonatomic, weak) UIButton *coverBtn;
+
+/** 搜索结果显示tableView */
+@property (nonatomic, weak) MTSearchResultTableController *searchTableVc;
+
 @end
 
 @implementation MTCityChangedViewController
+
+- (MTSearchResultTableController *)searchTableVc{
+    if (_searchTableVc == nil) {
+        MTSearchResultTableController *vc = [[MTSearchResultTableController alloc] init];
+        [self addChildViewController:vc];
+        
+        [self.view addSubview:vc.view];
+        
+        vc.view.sd_layout
+        .leftEqualToView(self.view)
+        .rightEqualToView(self.view)
+        .bottomEqualToView(self.view)
+        .topEqualToView(self.cityTableView);
+        
+        _searchTableVc = vc;
+    }
+    return _searchTableVc;
+}
 
 - (UIButton *)coverBtn{
     if (_coverBtn == nil) {
@@ -81,9 +107,9 @@ const int MTCoverTag = 1111;
     //searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     
     searchBar.sd_layout
-    .topSpaceToView(self.view, 10)
-    .leftSpaceToView(self.view, 10)
-    .rightSpaceToView(self.view, 10)
+    .topSpaceToView(self.view, 15)
+    .leftSpaceToView(self.view, 15)
+    .rightSpaceToView(self.view, 15)
     .heightIs(35);
     
     // 2.初始化TableView
@@ -104,7 +130,7 @@ const int MTCoverTag = 1111;
     cityTableView.sd_layout
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
-    .topSpaceToView(searchBar, 10)
+    .topSpaceToView(searchBar, 15)
     .bottomEqualToView(self.view);
     
 }
@@ -183,6 +209,16 @@ const int MTCoverTag = 1111;
     [searchBar resignFirstResponder];
 }
 
+/**
+ *  搜索框文本内容改变调用
+ */
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchText.length) {
+        self.searchTableVc.view.hidden = NO;
+    }else{
+        self.searchTableVc.view.hidden = YES;
+    }
+}
 
 #pragma mark - UITableView数据源方法
 /**
