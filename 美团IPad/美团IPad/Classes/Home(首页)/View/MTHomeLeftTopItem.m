@@ -10,6 +10,10 @@
 
 @interface MTHomeLeftTopItem()
 @property (weak, nonatomic) IBOutlet UIButton *iconBtn;
+//标题
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+//子标题
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
 @end
 
@@ -24,5 +28,21 @@
 - (void)addTarget:(id)target action:(SEL)action{
     [self.iconBtn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)setTitle:(NSString *)title{
+    self.titleLabel.text = title;
+}
+
+- (void)setSubTitle:(NSString *)subtitle{
+    self.subTitleLabel.text = subtitle;
+}
+
+- (void)setIcon:(NSString *)icon heighlightIcon:(NSString *)heighlightIcon{
+    //设置普通状态按钮
+    [self.iconBtn setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
+    //设置高亮状态按钮
+    [self.iconBtn setImage:[UIImage imageNamed:heighlightIcon] forState:UIControlStateHighlighted];
+}
+
 
 @end

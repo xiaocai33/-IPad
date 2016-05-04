@@ -16,4 +16,13 @@
 + (instancetype)item;
 
 - (void)addTarget:(id)target action:(SEL)action;
+
+/** 设置标题 */
+- (void)setTitle:(NSString *)title;
+
+/** 设置子标题 */
+- (void)setSubTitle:(NSString *)subtitle;
+
+/** 设置显示图标 */
+- (void)setIcon:(NSString *)icon heighlightIcon:(NSString *)heighlightIcon;
 @end

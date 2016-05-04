@@ -292,6 +292,16 @@ const int MTCoverTag = 1111;
     return [self.cityGroups valueForKey:@"title"];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MTCityGroups *group = self.cityGroups[indexPath.section];
+    NSString *cityName = group.cities[indexPath.row];
+    
+    //发送通知
+    [MTNotificationCenter postNotificationName:MTCityDidChangeNotification object:nil userInfo:@{MTSelectCityName : cityName}];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 @end

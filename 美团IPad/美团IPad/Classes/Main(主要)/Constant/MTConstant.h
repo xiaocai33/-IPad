@@ -19,3 +19,30 @@
 #define MTLog(...)
 
 #endif
+
+#define MTNotificationCenter [NSNotificationCenter defaultCenter]
+
+/** 城市改变通知 */
+extern NSString *const MTCityDidChangeNotification;
+/** 选中的城市名称 */
+extern NSString *const MTSelectCityName;
+
+/** 城市改变通知 */
+extern NSString *const MTSortDidChangeNotification;
+/** 选中的排序模型 */
+extern NSString *const MTSelectSort;
+
+/** 分类改变通知 */
+extern NSString *const MTCategoryDidChangeNotification;
+/** 选中的分类模型 */
+extern NSString *const MTSelectCategory;
+/** 选中的子分类名称 */
+extern NSString *const MTSelectSubcategoryName;
+
+/** 区域改变通知 */
+extern NSString *const MTRegionDidChangeNotification;
+/** 选中的区域模型 */
+extern NSString *const MTSelectRegion;
+/** 选中的子区域名称 */
+extern NSString *const MTSelectSubregionName;
+

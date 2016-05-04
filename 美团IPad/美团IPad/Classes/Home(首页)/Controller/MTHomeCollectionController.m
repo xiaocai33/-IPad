@@ -53,7 +53,27 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupRightNav];//右边内容
     [self setupLeftNav];//左边内容
     
+    // 监听城市改变
+    [MTNotificationCenter addObserver:self selector:@selector(cityChange:) name:MTCityDidChangeNotification object:nil];
+
+}
+
+- (void)dealloc{
+    //移除通知
+    [MTNotificationCenter removeObserver:self];
+}
+
+#pragma mark - 监听通知方法
+/**
+ *  监听城市改变通知方法
+ */
+- (void)cityChange:(NSNotification *)noti{
     
+    NSString *cityName = noti.userInfo[MTSelectCityName];
+    
+    MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.districtTopView.customView;
+    
+    [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", cityName]];
     
 }
 

@@ -9,6 +9,7 @@
 #import "MTSearchResultTableController.h"
 #import "MTDataTool.h"
 #import "MTCitiy.h"
+#import "MTConstant.h"
 
 @interface MTSearchResultTableController ()
 /** 搜索匹配的城市数据 */
@@ -55,6 +56,20 @@
     return cell;
 }
 
+#pragma mark - Table view delegate
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [NSString stringWithFormat:@"共有%zd个搜索结果", self.resultCities.count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    MTCitiy *city = self.resultCities[indexPath.row];
+    //发送通知(将选中的城市名称发送出去)
+    [MTNotificationCenter postNotificationName:MTCityDidChangeNotification object:nil userInfo:@{MTSelectCityName : city.name}];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 
 @end

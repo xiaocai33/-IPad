@@ -106,11 +106,15 @@
  *  切换城市
  */
 - (void)cityChanged{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
     MTCityChangedViewController *cityVc = [[MTCityChangedViewController alloc] init];
     MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:cityVc];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
+
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
     
-    [self presentViewController:nav animated:YES completion:nil];
+    
 }
 
 @end
