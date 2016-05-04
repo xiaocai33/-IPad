@@ -10,4 +10,6 @@
 
 @interface MTSearchResultTableController : UITableViewController
 
+@property (nonatomic, copy) NSString *searchKey;
+
 @end

@@ -12,6 +12,7 @@
 #import "MJExtension.h"
 #import "MTConstant.h"
 #import "MTSearchResultTableController.h"
+#import "UIBarButtonItem+Extent.h"
 
 const int MTCoverTag = 1111;
 
@@ -85,6 +86,16 @@ const int MTCoverTag = 1111;
     
     //初始化控件
     [self setupSearchBarAndTableView];
+    
+    //添加左边的取消按钮
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(cancelNavigation) image:@"btn_navigation_close" highlightedImage:@"btn_navigation_close_hl"];
+}
+
+/**
+ *  销毁控制器
+ */
+- (void)cancelNavigation{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /**
@@ -195,11 +206,18 @@ const int MTCoverTag = 1111;
         self.coverBtn.alpha = 0.0;
     }];
     
+    //移除蒙版
+    [self.coverBtn removeFromSuperview];
+    
     // 3 隐藏取消按钮
     [searchBar setShowsCancelButton:NO animated:YES];
     
     // 4. 恢复搜索框的背景
     searchBar.backgroundImage = [UIImage imageNamed:@"bg_login_textfield"];
+    
+    // 5.移除搜索结果
+    self.searchTableVc.view.hidden = YES;
+    searchBar.text = nil;
 }
 
 /**
@@ -207,6 +225,7 @@ const int MTCoverTag = 1111;
  */
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
+    
 }
 
 /**
@@ -215,6 +234,7 @@ const int MTCoverTag = 1111;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (searchText.length) {
         self.searchTableVc.view.hidden = NO;
+        self.searchTableVc.searchKey = searchText;
     }else{
         self.searchTableVc.view.hidden = YES;
     }
