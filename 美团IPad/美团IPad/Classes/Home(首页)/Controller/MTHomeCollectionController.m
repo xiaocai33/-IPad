@@ -12,25 +12,26 @@
 #import "UIView+Extension.h"
 #import "MTHomeLeftTopItem.h"
 #import "MTCategoryViewController.h"
-#import "MTDistrictViewController.h"
+#import "MTRegionViewController.h"
 #import "MTSortViewController.h"
 #import "MTSort.h"
 #import "MTCitiy.h"
 #import "MTDataTool.h"
 #import "MTCategory.h"
+#import "MTRegion.h"
 
 @interface MTHomeCollectionController ()
 /** 分类 */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区 */
-@property (nonatomic, weak) UIBarButtonItem *districtTopView;
+@property (nonatomic, weak) UIBarButtonItem *regionTopView;
 /** 排序 */
 @property (nonatomic, weak) UIBarButtonItem *sortedItem;
 
 /** 分类 popover */
 @property (nonatomic, strong) UIPopoverController *categoryPopover;
 /** 地区 popover */
-@property (nonatomic, strong) UIPopoverController *districtPopover;
+@property (nonatomic, strong) UIPopoverController *regionPopover;
 /** 排序 popover */
 @property (nonatomic, strong) UIPopoverController *sortPopover;
 
@@ -76,6 +77,9 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 监听分类数据改变通知
     [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
+    
+    // 监听区域数据改变通知
+    [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
 
 }
 
@@ -93,7 +97,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.selectedCityName = noti.userInfo[MTSelectCityName];
     
     // 2 改变导航栏上的显示标题
-    MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.districtTopView.customView;
+    MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.regionTopView.customView;
     [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     
     // 3 从服务加载数据
@@ -138,6 +142,26 @@ static NSString * const reuseIdentifier = @"Cell";
     // 4 从服务加载数据
 }
 
+/**
+ *  监听区域数据改变通知方法
+ */
+- (void)regionDidChange:(NSNotification *)noti{
+    // 1 得到数据
+    MTRegion *region = noti.userInfo[MTSelectRegion];
+    NSString *subregionName = noti.userInfo[MTSelectSubregionName];
+    
+    // 2 改变Item上的显示标题
+    MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.regionTopView.customView;
+    NSString *titleName = [NSString stringWithFormat:@"%@ - %@", self.selectedCityName, region.name];
+    [topItem setTitle:titleName];
+    [topItem setSubTitle:subregionName];
+    
+    // 3 关闭popover
+    [self.regionPopover dismissPopoverAnimated:YES];
+    
+    // 4 从服务加载数据
+}
+
 #pragma mark - 设置导航栏按内容
 /**
  *  设置导航栏右边的内容
@@ -169,10 +193,10 @@ static NSString * const reuseIdentifier = @"Cell";
     self.categoryItem = categoryItem;
     
     // 3.地区
-    MTHomeLeftTopItem *districtTopView = [MTHomeLeftTopItem item];
-    [districtTopView addTarget:self action:@selector(districtAction)];
-    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopView];
-    self.districtTopView = districtItem;
+    MTHomeLeftTopItem *regionTopView = [MTHomeLeftTopItem item];
+    [regionTopView addTarget:self action:@selector(regionAction)];
+    UIBarButtonItem *regionItem = [[UIBarButtonItem alloc] initWithCustomView:regionTopView];
+    self.regionTopView = regionItem;
     
     // 4.排序
     MTHomeLeftTopItem *sortedTopView = [MTHomeLeftTopItem item];
@@ -183,7 +207,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIBarButtonItem *sortedItem = [[UIBarButtonItem alloc] initWithCustomView:sortedTopView];
     self.sortedItem = sortedItem;
     
-    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortedItem];
+    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, regionItem, sortedItem];
 }
 
 #pragma mark - 监听事件
@@ -201,26 +225,23 @@ static NSString * const reuseIdentifier = @"Cell";
 /**
  *  监听点击事件 -- 区域控制器
  */
-- (void)districtAction{
-    MTDistrictViewController *districtVc = [[MTDistrictViewController alloc] init];
+- (void)regionAction{
+    MTRegionViewController *regionVc = [[MTRegionViewController alloc] init];
     
     if (self.selectedCityName) {
         //根据得到的城市名称,获得当前的city模型
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName];
         MTCitiy *city = [[[MTDataTool cities] filteredArrayUsingPredicate:predicate] firstObject];
-        districtVc.regions = city.regions;
+        regionVc.regions = city.regions;
     }
     
+    UIPopoverController *regionPopover = [[UIPopoverController alloc] initWithContentViewController:regionVc];
     
+    regionVc.regionPopover = regionPopover;
     
+    [regionPopover presentPopoverFromBarButtonItem:self.regionTopView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
-    UIPopoverController *districtPopover = [[UIPopoverController alloc] initWithContentViewController:districtVc];
-    
-    districtVc.districtPopover = districtPopover;
-    
-    [districtPopover presentPopoverFromBarButtonItem:self.districtTopView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-    
-    self.districtPopover = districtPopover;
+    self.regionPopover = regionPopover;
 }
 
 /**

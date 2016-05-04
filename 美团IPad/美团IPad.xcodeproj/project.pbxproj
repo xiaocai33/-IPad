@@ -42,7 +42,7 @@
 		33864DEF1CD72576007ED5A1 /* MTMainHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DEE1CD72576007ED5A1 /* MTMainHomeTableCell.m */; };
 		33864DF21CD72587007ED5A1 /* MTSubHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF11CD72587007ED5A1 /* MTSubHomeTableCell.m */; };
 		33864DF51CD73E10007ED5A1 /* MTCityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF41CD73E10007ED5A1 /* MTCityGroups.m */; };
-		33864DF81CD73EA8007ED5A1 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */; };
+		33864DF81CD73EA8007ED5A1 /* MTRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DF71CD73EA8007ED5A1 /* MTRegionViewController.m */; };
 		33864DFB1CD7499C007ED5A1 /* MTCityChangedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */; };
 		33864DFE1CD769E6007ED5A1 /* MTCitiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DFD1CD769E6007ED5A1 /* MTCitiy.m */; };
 		33864E011CD78814007ED5A1 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E001CD78814007ED5A1 /* MTRegion.m */; };
@@ -138,8 +138,8 @@
 		33864DF11CD72587007ED5A1 /* MTSubHomeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSubHomeTableCell.m; sourceTree = "<group>"; };
 		33864DF31CD73E10007ED5A1 /* MTCityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroups.h; sourceTree = "<group>"; };
 		33864DF41CD73E10007ED5A1 /* MTCityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroups.m; sourceTree = "<group>"; };
-		33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
-		33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
+		33864DF61CD73EA8007ED5A1 /* MTRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegionViewController.h; sourceTree = "<group>"; };
+		33864DF71CD73EA8007ED5A1 /* MTRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegionViewController.m; sourceTree = "<group>"; };
 		33864DF91CD7499C007ED5A1 /* MTCityChangedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityChangedViewController.h; sourceTree = "<group>"; };
 		33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityChangedViewController.m; sourceTree = "<group>"; };
 		33864DFC1CD769E6007ED5A1 /* MTCitiy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitiy.h; sourceTree = "<group>"; };
@@ -306,8 +306,8 @@
 				3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */,
 				3334C37F1CD3A7CC00D42F7C /* MTCategoryViewController.h */,
 				3334C3801CD3A7CC00D42F7C /* MTCategoryViewController.m */,
-				33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */,
-				33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */,
+				33864DF61CD73EA8007ED5A1 /* MTRegionViewController.h */,
+				33864DF71CD73EA8007ED5A1 /* MTRegionViewController.m */,
 				33E5B6111CDA1FB8009B5897 /* MTSortViewController.h */,
 				33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */,
 				33864DF91CD7499C007ED5A1 /* MTCityChangedViewController.h */,
@@ -585,7 +585,7 @@
 				3334C3791CD3A4DB00D42F7C /* MJMethod.m in Sources */,
 				3334C34B1CD3915800D42F7C /* UIBarButtonItem+Extent.m in Sources */,
 				33E5B6101CDA0A8B009B5897 /* MTSort.m in Sources */,
-				33864DF81CD73EA8007ED5A1 /* MTDistrictViewController.m in Sources */,
+				33864DF81CD73EA8007ED5A1 /* MTRegionViewController.m in Sources */,
 				3334C3841CD3A9E900D42F7C /* MTHomeDropdownView.m in Sources */,
 				3334C38A1CD3ABB500D42F7C /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				3334C37E1CD3A4DB00D42F7C /* NSObject+MJMember.m in Sources */,

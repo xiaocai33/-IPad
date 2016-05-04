@@ -6,19 +6,20 @@
 //  Copyright © 2016年 xiaocai. All rights reserved.
 //
 
-#import "MTDistrictViewController.h"
+#import "MTRegionViewController.h"
 #import "UIView+SDAutoLayout.h"
 #import "MTHomeDropdownView.h"
 #import "MJExtension.h"
 #import "MTCityChangedViewController.h"
 #import "MTNavigationController.h"
 #import "MTRegion.h"
+#import "MTConstant.h"
 
-@interface MTDistrictViewController () <MTHomeDropdownDataSource>
+@interface MTRegionViewController () <MTHomeDropdownDataSource, MTHomeDropdownDelegate>
 
 @end
 
-@implementation MTDistrictViewController
+@implementation MTRegionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,8 +93,9 @@
     // 2. 初始化tableView视图
     MTHomeDropdownView *dropView = [[MTHomeDropdownView alloc] init];
     
-    //dropView 实现自己的数据源
+    //dropView 实现自己的数据源 和 代理
     dropView.dataSource = self;
+    dropView.delegate = self;
     
     [self.view addSubview:dropView];
     
@@ -111,7 +113,7 @@
  *  切换城市
  */
 - (void)cityChanged{
-    [self.districtPopover dismissPopoverAnimated:YES];
+    [self.regionPopover dismissPopoverAnimated:YES];
     
     MTCityChangedViewController *cityVc = [[MTCityChangedViewController alloc] init];
     MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:cityVc];
@@ -141,6 +143,24 @@
     return region.subregions;
 }
 
+#pragma mark - MTHomeDropdownDelegate 代理方法
+- (void)homeDropdown:(MTHomeDropdownView *)homeDropdown didSelectRowInMainTable:(int)row{
+    //选中的模型
+    MTRegion *region = self.regions[row];
+    if (region.subregions.count == 0) {//没有子标题的情况下,发送通知
+        //发送通知
+        [MTNotificationCenter postNotificationName:MTRegionDidChangeNotification object:nil userInfo:@{MTSelectRegion : region}];
+    }
+}
+
+- (void)homeDropdown:(MTHomeDropdownView *)homeDropdown didSelectRowInSubTable:(int)subRow rowInMainTable:(int)mainRow{
+    //选中的模型
+    MTRegion *region = self.regions[mainRow];
+    //选中子数据的标题
+    NSString *subregionsName = region.subregions[subRow];
+    ////发送通知
+    [MTNotificationCenter postNotificationName:MTRegionDidChangeNotification object:nil userInfo:@{MTSelectRegion : region, MTSelectSubregionName : subregionsName}];
+}
 
 
 @end

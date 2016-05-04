@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTDistrictViewController : UIViewController
-@property (nonatomic, weak) UIPopoverController *districtPopover;
+@interface MTRegionViewController : UIViewController
+@property (nonatomic, weak) UIPopoverController *regionPopover;
 
 @property (nonatomic, strong) NSArray *regions;
 @end
