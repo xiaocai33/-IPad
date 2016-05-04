@@ -12,8 +12,9 @@
 #import "MTHomeDropdownView.h"
 #import "UIView+SDAutoLayout.h"
 #import "MTCategory.h"
+#import "MTConstant.h"
 
-@interface MTCategoryViewController () <MTHomeDropdownDataSource>
+@interface MTCategoryViewController () <MTHomeDropdownDataSource, MTHomeDropdownDelegate>
 
 @end
 
@@ -23,12 +24,13 @@
     [super viewDidLoad];
     
     //设置popover的尺寸
-    self.preferredContentSize = CGSizeMake(320, 480);
+    self.preferredContentSize = CGSizeMake(400, 480);
     
     MTHomeDropdownView *dropdownView = [[MTHomeDropdownView alloc] init];
     
-    // dropdownView 实现数据源方法
+    // dropdownView 实现数据源方法 和 代理
     dropdownView.dataSource = self;
+    dropdownView.delegate = self;
     
     //根据 dropdownView 的尺寸, 设置popover的尺寸
     //self.preferredContentSize = CGSizeMake(dropdownView.width, CGRectGetMaxY(dropdownView.frame));
@@ -83,6 +85,24 @@
     return category.small_highlighted_icon;
 }
 
+#pragma mark - MTHomeDropdownDelegate 代理方法
+- (void)homeDropdown:(MTHomeDropdownView *)homeDropdown didSelectRowInMainTable:(int)row{
+    //选中的模型
+    MTCategory *category = [MTDataTool categories][row];
+    if (category.subcategories.count == 0) {//没有子标题的情况下,发送通知
+        //发送通知
+        [MTNotificationCenter postNotificationName:MTCategoryDidChangeNotification object:nil userInfo:@{MTSelectCategory : category}];
+    }
+}
+
+- (void)homeDropdown:(MTHomeDropdownView *)homeDropdown didSelectRowInSubTable:(int)subRow rowInMainTable:(int)mainRow{
+    //选中的模型
+    MTCategory *category = [MTDataTool categories][mainRow];
+    //选中子数据的标题
+    NSString *subcategoryName = category.subcategories[subRow];
+    ////发送通知
+    [MTNotificationCenter postNotificationName:MTCategoryDidChangeNotification object:nil userInfo:@{MTSelectCategory : category, MTSelectSubcategoryName : subcategoryName}];
+}
 
 
 

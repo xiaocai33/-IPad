@@ -17,6 +17,7 @@
 #import "MTSort.h"
 #import "MTCitiy.h"
 #import "MTDataTool.h"
+#import "MTCategory.h"
 
 @interface MTHomeCollectionController ()
 /** 分类 */
@@ -68,10 +69,13 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupLeftNav];//左边内容
     
     // 监听城市改变通知
-    [MTNotificationCenter addObserver:self selector:@selector(cityChange:) name:MTCityDidChangeNotification object:nil];
+    [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
     
     // 监听排序改变通知
-    [MTNotificationCenter addObserver:self selector:@selector(sortChange:) name:MTSortDidChangeNotification object:nil];
+    [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
+    
+    // 监听分类数据改变通知
+    [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
 
 }
 
@@ -84,7 +88,7 @@ static NSString * const reuseIdentifier = @"Cell";
 /**
  *  监听城市改变通知方法
  */
-- (void)cityChange:(NSNotification *)noti{
+- (void)cityDidChange:(NSNotification *)noti{
     // 1 得到数据
     self.selectedCityName = noti.userInfo[MTSelectCityName];
     
@@ -97,13 +101,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 /**
- *  监听排序改变通知方法
+ *  监听排序数据改变通知方法
  */
-- (void)sortChange:(NSNotification *)noti{
+- (void)sortDidChange:(NSNotification *)noti{
     // 1 得到数据
     MTSort *sort = noti.userInfo[MTSelectSort];
     
-    // 2 改变导航栏上的显示标题
+    // 2 改变Item上的显示标题
     MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.sortedItem.customView;
     [topItem setSubTitle:sort.label];
     
@@ -112,7 +116,26 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 4 从服务加载数据
     
+}
+
+/**
+ *  监听分类数据改变通知方法
+ */
+- (void)categoryDidChange:(NSNotification *)noti{
+    // 1 得到数据
+    MTCategory *category = noti.userInfo[MTSelectCategory];
+    NSString *subcategoryName = noti.userInfo[MTSelectSubcategoryName];
     
+    // 2 改变Item上的显示标题
+    MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.categoryItem.customView;
+    [topItem setTitle:category.name];
+    [topItem setSubTitle:subcategoryName];
+    [topItem setIcon:category.icon heighlightIcon:category.highlighted_icon];
+    
+    // 3 关闭popover
+    [self.categoryPopover dismissPopoverAnimated:YES];
+    
+    // 4 从服务加载数据
 }
 
 #pragma mark - 设置导航栏按内容

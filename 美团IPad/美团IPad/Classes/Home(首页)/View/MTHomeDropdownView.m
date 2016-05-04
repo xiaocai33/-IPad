@@ -151,12 +151,19 @@
 
 #pragma mark - UITableView的代理方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (tableView == self.mainTableView) {
+    if (tableView == self.mainTableView) { //主表
         // 被点击的分类
         self.selectedRow = indexPath.row;
         
+        if ([self.delegate respondsToSelector:@selector(homeDropdown:didSelectRowInMainTable:)]) {
+            [self.delegate homeDropdown:self didSelectRowInMainTable:indexPath.row];
+        }
         //刷新右边表格
         [self.subTableView reloadData];
+    } else { //从表
+        if ([self.delegate respondsToSelector:@selector(homeDropdown:didSelectRowInSubTable:rowInMainTable:)]) {
+            [self.delegate homeDropdown:self didSelectRowInSubTable:indexPath.row rowInMainTable:self.selectedRow];
+        }
     }
     
 }
