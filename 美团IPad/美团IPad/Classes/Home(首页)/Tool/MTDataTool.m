@@ -34,7 +34,7 @@ static NSArray *_categories;
 static NSArray *_sorts;
 + (NSArray *)sorts{
     if (_sorts == nil) {
-        _sorts = [MTSort objectArrayWithFilename:@"cities.plist"];
+        _sorts = [MTSort objectArrayWithFilename:@"sorts.plist"];
     }
     return _sorts;
 }

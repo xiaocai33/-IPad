@@ -49,6 +49,7 @@
 		33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */; };
 		33E5B60D1CDA080A009B5897 /* MTDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60C1CDA080A009B5897 /* MTDataTool.m */; };
 		33E5B6101CDA0A8B009B5897 /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60F1CDA0A8B009B5897 /* MTSort.m */; };
+		33E5B6131CDA1FB8009B5897 /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,8 @@
 		33E5B60C1CDA080A009B5897 /* MTDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDataTool.m; sourceTree = "<group>"; };
 		33E5B60E1CDA0A8B009B5897 /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
 		33E5B60F1CDA0A8B009B5897 /* MTSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSort.m; sourceTree = "<group>"; };
+		33E5B6111CDA1FB8009B5897 /* MTSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSortViewController.h; sourceTree = "<group>"; };
+		33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSortViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +308,8 @@
 				3334C3801CD3A7CC00D42F7C /* MTCategoryViewController.m */,
 				33864DF61CD73EA8007ED5A1 /* MTDistrictViewController.h */,
 				33864DF71CD73EA8007ED5A1 /* MTDistrictViewController.m */,
+				33E5B6111CDA1FB8009B5897 /* MTSortViewController.h */,
+				33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */,
 				33864DF91CD7499C007ED5A1 /* MTCityChangedViewController.h */,
 				33864DFA1CD7499C007ED5A1 /* MTCityChangedViewController.m */,
 				33864E021CD79CDA007ED5A1 /* MTSearchResultTableController.h */,
@@ -564,6 +569,7 @@
 				3334C3481CD3912900D42F7C /* UIView+Extension.m in Sources */,
 				3334C37D1CD3A4DB00D42F7C /* NSObject+MJKeyValue.m in Sources */,
 				3334C38B1CD3ABB500D42F7C /* UIView+SDAutoLayout.m in Sources */,
+				33E5B6131CDA1FB8009B5897 /* MTSortViewController.m in Sources */,
 				3334C37B1CD3A4DB00D42F7C /* MJTypeEncoding.m in Sources */,
 				33864E011CD78814007ED5A1 /* MTRegion.m in Sources */,
 				3334C3811CD3A7CC00D42F7C /* MTCategoryViewController.m in Sources */,

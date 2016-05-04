@@ -13,6 +13,8 @@
 #import "MTHomeLeftTopItem.h"
 #import "MTCategoryViewController.h"
 #import "MTDistrictViewController.h"
+#import "MTSortViewController.h"
+#import "MTSort.h"
 
 @interface MTHomeCollectionController ()
 /** 分类 */
@@ -21,6 +23,13 @@
 @property (nonatomic, weak) UIBarButtonItem *districtTopView;
 /** 排序 */
 @property (nonatomic, weak) UIBarButtonItem *sortedItem;
+
+/** 分类 popover */
+@property (nonatomic, strong) UIPopoverController *categoryPopover;
+/** 地区 popover */
+@property (nonatomic, strong) UIPopoverController *districtPopover;
+/** 排序 popover */
+@property (nonatomic, strong) UIPopoverController *sortPopover;
 
 @end
 
@@ -53,8 +62,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupRightNav];//右边内容
     [self setupLeftNav];//左边内容
     
-    // 监听城市改变
+    // 监听城市改变通知
     [MTNotificationCenter addObserver:self selector:@selector(cityChange:) name:MTCityDidChangeNotification object:nil];
+    
+    // 监听排序改变通知
+    [MTNotificationCenter addObserver:self selector:@selector(sortChange:) name:MTSortDidChangeNotification object:nil];
 
 }
 
@@ -68,12 +80,33 @@ static NSString * const reuseIdentifier = @"Cell";
  *  监听城市改变通知方法
  */
 - (void)cityChange:(NSNotification *)noti{
-    
+    // 1 得到数据
     NSString *cityName = noti.userInfo[MTSelectCityName];
     
+    // 2 改变导航栏上的显示标题
     MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.districtTopView.customView;
-    
     [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", cityName]];
+    
+    // 3 从服务加载数据
+    
+}
+
+/**
+ *  监听排序改变通知方法
+ */
+- (void)sortChange:(NSNotification *)noti{
+    // 1 得到数据
+    MTSort *sort = noti.userInfo[MTSelectSort];
+    
+    // 2 改变导航栏上的显示标题
+    MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.sortedItem.customView;
+    [topItem setSubTitle:sort.label];
+    
+    // 3 关闭popover
+    [self.sortPopover dismissPopoverAnimated:YES];
+    
+    // 4 从服务加载数据
+    
     
 }
 
@@ -116,6 +149,9 @@ static NSString * const reuseIdentifier = @"Cell";
     // 4.排序
     MTHomeLeftTopItem *sortedTopView = [MTHomeLeftTopItem item];
     [sortedTopView addTarget:self action:@selector(sortedAction)];
+    [sortedTopView setTitle:@"排序"];
+    [sortedTopView setIcon:@"icon_sort" heighlightIcon:@"icon_sort_highlighted"];
+    
     UIBarButtonItem *sortedItem = [[UIBarButtonItem alloc] initWithCustomView:sortedTopView];
     self.sortedItem = sortedItem;
     
@@ -124,22 +160,40 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - 监听事件
 /**
- *  监听点击事件
+ *  监听点击事件 -- 分类控制器
  */
 - (void)categoryAction{
-    UIPopoverController *popoverC = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
+    UIPopoverController *categoryPopover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
 
-    [popoverC presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-}
-
-- (void)districtAction{
-    UIPopoverController *popoverC = [[UIPopoverController alloc] initWithContentViewController:[[MTDistrictViewController alloc] init]];
+    [categoryPopover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
-    [popoverC presentPopoverFromBarButtonItem:self.districtTopView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    self.categoryPopover = categoryPopover;
 }
 
-- (void)sortedAction{
+/**
+ *  监听点击事件 -- 区域控制器
+ */
+- (void)districtAction{
+    MTDistrictViewController *districtVc = [[MTDistrictViewController alloc] init];
+    
+    UIPopoverController *districtPopover = [[UIPopoverController alloc] initWithContentViewController:districtVc];
+    
+    districtVc.districtPopover = districtPopover;
+    
+    [districtPopover presentPopoverFromBarButtonItem:self.districtTopView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    
+    self.districtPopover = districtPopover;
+}
 
+/**
+ *  监听点击事件 -- 排序控制器
+ */
+- (void)sortedAction{
+    UIPopoverController *sortPopover = [[UIPopoverController alloc] initWithContentViewController:[[MTSortViewController alloc] init]];
+    
+    [sortPopover presentPopoverFromBarButtonItem:self.sortedItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    
+    self.sortPopover = sortPopover;
 }
 
 

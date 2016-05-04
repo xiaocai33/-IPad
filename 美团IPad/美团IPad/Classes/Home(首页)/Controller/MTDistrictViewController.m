@@ -106,7 +106,7 @@
  *  切换城市
  */
 - (void)cityChanged{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.districtPopover dismissPopoverAnimated:YES];
     
     MTCityChangedViewController *cityVc = [[MTCityChangedViewController alloc] init];
     MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:cityVc];
