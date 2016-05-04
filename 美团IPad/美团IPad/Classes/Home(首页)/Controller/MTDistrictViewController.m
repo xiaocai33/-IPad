@@ -12,8 +12,9 @@
 #import "MJExtension.h"
 #import "MTCityChangedViewController.h"
 #import "MTNavigationController.h"
+#import "MTRegion.h"
 
-@interface MTDistrictViewController ()
+@interface MTDistrictViewController () <MTHomeDropdownDataSource>
 
 @end
 
@@ -90,6 +91,10 @@
     
     // 2. 初始化tableView视图
     MTHomeDropdownView *dropView = [[MTHomeDropdownView alloc] init];
+    
+    //dropView 实现自己的数据源
+    dropView.dataSource = self;
+    
     [self.view addSubview:dropView];
     
     dropView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -113,8 +118,29 @@
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
 
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
-    
-    
 }
+
+#pragma mark - MTHomeDropdownDataSource 数据源方法
+/** 主表行数 */
+- (NSInteger)numberOfRowsInMainTable:(MTHomeDropdownView *)homeDropdown{
+    
+    return self.regions.count;
+}
+
+/** 主表标题 */
+- (NSString *)homeDropdown:(MTHomeDropdownView *)homeDropdown titleForRowInMainTable:(int)row{
+    //得到模型数据
+    MTRegion *region = self.regions[row];
+    return region.name;
+}
+
+/** 主表子数据 */
+- (NSArray *)homeDropdown:(MTHomeDropdownView *)homeDropdown subdataForRowInMainTable:(int)row{
+    //得到模型数据
+    MTRegion *region = self.regions[row];
+    return region.subregions;
+}
+
+
 
 @end

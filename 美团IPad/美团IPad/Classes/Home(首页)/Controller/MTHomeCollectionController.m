@@ -15,6 +15,8 @@
 #import "MTDistrictViewController.h"
 #import "MTSortViewController.h"
 #import "MTSort.h"
+#import "MTCitiy.h"
+#import "MTDataTool.h"
 
 @interface MTHomeCollectionController ()
 /** 分类 */
@@ -30,6 +32,9 @@
 @property (nonatomic, strong) UIPopoverController *districtPopover;
 /** 排序 popover */
 @property (nonatomic, strong) UIPopoverController *sortPopover;
+
+/** 当前选中的城市 */
+@property (nonatomic, copy) NSString *selectedCityName;
 
 @end
 
@@ -81,11 +86,11 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)cityChange:(NSNotification *)noti{
     // 1 得到数据
-    NSString *cityName = noti.userInfo[MTSelectCityName];
+    self.selectedCityName = noti.userInfo[MTSelectCityName];
     
     // 2 改变导航栏上的显示标题
     MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.districtTopView.customView;
-    [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", cityName]];
+    [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     
     // 3 从服务加载数据
     
@@ -175,6 +180,16 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)districtAction{
     MTDistrictViewController *districtVc = [[MTDistrictViewController alloc] init];
+    
+    if (self.selectedCityName) {
+        //根据得到的城市名称,获得当前的city模型
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName];
+        MTCitiy *city = [[[MTDataTool cities] filteredArrayUsingPredicate:predicate] firstObject];
+        districtVc.regions = city.regions;
+    }
+    
+    
+    
     
     UIPopoverController *districtPopover = [[UIPopoverController alloc] initWithContentViewController:districtVc];
     

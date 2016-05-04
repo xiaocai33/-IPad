@@ -8,7 +8,7 @@
 
 #import "MTHomeDropdownView.h"
 #import "UIView+SDAutoLayout.h"
-#import "MTCategory.h"
+//#import "MTCategory.h"
 #import "MTMainHomeTableCell.h"
 #import "MTSubHomeTableCell.h"
 
@@ -18,8 +18,10 @@
 /** 从表 */
 @property (nonatomic, weak) UITableView *subTableView;
 /** 选中的类别 */
-@property (nonatomic, strong) MTCategory *seledtedCategory;
+//@property (nonatomic, strong) MTCategory *seledtedCategory;
 
+/** 选中的行号 */
+@property (nonatomic, assign) NSInteger selectedRow;
 @end
 
 @implementation MTHomeDropdownView
@@ -77,17 +79,19 @@
     
 }
 
-- (void)setCategories:(NSArray *)categories{
-    _categories = categories;
-}
+//- (void)setCategories:(NSArray *)categories{
+//    _categories = categories;
+//}
 
 #pragma mark - UITableView的数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView == self.mainTableView) {
-        //NSLog(@"%zd", self.categories.count);
-        return self.categories.count;
+        //由数据源得到具体的条数
+        return [self.dataSource numberOfRowsInMainTable:self];
+        
     }else {
-        return self.seledtedCategory.subcategories.count;
+        //由数据源得到选中的行的子数据
+        return [self.dataSource homeDropdown:self subdataForRowInMainTable:self.selectedRow].count;
     }
 }
 
@@ -98,19 +102,47 @@
     if (tableView == self.mainTableView) {
         cell = [MTMainHomeTableCell mainTableViewCellWithTableView:tableView];
         
-        MTCategory *category = self.categories[indexPath.row];
-        cell.textLabel.text = category.name;
-        cell.imageView.image = [UIImage imageNamed:category.small_icon];
-        if (category.subcategories.count > 0) {
-            //cell上的箭头
+//        MTCategory *category = self.categories[indexPath.row];
+//        cell.textLabel.text = category.name;
+//        cell.imageView.image = [UIImage imageNamed:category.small_icon];
+//        if (category.subcategories.count > 0) {
+//            //cell上的箭头
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        } else {
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+        //由数据源得到改行的题目
+        NSString *title = [self.dataSource homeDropdown:self titleForRowInMainTable:indexPath.row];
+        cell.textLabel.text = title;
+        
+        //由数据源得到改行的图标
+        if ([self.dataSource respondsToSelector:@selector(homeDropdown:iconForRowInMainTable:)]) {
+            NSString *icon = [self.dataSource homeDropdown:self iconForRowInMainTable:indexPath.row];
+            cell.imageView.image = [UIImage imageNamed:icon];
+        }
+        
+        //由数据源得到改行选中的图标
+        if ([self.dataSource respondsToSelector:@selector(homeDropdown:selectedIconForRowInMainTable:)]) {
+            NSString *selectedIcon = [self.dataSource homeDropdown:self selectedIconForRowInMainTable:indexPath.row];
+            cell.imageView.highlightedImage = [UIImage imageNamed:selectedIcon];
+        }
+        
+        //由数据源得到改行选中的子数据
+        NSArray *subdata = [self.dataSource homeDropdown:self subdataForRowInMainTable:indexPath.row];
+        if (subdata.count > 0) {
+             //cell上的箭头
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        
     } else {//从表
         cell = [MTSubHomeTableCell subTableViewCellWithTableView:tableView];
         
-        cell.textLabel.text = self.seledtedCategory.subcategories[indexPath.row];
+        //由数据源得到改行选中的子数据
+        NSArray *subdata = [self.dataSource homeDropdown:self subdataForRowInMainTable:self.selectedRow];
+        
+        cell.textLabel.text = subdata[indexPath.row];
     }
     
     return cell;
@@ -121,7 +153,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.mainTableView) {
         // 被点击的分类
-        self.seledtedCategory = self.categories[indexPath.row];
+        self.selectedRow = indexPath.row;
         
         //刷新右边表格
         [self.subTableView reloadData];
