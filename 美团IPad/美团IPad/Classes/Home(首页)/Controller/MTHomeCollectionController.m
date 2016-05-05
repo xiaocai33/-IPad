@@ -19,8 +19,9 @@
 #import "MTDataTool.h"
 #import "MTCategory.h"
 #import "MTRegion.h"
+#import "DPAPI.h"
 
-@interface MTHomeCollectionController ()
+@interface MTHomeCollectionController () <DPRequestDelegate>
 /** 分类 */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区 */
@@ -101,7 +102,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     
     // 3 从服务加载数据
-    
+    [self loadNewDeals];
 }
 
 /**
@@ -119,6 +120,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.sortPopover dismissPopoverAnimated:YES];
     
     // 4 从服务加载数据
+    [self loadNewDeals];
     
 }
 
@@ -140,6 +142,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.categoryPopover dismissPopoverAnimated:YES];
     
     // 4 从服务加载数据
+    [self loadNewDeals];
 }
 
 /**
@@ -160,6 +163,30 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.regionPopover dismissPopoverAnimated:YES];
     
     // 4 从服务加载数据
+    [self loadNewDeals];
+}
+
+#pragma mark - 与服务器交互的代码
+- (void)loadNewDeals{
+    DPAPI *api = [[DPAPI alloc] init];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    //城市
+    params[@"city"] = self.selectedCityName;
+    
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    MTLog(@"参数--%@", params);
+    
+}
+
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
+    MTLog(@"请求成功---%@", result);
+}
+
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error{
+    MTLog(@"请求失败---%@", error);
 }
 
 #pragma mark - 设置导航栏按内容
