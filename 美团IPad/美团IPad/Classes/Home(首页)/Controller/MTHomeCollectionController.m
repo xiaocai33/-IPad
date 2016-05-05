@@ -38,6 +38,12 @@
 
 /** 当前选中的城市 */
 @property (nonatomic, copy) NSString *selectedCityName;
+/** 当前选中的区域 */
+@property (nonatomic, copy) NSString *selectedRegionName;
+/** 当前选中的分类 */
+@property (nonatomic, copy) NSString *selectedCategoryName;
+/** 当前选中的排序 */
+@property (nonatomic, strong) MTSort *selectedSort;
 
 @end
 
@@ -112,6 +118,8 @@ static NSString * const reuseIdentifier = @"Cell";
     // 1 得到数据
     MTSort *sort = noti.userInfo[MTSelectSort];
     
+    self.selectedSort = sort;
+    
     // 2 改变Item上的显示标题
     MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.sortedItem.customView;
     [topItem setSubTitle:sort.label];
@@ -131,6 +139,16 @@ static NSString * const reuseIdentifier = @"Cell";
     // 1 得到数据
     MTCategory *category = noti.userInfo[MTSelectCategory];
     NSString *subcategoryName = noti.userInfo[MTSelectSubcategoryName];
+    
+    if (subcategoryName == nil || [subcategoryName isEqualToString:@"全部"]) {//点击的分类没有子数据
+        self.selectedCategoryName = category.name;
+    } else { //单击了子分类
+        self.selectedCategoryName = subcategoryName;
+    }
+    
+    if ([self.selectedCategoryName isEqualToString:@"全部分类"]) {
+        self.selectedCategoryName = nil;
+    }
     
     // 2 改变Item上的显示标题
     MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.categoryItem.customView;
@@ -153,6 +171,16 @@ static NSString * const reuseIdentifier = @"Cell";
     MTRegion *region = noti.userInfo[MTSelectRegion];
     NSString *subregionName = noti.userInfo[MTSelectSubregionName];
     
+    if (subregionName == nil || [subregionName isEqualToString:@"全部"]) {//点击的区域没有子数据
+        self.selectedRegionName = region.name;
+    } else {
+        self.selectedRegionName = subregionName;
+    }
+    
+    if ([self.selectedRegionName isEqualToString:@"全部"]) {
+        self.selectedRegionName = nil;
+    }
+    
     // 2 改变Item上的显示标题
     MTHomeLeftTopItem *topItem = (MTHomeLeftTopItem *)self.regionTopView.customView;
     NSString *titleName = [NSString stringWithFormat:@"%@ - %@", self.selectedCityName, region.name];
@@ -174,6 +202,23 @@ static NSString * const reuseIdentifier = @"Cell";
     
     //城市
     params[@"city"] = self.selectedCityName;
+    //每次的条数
+    params[@"limit"] = @(5);
+    
+    //分类
+    if (self.selectedCategoryName) {
+        params[@"category"] = self.selectedCategoryName;
+    }
+    //区域
+    if (self.selectedRegionName) {
+        params[@"region"] = self.selectedRegionName;
+    }
+    
+    //排序
+    if (self.selectedSort) {
+        params[@"sort"] = @(self.selectedSort.value);
+    }
+    
     
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
