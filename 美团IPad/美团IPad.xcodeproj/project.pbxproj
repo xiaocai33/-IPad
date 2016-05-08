@@ -79,6 +79,9 @@
 		339C0BD91CDF2B9100D133A9 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BCF1CDF2B9100D133A9 /* UIScrollView+MJExtension.m */; };
 		339C0BDA1CDF2B9100D133A9 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BD11CDF2B9100D133A9 /* UIScrollView+MJRefresh.m */; };
 		339C0BDB1CDF2B9100D133A9 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BD31CDF2B9100D133A9 /* UIView+MJExtension.m */; };
+		339C0BE01CDF523F00D133A9 /* MTSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BDF1CDF523F00D133A9 /* MTSearchViewController.m */; };
+		339C0BE31CDF54AC00D133A9 /* MTDealsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BE21CDF54AC00D133A9 /* MTDealsBaseViewController.m */; };
+		339C0BE61CDF582600D133A9 /* MTCenterLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BE51CDF582600D133A9 /* MTCenterLineLabel.m */; };
 		33E5B60D1CDA080A009B5897 /* MTDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60C1CDA080A009B5897 /* MTDataTool.m */; };
 		33E5B6101CDA0A8B009B5897 /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60F1CDA0A8B009B5897 /* MTSort.m */; };
 		33E5B6131CDA1FB8009B5897 /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */; };
@@ -244,6 +247,12 @@
 		339C0BD11CDF2B9100D133A9 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		339C0BD21CDF2B9100D133A9 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		339C0BD31CDF2B9100D133A9 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		339C0BDE1CDF523F00D133A9 /* MTSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSearchViewController.h; sourceTree = "<group>"; };
+		339C0BDF1CDF523F00D133A9 /* MTSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSearchViewController.m; sourceTree = "<group>"; };
+		339C0BE11CDF54AC00D133A9 /* MTDealsBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealsBaseViewController.h; sourceTree = "<group>"; };
+		339C0BE21CDF54AC00D133A9 /* MTDealsBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealsBaseViewController.m; sourceTree = "<group>"; };
+		339C0BE41CDF582600D133A9 /* MTCenterLineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCenterLineLabel.h; sourceTree = "<group>"; };
+		339C0BE51CDF582600D133A9 /* MTCenterLineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCenterLineLabel.m; sourceTree = "<group>"; };
 		33E5B60B1CDA080A009B5897 /* MTDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDataTool.h; sourceTree = "<group>"; };
 		33E5B60C1CDA080A009B5897 /* MTDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDataTool.m; sourceTree = "<group>"; };
 		33E5B60E1CDA0A8B009B5897 /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
@@ -390,6 +399,7 @@
 		335AD7621CD3815700335CC3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				339C0BDC1CDF522400D133A9 /* Search(搜索) */,
 				335AD7631CD3815700335CC3 /* Home(首页) */,
 				335AD7671CD3815700335CC3 /* Main(主要) */,
 			);
@@ -459,6 +469,8 @@
 				3334C34C1CD397A500D42F7C /* MTHomeLeftTopItem.h */,
 				3334C34D1CD397A500D42F7C /* MTHomeLeftTopItem.m */,
 				3334C34F1CD397C000D42F7C /* MTHomeLeftTopItem.xib */,
+				339C0BE41CDF582600D133A9 /* MTCenterLineLabel.h */,
+				339C0BE51CDF582600D133A9 /* MTCenterLineLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,6 +513,8 @@
 			children = (
 				3318960D1CD3845D00C59260 /* MTNavigationController.h */,
 				3318960E1CD3845D00C59260 /* MTNavigationController.m */,
+				339C0BE11CDF54AC00D133A9 /* MTDealsBaseViewController.h */,
+				339C0BE21CDF54AC00D133A9 /* MTDealsBaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,6 +626,23 @@
 				339C0BD31CDF2B9100D133A9 /* UIView+MJExtension.m */,
 			);
 			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		339C0BDC1CDF522400D133A9 /* Search(搜索) */ = {
+			isa = PBXGroup;
+			children = (
+				339C0BDD1CDF522400D133A9 /* Controller */,
+			);
+			path = "Search(搜索)";
+			sourceTree = "<group>";
+		};
+		339C0BDD1CDF522400D133A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				339C0BDE1CDF523F00D133A9 /* MTSearchViewController.h */,
+				339C0BDF1CDF523F00D133A9 /* MTSearchViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		33E5B60A1CDA0799009B5897 /* Tool */ = {
@@ -790,6 +821,7 @@
 				335AD7711CD3815700335CC3 /* main.m in Sources */,
 				3334C35B1CD3A3F100D42F7C /* MTCategory.m in Sources */,
 				3334C3791CD3A4DB00D42F7C /* MJMethod.m in Sources */,
+				339C0BE01CDF523F00D133A9 /* MTSearchViewController.m in Sources */,
 				333D172F1CDB706700E5BD19 /* Foundation+Log.m in Sources */,
 				3334C34B1CD3915800D42F7C /* UIBarButtonItem+Extent.m in Sources */,
 				339C0BD51CDF2B9100D133A9 /* MJRefreshBaseView.m in Sources */,
@@ -810,12 +842,14 @@
 				339C0BD61CDF2B9100D133A9 /* MJRefreshConst.m in Sources */,
 				3334C37A1CD3A4DB00D42F7C /* MJType.m in Sources */,
 				339C0B871CDEFE4200D133A9 /* MTDeals.m in Sources */,
+				339C0BE61CDF582600D133A9 /* MTCenterLineLabel.m in Sources */,
 				339C0BAD1CDF01F500D133A9 /* SDWebImageCompat.m in Sources */,
 				333D172D1CDB6DEC00E5BD19 /* DPRequest.m in Sources */,
 				33E5B60D1CDA080A009B5897 /* MTDataTool.m in Sources */,
 				339C0B841CDEE61E00D133A9 /* MTDealsCell.m in Sources */,
 				3334C37C1CD3A4DB00D42F7C /* NSObject+MJCoding.m in Sources */,
 				3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */,
+				339C0BE31CDF54AC00D133A9 /* MTDealsBaseViewController.m in Sources */,
 				339C0BB21CDF01F500D133A9 /* SDWebImagePrefetcher.m in Sources */,
 				33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,

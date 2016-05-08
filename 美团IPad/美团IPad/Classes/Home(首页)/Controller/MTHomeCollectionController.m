@@ -19,14 +19,13 @@
 #import "MTDataTool.h"
 #import "MTCategory.h"
 #import "MTRegion.h"
-#import "DPAPI.h"
-#import "MTDealsCell.h"
-#import "MTDeals.h"
-#import "MJExtension.h"
-#import "MJRefresh.h"
-#import "MBProgressHUD+MJ.h"
 
-@interface MTHomeCollectionController () <DPRequestDelegate>
+#import "MJRefresh.h"
+
+#import "MTSearchViewController.h"
+#import "MTNavigationController.h"
+
+@interface MTHomeCollectionController () 
 /** 分类 */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区 */
@@ -49,52 +48,13 @@
 @property (nonatomic, copy) NSString *selectedCategoryName;
 /** 当前选中的排序 */
 @property (nonatomic, strong) MTSort *selectedSort;
-/** 服务器返回数据模型 */
-@property (nonatomic, strong) NSMutableArray *deals;
-
-/** 选择加载的页数 */
-@property (nonatomic, assign) int currentPage;
-/** 最后一次请求 */
-@property (nonatomic, strong) DPRequest *lastRequest;
-/** 返回数据的条数 */
-@property (nonatomic, assign) int totalCount;
-
 
 @end
 
 @implementation MTHomeCollectionController
 
-static NSString * const reuseIdentifier = @"Cell";
-
-- (NSMutableArray *)deals{
-    if (_deals == nil) {
-        _deals = [NSMutableArray array];
-    }
-    return _deals;
-}
-
-- (instancetype)init{
-    //流水布局
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    
-    flowLayout.itemSize = CGSizeMake(322, 322);
-    
-    return [self initWithCollectionViewLayout:flowLayout];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //注意在collection中self.view == self.collectionView.superview;
-    self.collectionView.backgroundColor = MTHomeBg;
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    [self.collectionView registerClass:[MTDealsCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    
     
     //设置导航栏内容
     [self setupRightNav];//右边内容
@@ -102,12 +62,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     /** 监听通知 */
     [self setupNotication];
-    
-    //添加上拉刷新
-    [self.collectionView addFooterWithTarget:self action:@selector(loadOldDeals)];
-    
-    //添加下拉刷新
-    [self .collectionView addHeaderWithTarget:self action:@selector(loadNewDeals)];
+
 }
 
 - (void)dealloc{
@@ -132,17 +87,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
 }
 
-#pragma mark - 监听屏幕旋转
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
-    int cols = (size.width == 1024 ? 3 : 2);
-    // 根据列数计算内边距
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
-    int inset = (size.width - cols * layout.itemSize.width) / (cols + 1);
-    layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset);
-    
-    // 设置每一行之间的间距
-    layout.minimumLineSpacing = inset;
-}
+
 
 #pragma mark - 监听通知方法
 /**
@@ -243,91 +188,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView headerBeginRefreshing];
 }
 
-#pragma mark - 与服务器交互的代码
-- (void)loadDeals{
-    DPAPI *api = [[DPAPI alloc] init];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    //城市
-    params[@"city"] = self.selectedCityName;
-    //每次的条数
-    params[@"limit"] = @(30);
-    
-    //分类
-    if (self.selectedCategoryName) {
-        params[@"category"] = self.selectedCategoryName;
-    }
-    //区域
-    if (self.selectedRegionName) {
-        params[@"region"] = self.selectedRegionName;
-    }
-    
-    //排序
-    if (self.selectedSort) {
-        params[@"sort"] = @(self.selectedSort.value);
-    }
-    
-    // 页码
-    params[@"page"] = @(self.currentPage);
-    
-    self.lastRequest = [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
-    
-    //MTLog(@"参数--%@", params);
 
-}
-/** 上拉刷新 */
-- (void)loadOldDeals{
-    
-    self.currentPage++;
-    
-    [self loadDeals];
-}
-
-- (void)loadNewDeals{
-    
-    self.currentPage = 1;
-    
-    [self loadDeals];
-}
-
-- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
-    //MTLog(@"请求成功---%@", result);
-    if (self.lastRequest != request) return;
-    self.totalCount = [result[@"total_count"] intValue];
-    
-    // 1.取出团购的字典数组
-    NSArray *newDeals = [MTDeals objectArrayWithKeyValuesArray:result[@"deals"]];
-    
-    if (self.currentPage == 1) {
-        //清除旧数据
-        [self.deals removeAllObjects];
-    }
-    
-    [self.deals addObjectsFromArray:newDeals];
-    
-    //2 刷新表格(在刷新表格的中,结束刷新)
-    [self.collectionView reloadData];
-    
-    // 结束刷新操作
-    [self.collectionView headerEndRefreshing];
-    [self.collectionView footerEndRefreshing];
-    
-}
-
-- (void)request:(DPRequest *)request didFailWithError:(NSError *)error{
-    // 1.网络提醒
-    [MBProgressHUD showError:@"网络繁忙,稍后再试..." toView:self.view];
-    
-    // 2.结束刷新操作
-    [self.collectionView headerEndRefreshing];
-    [self.collectionView footerEndRefreshing];
-    
-    // 3.如果是上拉加载失败了
-    if (self.currentPage > 1) {
-        self.currentPage--;
-    }
-}
 
 #pragma mark - 设置导航栏按内容
 /**
@@ -338,7 +199,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highlightedImage:@"icon_map_highlighted"];
     mapItem.customView.width = 60;
     
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(searchBarDidClick) image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
     searchItem.customView.width = 60;
     
     self.navigationItem.rightBarButtonItems = @[mapItem, searchItem];
@@ -377,7 +238,17 @@ static NSString * const reuseIdentifier = @"Cell";
     self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, regionItem, sortedItem];
 }
 
-#pragma mark - 监听事件
+#pragma mark - 监听导航栏按钮点击事件
+/**
+ *  监听搜索按钮事件
+ */
+- (void)searchBarDidClick{
+    MTSearchViewController *searchVc = [[MTSearchViewController alloc] init];
+    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:searchVc];
+    
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 /**
  *  监听点击事件 -- 分类控制器
  */
@@ -422,57 +293,26 @@ static NSString * const reuseIdentifier = @"Cell";
     self.sortPopover = sortPopover;
 }
 
-
-
-#pragma mark <UICollectionViewDataSource>
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //MTLog(@"%zd", self.deals.count);
-   
-    //设置下拉控件的显示
-    self.collectionView.footerHidden = (self.totalCount == self.deals.count);
+#pragma mark - 给父类传递参数
+- (void)setupParams:(NSMutableDictionary *)params{
+    //城市
+    params[@"city"] = self.selectedCityName;
     
-    return self.deals.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MTDealsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    //分类
+    if (self.selectedCategoryName) {
+        params[@"category"] = self.selectedCategoryName;
+    }
+    //区域
+    if (self.selectedRegionName) {
+        params[@"region"] = self.selectedRegionName;
+    }
     
-    // Configure the cell
-    cell.deal = self.deals[indexPath.item];
+    //排序
+    if (self.selectedSort) {
+        params[@"sort"] = @(self.selectedSort.value);
+    }
     
-    return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

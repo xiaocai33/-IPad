@@ -10,6 +10,7 @@
 #import "MTDeals.h"
 #import "UIView+SDAutoLayout.h"
 #import "UIImageView+WebCache.h"
+#import "MTCenterLineLabel.h"
 
 @interface MTDealsCell()
 /** 订单图片 */
@@ -26,7 +27,7 @@
 /** 订单现价 */
 @property (nonatomic, weak) UILabel *currentPriceLabel;
 /** 订单原件 */
-@property (nonatomic, weak) UILabel *listPriceLabel;
+@property (nonatomic, weak) MTCenterLineLabel *listPriceLabel;
 /** 订单销售量 */
 @property (nonatomic, weak) UILabel *purchaseCountLabel;
 @end
@@ -132,7 +133,7 @@
     currentPriceLabel.sd_layout.leftEqualToView(detailView).bottomEqualToView(detailView).heightIs(20);
     
     //历史价格
-    UILabel *listPriceLabel = [[UILabel alloc] init];
+    MTCenterLineLabel *listPriceLabel = [[MTCenterLineLabel alloc] init];
     listPriceLabel.textColor = [UIColor grayColor];
     listPriceLabel.font = [UIFont systemFontOfSize:11.0];
     [listPriceLabel setSingleLineAutoResizeWithMaxWidth:100];
@@ -193,10 +194,8 @@
     formatter.dateFormat = @"yyyy-MM-dd";
     NSString *nowStr = [formatter stringFromDate:[NSDate date]];
     
-    //比较
-    if ([deal.publish_date compare:nowStr] == NSOrderedAscending) {
-        self.dealNewImage.hidden = YES;
-    }
+    // 隐藏: 发布日期 < 今天
+    self.dealNewImage.hidden = ([deal.publish_date compare:nowStr] == NSOrderedAscending);
     
 }
 
