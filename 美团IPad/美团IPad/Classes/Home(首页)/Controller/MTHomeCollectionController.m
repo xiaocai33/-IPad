@@ -21,6 +21,8 @@
 #import "MTRegion.h"
 #import "DPAPI.h"
 #import "MTDealsCell.h"
+#import "MTDeals.h"
+#import "MJExtension.h"
 
 @interface MTHomeCollectionController () <DPRequestDelegate>
 /** 分类 */
@@ -45,6 +47,8 @@
 @property (nonatomic, copy) NSString *selectedCategoryName;
 /** 当前选中的排序 */
 @property (nonatomic, strong) MTSort *selectedSort;
+/** 服务器返回数据模型 */
+@property (nonatomic, strong) NSMutableArray *deals;
 
 @end
 
@@ -52,11 +56,18 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
+- (NSMutableArray *)deals{
+    if (_deals == nil) {
+        _deals = [NSMutableArray array];
+    }
+    return _deals;
+}
+
 - (instancetype)init{
     //流水布局
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     
-    flowLayout.itemSize = CGSizeMake(302, 302);
+    flowLayout.itemSize = CGSizeMake(322, 322);
     
     
     return [self initWithCollectionViewLayout:flowLayout];
@@ -207,7 +218,7 @@ static NSString * const reuseIdentifier = @"Cell";
     //城市
     params[@"city"] = self.selectedCityName;
     //每次的条数
-    params[@"limit"] = @(5);
+    params[@"limit"] = @(30);
     
     //分类
     if (self.selectedCategoryName) {
@@ -231,7 +242,18 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
-    MTLog(@"请求成功---%@", result);
+    //MTLog(@"请求成功---%@", result);
+    
+    // 1.取出团购的字典数组
+    NSArray *newDeals = [MTDeals objectArrayWithKeyValuesArray:result[@"deals"]];
+    
+    //清除旧数据
+    [self.deals removeAllObjects];
+    
+    [self.deals addObjectsFromArray:newDeals];
+    
+    //2 刷新表格
+    [self.collectionView reloadData];
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error{
@@ -336,14 +358,15 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
-    return 4;
+    //MTLog(@"%zd", self.deals.count);
+    return self.deals.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MTDealsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
+    cell.deal = self.deals[indexPath.item];
     
     return cell;
 }

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MTDeals;
 @interface MTDealsCell : UICollectionViewCell
+
+@property (nonatomic, strong) MTDeals *deal;
 
 @end
