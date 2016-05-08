@@ -50,6 +50,7 @@
 		33864DFE1CD769E6007ED5A1 /* MTCitiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864DFD1CD769E6007ED5A1 /* MTCitiy.m */; };
 		33864E011CD78814007ED5A1 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E001CD78814007ED5A1 /* MTRegion.m */; };
 		33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */; };
+		339C0B841CDEE61E00D133A9 /* MTDealsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0B831CDEE61E00D133A9 /* MTDealsCell.m */; };
 		33E5B60D1CDA080A009B5897 /* MTDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60C1CDA080A009B5897 /* MTDataTool.m */; };
 		33E5B6101CDA0A8B009B5897 /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60F1CDA0A8B009B5897 /* MTSort.m */; };
 		33E5B6131CDA1FB8009B5897 /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */; };
@@ -157,6 +158,8 @@
 		33864E001CD78814007ED5A1 /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
 		33864E021CD79CDA007ED5A1 /* MTSearchResultTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSearchResultTableController.h; sourceTree = "<group>"; };
 		33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSearchResultTableController.m; sourceTree = "<group>"; };
+		339C0B821CDEE61E00D133A9 /* MTDealsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealsCell.h; sourceTree = "<group>"; };
+		339C0B831CDEE61E00D133A9 /* MTDealsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealsCell.m; sourceTree = "<group>"; };
 		33E5B60B1CDA080A009B5897 /* MTDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDataTool.h; sourceTree = "<group>"; };
 		33E5B60C1CDA080A009B5897 /* MTDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDataTool.m; sourceTree = "<group>"; };
 		33E5B60E1CDA0A8B009B5897 /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
@@ -342,6 +345,8 @@
 		335AD7651CD3815700335CC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				339C0B821CDEE61E00D133A9 /* MTDealsCell.h */,
+				339C0B831CDEE61E00D133A9 /* MTDealsCell.m */,
 				3334C3591CD3A3F100D42F7C /* MTCategory.h */,
 				3334C35A1CD3A3F100D42F7C /* MTCategory.m */,
 				33864DF31CD73E10007ED5A1 /* MTCityGroups.h */,
@@ -620,6 +625,7 @@
 				3334C37A1CD3A4DB00D42F7C /* MJType.m in Sources */,
 				333D172D1CDB6DEC00E5BD19 /* DPRequest.m in Sources */,
 				33E5B60D1CDA080A009B5897 /* MTDataTool.m in Sources */,
+				339C0B841CDEE61E00D133A9 /* MTDealsCell.m in Sources */,
 				3334C37C1CD3A4DB00D42F7C /* NSObject+MJCoding.m in Sources */,
 				3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */,
 				33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */,
