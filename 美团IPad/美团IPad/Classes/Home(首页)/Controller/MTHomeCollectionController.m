@@ -79,7 +79,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     flowLayout.itemSize = CGSizeMake(322, 322);
     
-    
     return [self initWithCollectionViewLayout:flowLayout];
 }
 
@@ -94,6 +93,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // Register cell classes
     [self.collectionView registerClass:[MTDealsCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    
     
     //设置导航栏内容
     [self setupRightNav];//右边内容
@@ -129,6 +130,18 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 监听区域数据改变通知
     [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
+}
+
+#pragma mark - 监听屏幕旋转
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    int cols = (size.width == 1024 ? 3 : 2);
+    // 根据列数计算内边距
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    int inset = (size.width - cols * layout.itemSize.width) / (cols + 1);
+    layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset);
+    
+    // 设置每一行之间的间距
+    layout.minimumLineSpacing = inset;
 }
 
 #pragma mark - 监听通知方法
