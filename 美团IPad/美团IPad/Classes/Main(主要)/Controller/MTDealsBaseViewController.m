@@ -101,8 +101,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     self.lastRequest = [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
-    //MTLog(@"参数--%@", params);
-    
 }
 /** 上拉刷新 */
 - (void)loadOldDeals{

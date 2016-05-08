@@ -8,26 +8,16 @@
 
 #import "MTSearchViewController.h"
 #import "UIBarButtonItem+Extent.h"
+#import "MJRefresh.h"
 
-@interface MTSearchViewController ()
+@interface MTSearchViewController () <UISearchBarDelegate>
 
 @end
 
 @implementation MTSearchViewController
 
-static NSString * const reuseIdentifier = @"Cell";
-
-- (instancetype)init{
-    //流水布局
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    
-    return [self initWithCollectionViewLayout:flowLayout];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
      //添加导航栏左边的按钮
     UIBarButtonItem *closeBtnItem = [UIBarButtonItem itemWithTarget:self action:@selector(close) image:@"icon_back" highlightedImage:@"icon_back_highlighted"];
@@ -35,12 +25,35 @@ static NSString * const reuseIdentifier = @"Cell";
     self.navigationItem.leftBarButtonItem = closeBtnItem;
     
     //设置导航栏的title为UISearchBar
-    self.navigationItem.titleView = [[UISearchBar alloc] init];
+    // 中间的搜索框
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    
+    searchBar.backgroundImage = [UIImage imageNamed:@"bg_login_textfield"];
+
+    searchBar.placeholder = @"请输入关键词";
+    searchBar.delegate = self;
+    
+    self.navigationItem.titleView = searchBar;
 }
 
 - (void)close{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - 搜索框的Search按钮被点击
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    // 进入下拉刷新状态, 发送请求给服务器
+    [self.collectionView headerBeginRefreshing];
+    
+    // 退出键盘
+    [searchBar resignFirstResponder];
+}
+
+#pragma mark - 给服务发送参数
+- (void)setupParams:(NSMutableDictionary *)params{
+    params[@"city"] = @"成都";
+    UISearchBar *searchBar = (UISearchBar *)self.navigationItem.titleView;
+    params[@"keyword"] = searchBar.text;
+}
 
 @end
