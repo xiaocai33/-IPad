@@ -24,8 +24,13 @@
 
 #import "MTSearchViewController.h"
 #import "MTNavigationController.h"
+#import "AwesomeMenu.h"
+#import "UIView+SDAutoLayout.h"
+#import "MTCollectViewController.h"
+#import "MTRecentViewController.h"
 
-@interface MTHomeCollectionController () 
+
+@interface MTHomeCollectionController () <AwesomeMenuDelegate>
 /** 分类 */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区 */
@@ -62,9 +67,83 @@
     
     /** 监听通知 */
     [self setupNotication];
-
+    
+    // 创建awesomemenu
+    [self setupAwesomeMenu];
 }
 
+#pragma mark - 创建awesomemenu
+- (void)setupAwesomeMenu{
+    //中间的item按钮
+    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"icon_pathMenu_background_normal"] highlightedImage:[UIImage imageNamed:@"icon_pathMenu_background_highlighted"] ContentImage:[UIImage imageNamed:@"icon_pathMenu_mainMine_normal"] highlightedContentImage:nil];
+    
+     //周边的item按钮
+    AwesomeMenuItem *item0 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_highlighted"]];
+    
+    AwesomeMenuItem *item1 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_scan_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_scan_highlighted"]];
+    
+    AwesomeMenuItem *item2 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_mine_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_mine_highlighted"]];
+    
+    AwesomeMenuItem *item3 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_more_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_more_highlighted"]];
+    
+    NSArray *items = @[item0, item1, item2, item3];
+    
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:CGRectZero startItem:startItem menuItems:items];
+    menu.alpha = 0.5;
+    // 设置菜单的活动范围
+    menu.menuWholeAngle = M_PI_2;
+    // 设置开始按钮的位置
+    menu.startPoint = CGPointMake(50, 150);
+    // 设置代理
+    menu.delegate = self;
+    // 不要旋转中间按钮
+    menu.rotateAddButton = NO;
+    
+    
+    [self.view addSubview:menu];
+    
+    menu.sd_layout.leftEqualToView(self.view).bottomEqualToView(self.view).heightIs(200).widthIs(200);
+}
+
+#pragma mark - AwesomeMenu代理方法
+- (void)awesomeMenuWillAnimateOpen:(AwesomeMenu *)menu{
+    //更换图片
+    menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_cross_normal"];
+    
+    // 完全显示
+    menu.alpha = 1.0;
+}
+
+- (void)awesomeMenuWillAnimateClose:(AwesomeMenu *)menu{
+    //更换图片
+    menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_mainMine_normal"];
+    
+    // 半透明显示
+    menu.alpha = 0.5;
+}
+
+- (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx{
+    //更换图片
+    menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_mainMine_normal"];
+    
+    switch (idx) {
+        case 0:{ // 收藏
+            MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTCollectViewController alloc] init]];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
+        case 1:{ // 最近
+            MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTRecentViewController alloc] init]];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - 通知相关
 - (void)dealloc{
     //移除通知
     [MTNotificationCenter removeObserver:self];
