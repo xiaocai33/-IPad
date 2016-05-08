@@ -23,6 +23,8 @@
 #import "MTDealsCell.h"
 #import "MTDeals.h"
 #import "MJExtension.h"
+#import "MJRefresh.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface MTHomeCollectionController () <DPRequestDelegate>
 /** 分类 */
@@ -49,6 +51,14 @@
 @property (nonatomic, strong) MTSort *selectedSort;
 /** 服务器返回数据模型 */
 @property (nonatomic, strong) NSMutableArray *deals;
+
+/** 选择加载的页数 */
+@property (nonatomic, assign) int currentPage;
+/** 最后一次请求 */
+@property (nonatomic, strong) DPRequest *lastRequest;
+/** 返回数据的条数 */
+@property (nonatomic, assign) int totalCount;
+
 
 @end
 
@@ -85,12 +95,29 @@ static NSString * const reuseIdentifier = @"Cell";
     // Register cell classes
     [self.collectionView registerClass:[MTDealsCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    // Do any additional setup after loading the view.
-    
     //设置导航栏内容
     [self setupRightNav];//右边内容
     [self setupLeftNav];//左边内容
     
+    /** 监听通知 */
+    [self setupNotication];
+    
+    //添加上拉刷新
+    [self.collectionView addFooterWithTarget:self action:@selector(loadOldDeals)];
+    
+    //添加下拉刷新
+    [self .collectionView addHeaderWithTarget:self action:@selector(loadNewDeals)];
+}
+
+- (void)dealloc{
+    //移除通知
+    [MTNotificationCenter removeObserver:self];
+}
+
+/**
+ *  监听通知
+ */
+- (void)setupNotication{
     // 监听城市改变通知
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
     
@@ -102,12 +129,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 监听区域数据改变通知
     [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
-
-}
-
-- (void)dealloc{
-    //移除通知
-    [MTNotificationCenter removeObserver:self];
 }
 
 #pragma mark - 监听通知方法
@@ -123,7 +144,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     
     // 3 从服务加载数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
 }
 
 /**
@@ -143,7 +164,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.sortPopover dismissPopoverAnimated:YES];
     
     // 4 从服务加载数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
     
 }
 
@@ -175,7 +196,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.categoryPopover dismissPopoverAnimated:YES];
     
     // 4 从服务加载数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
 }
 
 /**
@@ -206,11 +227,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.regionPopover dismissPopoverAnimated:YES];
     
     // 4 从服务加载数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
 }
 
 #pragma mark - 与服务器交互的代码
-- (void)loadNewDeals{
+- (void)loadDeals{
     DPAPI *api = [[DPAPI alloc] init];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -234,30 +255,65 @@ static NSString * const reuseIdentifier = @"Cell";
         params[@"sort"] = @(self.selectedSort.value);
     }
     
+    // 页码
+    params[@"page"] = @(self.currentPage);
     
-    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    self.lastRequest = [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
-    MTLog(@"参数--%@", params);
+    //MTLog(@"参数--%@", params);
+
+}
+/** 上拉刷新 */
+- (void)loadOldDeals{
     
+    self.currentPage++;
+    
+    [self loadDeals];
+}
+
+- (void)loadNewDeals{
+    
+    self.currentPage = 1;
+    
+    [self loadDeals];
 }
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
     //MTLog(@"请求成功---%@", result);
+    if (self.lastRequest != request) return;
+    self.totalCount = [result[@"total_count"] intValue];
     
     // 1.取出团购的字典数组
     NSArray *newDeals = [MTDeals objectArrayWithKeyValuesArray:result[@"deals"]];
     
-    //清除旧数据
-    [self.deals removeAllObjects];
+    if (self.currentPage == 1) {
+        //清除旧数据
+        [self.deals removeAllObjects];
+    }
     
     [self.deals addObjectsFromArray:newDeals];
     
-    //2 刷新表格
+    //2 刷新表格(在刷新表格的中,结束刷新)
     [self.collectionView reloadData];
+    
+    // 结束刷新操作
+    [self.collectionView headerEndRefreshing];
+    [self.collectionView footerEndRefreshing];
+    
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error{
-    MTLog(@"请求失败---%@", error);
+    // 1.网络提醒
+    [MBProgressHUD showError:@"网络繁忙,稍后再试..." toView:self.view];
+    
+    // 2.结束刷新操作
+    [self.collectionView headerEndRefreshing];
+    [self.collectionView footerEndRefreshing];
+    
+    // 3.如果是上拉加载失败了
+    if (self.currentPage > 1) {
+        self.currentPage--;
+    }
 }
 
 #pragma mark - 设置导航栏按内容
@@ -359,6 +415,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     //MTLog(@"%zd", self.deals.count);
+   
+    //设置下拉控件的显示
+    self.collectionView.footerHidden = (self.totalCount == self.deals.count);
+    
     return self.deals.count;
 }
 
