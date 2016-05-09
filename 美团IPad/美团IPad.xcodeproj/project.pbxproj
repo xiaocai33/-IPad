@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330C64F41CE0D1F3005E2A97 /* MTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C64F21CE0D1F3005E2A97 /* MTDetailViewController.m */; };
+		330C64F51CE0D1F3005E2A97 /* MTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330C64F31CE0D1F3005E2A97 /* MTDetailViewController.xib */; };
 		3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3318960E1CD3845D00C59260 /* MTNavigationController.m */; };
 		3334C3421CD38B6900D42F7C /* MTHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */; };
 		3334C3451CD38DD000D42F7C /* MTConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3441CD38DD000D42F7C /* MTConstant.m */; };
@@ -109,6 +111,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330C64F11CE0D1F3005E2A97 /* MTDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailViewController.h; sourceTree = "<group>"; };
+		330C64F21CE0D1F3005E2A97 /* MTDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailViewController.m; sourceTree = "<group>"; };
+		330C64F31CE0D1F3005E2A97 /* MTDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDetailViewController.xib; sourceTree = "<group>"; };
 		3318960D1CD3845D00C59260 /* MTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNavigationController.h; sourceTree = "<group>"; };
 		3318960E1CD3845D00C59260 /* MTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNavigationController.m; sourceTree = "<group>"; };
 		3334C3401CD38B6900D42F7C /* MTHomeCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeCollectionController.h; sourceTree = "<group>"; };
@@ -298,6 +303,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		330C64EF1CE0D1E3005E2A97 /* Detail(详情) */ = {
+			isa = PBXGroup;
+			children = (
+				330C64F01CE0D1E3005E2A97 /* Controller */,
+			);
+			path = "Detail(详情)";
+			sourceTree = "<group>";
+		};
+		330C64F01CE0D1E3005E2A97 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				330C64F11CE0D1F3005E2A97 /* MTDetailViewController.h */,
+				330C64F21CE0D1F3005E2A97 /* MTDetailViewController.m */,
+				330C64F31CE0D1F3005E2A97 /* MTDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3334C35C1CD3A4DB00D42F7C /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +434,7 @@
 		335AD7621CD3815700335CC3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				330C64EF1CE0D1E3005E2A97 /* Detail(详情) */,
 				339C0BEF1CDF67FF00D133A9 /* Collect(收藏) */,
 				339C0BEE1CDF67F800D133A9 /* Recent(最近) */,
 				339C0BDC1CDF522400D133A9 /* Search(搜索) */,
@@ -822,6 +846,7 @@
 				3334C3571CD3A3D400D42F7C /* cityGroups.plist in Resources */,
 				335AD73C1CD37FE700335CC3 /* Assets.xcassets in Resources */,
 				3334C3501CD397C000D42F7C /* MTHomeLeftTopItem.xib in Resources */,
+				330C64F51CE0D1F3005E2A97 /* MTDetailViewController.xib in Resources */,
 				3334C3551CD3A3D400D42F7C /* categories.plist in Resources */,
 				3334C3561CD3A3D400D42F7C /* cities.plist in Resources */,
 				339C0BD41CDF2B9100D133A9 /* MJRefresh.bundle in Resources */,
@@ -913,6 +938,7 @@
 				3334C34E1CD397A500D42F7C /* MTHomeLeftTopItem.m in Sources */,
 				339C0BE31CDF54AC00D133A9 /* MTDealsBaseViewController.m in Sources */,
 				339C0BF41CDF686200D133A9 /* MTCollectViewController.m in Sources */,
+				330C64F41CE0D1F3005E2A97 /* MTDetailViewController.m in Sources */,
 				339C0BB21CDF01F500D133A9 /* SDWebImagePrefetcher.m in Sources */,
 				33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */,
 				335AD7701CD3815700335CC3 /* AppDelegate.m in Sources */,

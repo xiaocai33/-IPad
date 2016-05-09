@@ -15,6 +15,7 @@
 #import "MTDeals.h"
 #import "MTConstant.h"
 #import "MJExtension.h"
+#import "MTDetailViewController.h"
 
 @interface MTDealsBaseViewController () <DPRequestDelegate>
 
@@ -191,5 +192,10 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    MTDetailViewController *detailVc = [[MTDetailViewController alloc] init];
+    detailVc.deal = self.deals[indexPath.item];
+    [self presentViewController:detailVc animated:YES completion:nil];
+}
 
 @end
