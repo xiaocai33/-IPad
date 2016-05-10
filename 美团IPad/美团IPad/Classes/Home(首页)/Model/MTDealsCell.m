@@ -182,10 +182,11 @@
     NSUInteger dotLoc = [self.listPriceLabel.text rangeOfString:@"."].location;
     if (dotLoc != NSNotFound) {
         // 超过2位小数
-        if (self.currentPriceLabel.text.length - dotLoc > 3) {
-            self.currentPriceLabel.text = [self.currentPriceLabel.text substringToIndex:dotLoc + 3];
+        if (self.listPriceLabel.text.length - dotLoc > 3) {
+            self.listPriceLabel.text = [self.listPriceLabel.text substringToIndex:dotLoc + 3];
         }
     }
+
     //销量
     self.purchaseCountLabel.text = [NSString stringWithFormat:@"已售%zd", deal.purchase_count];
     

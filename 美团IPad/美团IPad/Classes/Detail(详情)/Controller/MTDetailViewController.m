@@ -9,10 +9,30 @@
 #import "MTDetailViewController.h"
 #import "MTConstant.h"
 #import "MTDeals.h"
+#import "UIImageView+WebCache.h"
 
 @interface MTDetailViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+/** 订单详情图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *dealImageView;
+/** 订单名称 */
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+/** 订单描述 */
+@property (weak, nonatomic) IBOutlet UILabel *desLabel;
+/** 订单分享 */
+@property (weak, nonatomic) IBOutlet UIButton *sharedBtn;
+/** 订单收藏 */
+@property (weak, nonatomic) IBOutlet UIButton *collectBtn;
+/** 订单随时退 */
+@property (weak, nonatomic) IBOutlet UIButton *refundableAnyTimeButton;
+/** 订单过期退 */
+@property (weak, nonatomic) IBOutlet UIButton *refundableExpireButton;
+/** 订单剩余时间 */
+@property (weak, nonatomic) IBOutlet UIButton *leftTimeButton;
+/** 订单购买人数 */
+@property (weak, nonatomic) IBOutlet UIButton *haveBuyNow;
+
 
 @end
 
@@ -28,6 +48,36 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.deal.deal_h5_url]]];
     //网络加载动画开始
     [self.activityIndicator startAnimating];
+    
+    //设置基本信息
+    //设置团购标题和描述
+    self.titleLabel.text = self.deal.title;
+    self.desLabel.text = self.deal.desc;
+    
+    //当前购买人数
+    [self.haveBuyNow setTitle:[NSString stringWithFormat:@"已售 %zd", self.deal.purchase_count] forState:UIControlStateNormal];
+    
+    //图片
+    [self.dealImageView sd_setImageWithURL:[NSURL URLWithString:self.deal.image_url] placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
+    
+    //计算过期时间
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    NSDate *deadline = [fmt dateFromString:self.deal.purchase_deadline];
+    //延迟1天
+    deadline = [deadline dateByAddingTimeInterval:24 * 3600];
+    
+    NSDate *now = [NSDate date];
+    
+    //获取日历对象
+    NSCalendarUnit unit = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *cmps = [[NSCalendar currentCalendar] components:unit fromDate:now toDate:deadline options:0];
+    
+    if (cmps.day > 365) {
+        [self.leftTimeButton setTitle:@"一年内不过期" forState:UIControlStateNormal];
+    } else {
+        [self.leftTimeButton setTitle:[NSString stringWithFormat:@"剩余%zd天%zd小时%zd分", cmps.day,cmps.hour,cmps.minute] forState:UIControlStateNormal];
+    }
     
 }
 
@@ -80,6 +130,25 @@
         //        NSString *html = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].outerHTML;"];
         //        NSLog(@"%@",html);
     }
+}
+
+/**
+ *  返回上一个界面
+ */
+- (IBAction)close {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/**
+ *  立即购买
+ */
+- (IBAction)buy {
+}
+
+/**
+ *  收藏
+ */
+- (IBAction)collect:(UIButton *)sender {
 }
 
 
