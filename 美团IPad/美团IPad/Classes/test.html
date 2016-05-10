@@ -1,0 +1,665 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+            <meta charset="utf-8">
+                <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                        <meta name="format-detection" content="telephone=no">
+                            <meta name="format-detection" content="email=no">
+                                <meta name="apple-mobile-web-app-capable" content="yes">
+                                    <meta name="apple-mobile-web-app-title" content="点评团购触屏版 -成都团购-大众点评团成都站">
+                                        <meta name="apple-itunes-app" content="app-id=351091731">
+                                            <link rel="apple-touch-startup-image" size="640x920" href="//www.dpfile.com/m/img/app/tuangou/startup4.8edce79bb20fe844f45c989336e5935e.png" media="(device-height:480px)">
+                                                <link rel="apple-touch-startup-image" href="//www.dpfile.com/m/img/app/tuangou/startup5.100ee1ca3bfbcf9c295ce8cc91659f60.png" media="(device-height:568px)">
+                                                    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="//www.dpfile.com/m/img/app/tuangou/apple-touch-icon-57x57.b65964186a2866605deb078a5e8d31be.png">
+                                                        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//www.dpfile.com/m/img/app/tuangou/apple-touch-icon-72x72.6956ac9c5c482a13efe1b6bd06e717b6.png">
+                                                            <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//www.dpfile.com/m/img/app/tuangou/apple-touch-icon-114x114.5e782d534b6f7c3f7d928832f0f83613.png">
+                                                                <title>团购详情-大众点评团成都站</title>
+                                                                <script>var G_rtop=+new Date,_gaq=[
+                                                                                                   ['_setAccount','UA-16496742-2'],
+                                                                                                   ['_addOrganic','soso','w'],
+                                                                                                   ['_addOrganic','sogou','query'],
+                                                                                                   ['_addOrganic','yodao','q'],
+                                                                                                   ['_addOrganic','bing','q'],
+                                                                                                   ['_addOrganic','360','q'],
+                                                                                                   ['_addOrganic','gougou','search'],
+                                                                                                   ['_setDomainName', 'http://m.dianping.com'],
+                                                                                                   ['_setAllowHash', false]]
+                                                                                                   dpga=function(key){_gaq.push(['_trackPageview', key||''])},
+                                                                                                   pageTracker={_trackPageview:dpga},_hip=[
+                                                                                                                                           ['_setPageId', 171020],
+                                                                                                                                           ['_setCityId', 8],
+                                                                                                                                           ['_setPVInitData', '']
+                                                                                                                                           ];
+                                                                    </script>
+                                                                
+                                                                
+                                                                <script>
+                                                                    //for weixin share
+                                                                    function weixinShare(type){
+                                                                        var appid = 'wx841a97238d9e17b2';
+                                                                        var img_url = "http://m1.s1.dpfile.com/sc/2014/mobile_pay5/dp_icon_100.png";
+                                                                        var link = window.location.href;
+                                                                        var desc = '团购详情-大众点评团成都站';
+                                                                        var title = '大众点评团';
+                                                                        var shareFriend = function () {
+                                                                            WeixinJSBridge.invoke('sendAppMessage',{
+                                                                                                  "appid":appid,
+                                                                                                  "img_url":img_url,
+                                                                                                  "img_width":"640",
+                                                                                                  "img_height":"640",
+                                                                                                  "link":link,
+                                                                                                  "desc":desc,
+                                                                                                  "title":title
+                                                                                                  },function(res) {
+                                                                                                  _report('send_msg', res.err_msg);
+                                                                                                  })
+                                                                        }
+                                                                        var shareTimeline = function () {
+                                                                            WeixinJSBridge.invoke('shareTimeline',{
+                                                                                                  "appid":appid,
+                                                                                                  "img_url":img_url,
+                                                                                                  "img_width":"640",
+                                                                                                  "img_height":"640",
+                                                                                                  "link":link,
+                                                                                                  "desc":desc,
+                                                                                                  "title":title
+                                                                                                  },function(res) {
+                                                                                                  _report('timeline', res.err_msg);
+                                                                                                  });
+                                                                        }
+                                                                        if(type == 'friend'){
+                                                                            return shareFriend;
+                                                                        }else if(type == 'timeline'){
+                                                                            return shareTimeline;
+                                                                        }
+                                                                    }
+                                                                
+                                                                var shareFriend = weixinShare('friend');
+                                                                var shareTimeline = weixinShare('timeline');
+                                                                document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                                                                                          WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                                                                                                            shareFriend();
+                                                                                                            });
+                                                                                          WeixinJSBridge.on('menu:share:timeline', function(argv){
+                                                                                                            shareTimeline();
+                                                                                                            });
+                                                                                          WeixinJSBridge.invoke("getInstallState",{
+                                                                                                                "packageUrl": "dianping://home",
+                                                                                                                "packageName": "com.dianping.v1"
+                                                                                                                },function(res){
+                                                                                                                });
+                                                                                          }, false);
+                                                                    </script>
+</head>
+
+<body>
+    <link rel="stylesheet" href="http://m1.s2.dpfile.com/concat/~mod~fun-base-theme~0.1.3~css~style.css,~mod~r-tuan-detail-description~0.2.11~css~index.css,~mod~easy-login~0.2.9~css~style.css,~mod~mobile-common-search~0.4.3~css~style.css,~mod~mobile-download-banner~0.1.13~css~style.css,~mod~ktv-structure-static~0.1.11~css~style.css,~mod~app-m-tuangou~1.3.25~css~style.css" type="text/css">
+        <header>
+            <a class="back back-gray" href="javascript:history.go(-1)">返回</a>
+            <div class="info">图文详情</div>
+        </header>
+        <div class="cost-box">
+            <div class="buy-box">
+                <div class="price">¥</div>
+                <div class="price sum">21.2</div>
+                <div class="past Fix">
+                    <div class="t">
+                        <span class="o-price">¥25</span>
+                    </div>
+                </div>
+                
+                
+                <div class="last">
+                    <a onclick="_hip.push(['mv', {module: '5_button_buy', action:'click', type:'up', dealgrp_id:'12331769'}]);" href="/tuan/buy/12345861" class="buy-btn ">
+                        
+                        立即购买
+                    </a>
+                </div>
+            </div>	</div>
+        
+        <div class="detail-info group-detail">
+            <div class="con">
+                <div class="info Fix">
+                    <div class="detail-box"><h3 class="tit">团购详情<i class="icon-comm detail"></i></h3><div class="detail-tit"></div>
+                        <table width="100%" cellpadding="0" cellspacing="0" class="detail-table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">名称</th>
+                                    <th width="25%">数量</th>
+                                    <th width="25%">单价</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>现金券</td>
+                                    <td class="tc">1张</td>
+                                    <td class="tc">25元</td>
+                                </tr>
+                                <tr class="total">
+                                    <td></td>
+                                    <td class="tc">价值<br><strong>团购价</strong></td>
+                                    <td class="tc">25元<br><strong>21.2元</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div><p><b>店内人均消费参考价</b>：18元</p>
+                            <p><b>适用范围</b>：全场通用</p>
+                            <p><b>店内部分菜品价格参考</b>：<br>蛋挞（3.50元/个）<br>毛毛虫面包（4.00元/个）<br>迷你蛋糕（18.00元/个）<br>仙贝蛋糕（5.00元/个）<br>草莓乳酪（10.00元/个）<br>思思面包（4.00元/个）<br>提子吐司（6.50元/个）</p>
+                            <p>以下产品价格仅供参考：</p>
+                            <p>面包类：毛毛虫面包4元/个 &nbsp;提子吐司6.5元/个&nbsp;思思面包4元/个蛋糕类：红枣枸杞蛋糕4.5元/个 仙贝蛋糕5元/个酥点类：红糖酥饼5元/个 花生糖4元/袋 蛋黄沙司12元/盒 &nbsp;草莓乳酪10元/个西点类：迷你蛋糕18元/个 提拉米苏8元/杯 熊宝宝12/盒 蓝莓慕斯8元/杯</p></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detail-info buy-know">
+            <div class="con">
+                <div class="detail-box"><h3 class="tit">购买须知<i class="icon-comm buy"></i></h3><div class="detail-box">
+                    <div class="purchase-notes">
+                        <dl>
+                            <dt>有效期</dt>
+                            <dd>
+                                <p class="listitem">2016-03-24至2016-07-18</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>除外日期</dt>
+                            <dd>
+                                <p class="listitem">有效期内周末、法定节假日通用</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>使用时间</dt>
+                            <dd>
+                                <p class="listitem">团购券24小时可用</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>预约提醒</dt>
+                            <dd>
+                                <p class="listitem">无需预约，消费高峰时可能需要等位</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>规则提醒</dt>
+                            <dd>
+                                <p class="listitem">可叠加使用</p>
+                                <p class="listitem">不兑现、不找零</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>包间</dt>
+                            <dd>
+                                <p class="listitem">可免费使用包间</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>堂食外带</dt>
+                            <dd>
+                                <p class="listitem">堂食外带均可，可免费打包</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>温馨提示</dt>
+                            <dd>
+                                <p class="listitem">团购用户不可同时享受商家其他优惠</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="detail-info group-detail">
+            <div class="con">
+                <div class="info Fix">
+                    <div class="detail-box"><h3 class="tit">产品介绍</h3><p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/deal/3267921d26b2384ba39fb03ef5245526113682.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/8f2acf5de0ff91a7c141d332c690d698109522.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/fd572af6732c9299bd6ae40ed472c5f250685.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/35109fc52f133d1e69827d7fe7efb48846304.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/22c5f3d169f8d7d59ebc2cd98c9a017b58544.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/b5b4bfc7ac0c781a75b5e43d8040fe2245034.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/ceb1ad6f2c3a192c7079a9573d8edda957551.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/54debd6f24c059ad907a290a844b889a52938.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/e83a6f325ec68b8b1ba5a9564fb4ed5139279.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/8b41be868963ab152c0eeae21eaa3af059361.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/a29c31f97c84c5b4db786790c70a7ad472892.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/9886a0eb3e3a3a99f73ed048ce72f94e54485.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/dc24e8dae6856f8017470c2b9bb41b7155189.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/d90dc9bf5f78ea14cf6df7c76307fde149449.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detail-info group-detail">
+            <div class="con">
+                <div class="info Fix">
+                    <div class="detail-box"><h3 class="tit">商户介绍</h3><p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/ae7298cbb994d7762e9e7551296b66211075731.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <div><p>四川家佰利食品有限责任公司（原家好食品）创建于上世纪90年代初，位于川西重镇什邡市雍城西路899号，公司目前占地面积5000平方米，家佰利主要生产中式糕点，面包，蛋糕，粽子，月饼等的基础上已经发展成为一家具有现代经营理念的食品企业。年总产值达2000多万元，现有员工总数180余人，直营店分布什邡，广汉，彭州，崇州，温江，邛崃等地。
+                            现有店铺34个公司技术力量雄厚，拥有大批生产技术骨干，专业从事现代食品的研发和生产，并于2007年2月12日正式成立公司-----四川家佰利食品有限责任公司，2007年8月14日注册商标“家佰利”品牌，为德阳市知名品牌，公司长期聘请国内外烘焙大师亲临公司同台制作，推陈出新，在品色和口感等方面，多年来受到消费者的一致好评。自2004年以来，长期评为“消费者信得过单位”，自2005年以来，多次获“全国烘培技术大赛银奖”“四川烘培技术大赛金奖”。为扩大生产能力优化结构，完善生产工艺条件，增强公司的竞争力，提高企业的效益，满足顾客的需求，公司在当地各级政府和部门的大力支持下，决定在今年底开工建设一条现代化的食品生产线，投入资金6800万元，兴建符合高标准高要求的环境空气净化生产车间，仓储，办公区，宿舍区，综合食堂，产品展示区，冷冻冷藏车间，总计占地面积20000多平方米。公司生产经营模式为自产自销，连锁经营以“树形象，创品牌，服务优，高质量”为经营理 念，创造本行业品牌，发展经营规模，不断开发新产品，提高知名度，在全体员工共同努力下发展壮大。家佰利尊重顾客的需求，不断努力，不断进取，将给尊敬的顾客带来天然，健康，美味的食品。</p></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/ef1ab3c9f8c5e74ccda380377d80a42d40510.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/f50ddcc9360263100ee1cfcb96c965c849591.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/bcc5b6677022e27210aad9e8bce4323b48814.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/2235f95f2c67b026569132ae45d2b6ec36035.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/1f5376b2e3a876f4a01a20a6739e2e1c1138220.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/b39daaafef9c2d6d620f082442ff6ba91009475.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/b11d49d1e2c4d88b9ac0eafdb25dc9c6999751.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a onclick="_hip.push(['mv', {module: '5_button_buy', action:'click', type:'down', dealgrp_id:'12331769'}]);" href="/tuan/buy/12345861" class="buy-now ">
+            
+            <span>立即购买</span>
+        </a>
+        
+        <script type="text/javascript">_gaq.push(['_trackPageview', 'dealdetail/成都']);</script>
+        
+        <script>!function(n){"use strict";function t(n,t){for(var r in t)n[r]||(n[r]=t[r])}function r(n,r){t(n.prototype,r)}function i(n){var t=n.match(U),r=t[1],i=t[2]||"*",o=t[3]||"";return e({n:r,v:i,p:o})}function e(n){var t=n.n+"@"+n.v;return n.id=t+n.p,n.k=t,n}function o(n,t){return t.map?n:n+".js"}function a(n,t){for(var r in t)n[r]=t[r]}function f(n){var t=n.match(V);return t?t[0]:n}function u(n,t){return h(f(t.p).slice(1),n)}function c(n,t){return n=u(n,t),n?t.k+"/"+n:t.k}function h(n,t){var r=(n+"/"+t).split("/").filter(Boolean);return s(r).join("/")}function s(n){for(var t=0,r=n.length-1;r>=0;r--){var i=n[r];"."===i?n.splice(r,1):".."===i?(n.splice(r,1),t++):t&&(n.splice(r,1),t--)}for(;t--;)n.unshift("..");return n}function l(n){return 0===n.indexOf("./")||0===n.indexOf("../")}function d(n){throw new Error("neuron: "+n)}function v(n){d("Cannot find module '"+n+"'")}function p(n){return W[n]||(W[n]=[])}function g(n,t){p(n).push(t)}function m(n,t){var r=p(n);r.forEach(function(n){n(t)})}function y(n,t){n||d("null id"),t||(t={});var r=t.map||{};n=r[n]||n;var a,f=l(n);if(f?(t.id||v(n),n=c(n,t),n=o(n,t),a=i(n)):(n=t.m&&t.m[n]||n,a=i(n)),a.k===t.k)a.graph=t.graph;else{var u=w(a.k,t.graph)||[];a.graph=u,a.v=u[0]||a.v,e(a)}return a}function w(n,t){var r=rt.graph._,i=t?t[1]:r;return i&&n in i?rt.graph[i[n]]:r}function k(n){return n.loaded?n.exports:O(n)}function O(n){n.loaded=!0;var t=n.exports={},r=P(n.id),i=f(r),e=n.factory;return e(R(n),t,n,r,i),n.exports}function b(n,t,r){var i=y(n,t),e=i.graph,o=E(i),a=o.main?i.k:i.id,f=e[a];return f||(!r||v(n),f=e[a]=j(o),f.graph=e,f.g||(f.g=X++)),f}function x(n,t){G.ready(n,function(){t(k(n))})}function E(n){var t=n.id;return et[t]||(et[t]={n:n.n,v:n.v,p:n.p,id:t,k:n.k,m:{},l:[],main:!n.p})}function j(n){function t(){this.r=[]}return t.prototype=n,new t}function S(n){!~n.indexOf("@")||d("id with '@' is prohibited")}function R(n){var t=function(t){S(t);var r=b(t,n,!0);return k(r)};return t.async=function(t,r){var i=t;if(r){S(t);var e=l(t);if(e){t=c(t,n);var a=n.entries;t=a?L(t,a)||L(t+".js",a)||L(t+".json",a)||v(i):o(t,n)}var f=b(t,n);if(!f.main){if(!e)return;f.a=!0}x(f,r)}},t.resolve=function(t){return l(t)&&(t=u(t,n),!~t.indexOf("../"))?P(n.k+"/"+t):void 0},t}function L(n,t){return~t.indexOf(n)?n:J}function M(n){var t=Y.createElement("script");t.src=n,t.async=!0,nt(t,function(){Z.removeChild(t)}),setTimeout(function(){Z.insertBefore(t,Z.firstChild)},0)}function $(n,t,r,i){i||(i={});var f=y(n);f.p&&(f.p=o(f.p,i),e(f));var u,c=f.k;i.main&&(u=et[c]);var h=et[f.id]=u||et[f.id]||E(f);if(i.main&&(et[c]=h,a(h,f)),a(h,i),!h.factory){h.factory=r,h.deps=t,_(t,h.m);var s=i.asyncDeps;s&&_(s,h.m),B(h,"l")}}function _(n,t){n.forEach(function(n){var r=n.split("@")[0];t[r]=n})}function B(n,t){var r,i=n[t];for(n[t]=J;r=i.pop();)r()}function C(n,t){var r=et[n.id];r.f=n.f,r.a=n.a;var i=r.l;i&&(i.push(t),i.length<2&&I(r))}function I(n){if(!n.d){n.d=!0;var t=n.f,r=n.a,i=n.k;if(~tt.indexOf(i)){if(!t&&!r)return}else tt.push(i);var e=rt.loaded,o=t?n.id:i;if(~e.indexOf(o)){if(!r)return}else e.push(o);M(N(n))}}function N(n){var t=n.main?n.k+"/"+n.n+".js":n.id;return P(t)}function P(n){var t=n.replace("@","/"),r=rt.path;return r||d("config.path must be specified"),r=r.replace("{n}",t.length%3+1),t+=rt.cache===!1?"?f="+K:"",r+t}function T(n,t,r){if(m("beforeready",A(n)+":"+n.g),!n.factory)return m("beforeload",n.id),C(n,function(){m("load",A(n)),T(n,t,r)});var i=n.deps,e=i.length,o=n.r;if(!e||!o)return n.r=J,D(n),t();if(o.push(t),!(o.length>1)){var a=function(){--e||(r.length=0,r=H,D(n),B(n,"r"))};r=r?[n].concat(r):[n],i.forEach(function(t){var i=b(t,n);return~r.indexOf(i)?a():void T(i,a,r)})}}function D(n){m("ready",A(n)+":"+n.g)}function A(n){return n.main?n.k:n.id}function q(n){return n}function z(n){var t,r;for(t in n)r=it[t],r&&(rt[t]=r(n[t]))}function F(n,t){var r=b(n);r.f=!0,x(r,t)}var G={version:"7.1.4"},H=null,J=!1,K=+new Date;G.ready=function(n,t){t()};var Q=TypeError;r(Array,{indexOf:function(n,t){var r=this.length>>>0;for(t=Number(t)||0,t=Math[0>t?"ceil":"floor"](t),0>t&&(t=Math.max(t+r,0));r>t;t++)if(t in this&&this[t]===n)return t;return-1},lastIndexOf:function(n,t){var r=this.length>>>0;for(t=Number(t)||r-1,t=Math[0>t?"ceil":"floor"](t),0>t&&(t+=r),t=Math.min(t,r-1);t>=0;t--)if(t in this&&this[t]===n)return t;return-1},filter:function(n,t){for(var r=[],i=0,e=this.length;e>i;i++)i in this&&n.call(t,this[i],i,this)&&r.push(this[i]);return r},forEach:function(n,t){for(var r=0,i=this.length;i>r;r++)r in this&&n.call(t,this[r],r,this)},every:function(n,t){for(var r=0,i=this.length;i>r;r++)if(r in this&&!n.call(t,this[r],r,this))return!1;return!0},map:function(n,t){for(var r=[],i=0,e=this.length;e>i;i++)i in this&&(r[i]=n.call(t,this[i],i,this));return r},some:function(n,t){for(var r=0,i=this.length;i>r;r++)if(r in this&&n.call(t,this[r],r,this))return!0;return!1},reduce:function(n){if("function"!=typeof n)throw new Q(n+" is not an function");var t,r=this,i=r.length>>>0,e=0;if(arguments.length>1)t=arguments[1];else for(;;){if(e in r){t=r[e++];break}if(++e>=i)throw new Q("Reduce of empty array with on initial value")}for(;i>e;e++)e in r&&(t=n.call(H,t,r[e],e,r));return t},reduceRight:function(n){if("function"!=typeof n)throw new Q(n+" is not an function");var t,r=this,i=r.length>>>0,e=i-1;if(arguments.length>1)t=arguments[1];else for(;;){if(e in r){t=r[e--];break}if(--e<0)throw new Q("Reduce of empty array with on initial value")}for(;e>=0;e--)e in r&&(t=n.call(H,t,r[e],e,r));return t}}),t(Object,{keys:function(){var n=Object.prototype.hasOwnProperty,t=!{toString:""}.propertyIsEnumerable("toString"),r=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],i=r.length;return function(e){if(e!==Object(e))throw new Q("Object.keys called on non-object");var o,a=[];for(o in e)n.call(e,o)&&a.push(o);if(t)for(var f=0;i>f;f++)n.call(e,r[f])&&a.push(r[f]);return a}}()}),r(String,{trimLeft:function(){return this.replace(/^\s+/,"")},trimRight:function(){return this.replace(/\s+$/,"")},trim:function(){return this.trimLeft().trimRight()}});var U=/^((?:[^\/])+?)(?:@([^\/]+))?(\/.*)?$/,V=/.*(?=\/.*$)/,W={};G.on=g;var X=1,Y=document,Z=Y.getElementsByTagName("head")[0],nt=Y.createElement("script").readyState?function(n,t){n.onreadystatechange=function(){var r=n.readyState;("loaded"===r||"complete"===r)&&(n.onreadystatechange=H,t.call(this))}}:function(n,t){n.addEventListener("load",t,!1)},tt=[];G.ready=T;var rt=G.conf={loaded:[],graph:{_:{}}},it={path:function(n){return n.replace(/\/*$/,"/")},loaded:q,graph:q,cache:q};G.config=z,n.neuron=G,n.define=$,n.facade=function(n){F(n.entry,function(t){t.init&&t.init(n.data)})},n._use=function(n,t){F(n,t)},n._load=M;var et=G.mods={}}(this);</script><script>neuron.config({path: "http://m1.s2.dpfile.com/mod", loaded:["app-m-tuangou@1.3.25/js/page/detail.js","wepp-module-event@0.2.1","load-event@0.1.0","env@0.1.1","iscroll@5.0.11","logger@0.1.9","model-data@0.1.10","react@0.14.1","cookie@0.1.2","xss@0.1.0","cookie@0.2.0","openapp@0.1.10","underscore@1.5.3","mobile-common-nav@1.1.0","fun-base-theme@0.1.3","r-tuan-detail-description@0.2.11","tpl@0.2.1","mobile-common@0.1.27","easy-login@0.2.9","mobile-common-search@0.4.3","huatuo@1.0.6","util-m-swipe@0.2.5","base-m-lazyload@3.1.5","whereami@0.2.1","mobile-download-banner@0.1.13","wepp-module-toast@0.1.5","ktv-structure-static@0.1.11"], graph:{"0":["1.3.25",{"r-tuan-detail-description@~0.2.0":1,"util-m-swipe@~0.2.5":7,"tpl@~0.2.1":8,"mobile-download-banner@~0.1.0":9,"fun-base-theme@~0.1.3":13,"wepp-module-toast@~0.1.0":14,"mobile-common@~0.1.0":17,"underscore@~1.5.0":18,"cookie@~0.1.0":12,"openapp@~0.1.3":10,"whereami@~0.2.1":19,"ktv-structure-static@~0.1.11":28,"mobile-common-search@~0.4.3":29,"mobile-common-nav@~1.1.0":31,"huatuo@^1.0.3":33,"logger@~0.1.8":3,"env@~0.1.1":4,"base-m-lazyload@^3.1.4":34,"zepto-wepp@~1.1.0":11,"easy-login@~0.2.3":35}],"1":["0.2.11",{"model-data@~0.1.9":2,"logger@~0.1.8":3,"react@~0.14.1":6,"env@~0.1.1":4}],"2":["0.1.10"],"3":["0.1.9",{"env@~0.1.0":4,"load-event@~0.1.0":5}],"4":["0.1.1"],"5":["0.1.0"],"6":["0.14.1"],"7":["0.2.5"],"8":["0.2.1"],"9":["0.1.13",{"openapp@~0.1.1":10,"zepto-wepp@~1.1.4":11,"cookie@~0.1.2":12}],"10":["0.1.10"],"11":["1.1.6"],"12":["0.1.2"],"13":["0.1.3"],"14":["0.1.5",{"wepp-module-overlay@~0.2.0":15,"zepto-wepp@~1.1.0":11}],"15":["0.2.2",{"wepp-module-event@~0.2.0":16,"zepto-wepp@~1.1.0":11}],"16":["0.2.1"],"17":["0.1.27",{"cookie@~0.1.0":12,"zepto-wepp@~1.1.0":11}],"18":["1.5.3"],"19":["0.2.1",{"cookie@~0.2.0":20,"weixin-js-sdk-loader@~0.1.0":21,"dpapp@^1.1.11":22}],"20":["0.2.0"],"21":["0.1.1"],"22":["1.4.2",{"dpapp-core@^1.1.1":23,"mix@^1.0.1":26,"dpapp-share@~0.1.0":27}],"23":["1.1.2",{"promise@^6.1.0":24,"mix@^1.0.1":26}],"24":["6.1.0",{"asap@^1.0.0":25}],"25":["1.0.0"],"26":["1.0.1"],"27":["0.1.0"],"28":["0.1.11",{"underscore@^1.5.3":18,"zepto-wepp@^1.1.6":11}],"29":["0.4.3",{"xss@~0.1.0":30,"zepto-wepp@~1.1.4":11}],"30":["0.1.0"],"31":["1.1.0",{"wepp-module-overlay@~0.2.0":15,"zepto-wepp@~1.1.4":11,"iscroll@~5.0.10":32}],"32":["5.0.11"],"33":["1.0.6",{"env@~0.1.1":4,"logger@~0.1.6":3}],"34":["3.1.5"],"35":["0.2.9"],"_":{"app-m-tuangou@*":0}}})</script>
+        <script async="" src="http://m1.s2.dpfile.com/concat/~mod~app-m-tuangou~1.3.25~js~page~detail.js,~mod~wepp-module-event~0.2.1~wepp-module-event.js,~mod~load-event~0.1.0~load-event.js,~mod~env~0.1.1~env.js,~mod~iscroll~5.0.11~iscroll.js,~mod~logger~0.1.9~logger.js,~mod~model-data~0.1.10~model-data.js,~mod~react~0.14.1~react.js,~mod~cookie~0.1.2~cookie.js,~mod~xss~0.1.0~xss.js,~mod~cookie~0.2.0~cookie.js,~mod~openapp~0.1.10~openapp.js,~mod~underscore~1.5.3~underscore.js,~mod~mobile-common-nav~1.1.0~mobile-common-nav.js,~mod~fun-base-theme~0.1.3~fun-base-theme.js,~mod~r-tuan-detail-description~0.2.11~r-tuan-detail-description.js,~mod~tpl~0.2.1~tpl.js,~mod~mobile-common~0.1.27~mobile-common.js,~mod~easy-login~0.2.9~easy-login.js,~mod~mobile-common-search~0.4.3~mobile-common-search.js,~mod~huatuo~1.0.6~huatuo.js,~mod~util-m-swipe~0.2.5~util-m-swipe.js,~mod~base-m-lazyload~3.1.5~base-m-lazyload.js,~mod~whereami~0.2.1~whereami.js,~mod~mobile-download-banner~0.1.13~mobile-download-banner.js,~mod~wepp-module-toast~0.1.5~wepp-module-toast.js,~mod~ktv-structure-static~0.1.11~ktv-structure-static.js"></script>
+        <script>
+            facade({entry:"app-m-tuangou/js/page/detail.js"});
+            </script>
+        <footer class="footer">
+            <a href="/tuan">首页</a><em>|</em>
+            <a href="/tuan/receiptlist">我的点评团</a><em>|</em>
+            <a href="http://www.dianping.com/events/m/index.htm">客户端</a><em>|</em>
+            <br>
+            <a href="http://t.dianping.com">电脑版</a><em>|</em>
+            <a href="http://m.dianping.com">大众点评网</a><em>|</em>
+            <a href="http://m.dianping.com/feedback">意见反馈</a>
+            <br>
+            <p class="copyright">copyright 2014 dianping.com</p>
+            <iframe id="J_shop_frameMobile" frameborder="0" src="" style="display:none"></iframe></footer></body></html>
+2016-05-10 19:49:45.036 美团IPad[2425:29311] <html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+            <meta charset="utf-8">
+                <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                        <meta name="format-detection" content="telephone=no">
+                            <meta name="format-detection" content="email=no">
+                                <meta name="apple-mobile-web-app-capable" content="yes">
+                                    <meta name="apple-mobile-web-app-title" content="点评团购触屏版 -成都团购-大众点评团成都站">
+                                        <meta name="apple-itunes-app" content="app-id=351091731">
+                                            <link rel="apple-touch-startup-image" size="640x920" href="//www.dpfile.com/m/img/app/tuangou/startup4.8edce79bb20fe844f45c989336e5935e.png" media="(device-height:480px)">
+                                                <link rel="apple-touch-startup-image" href="//www.dpfile.com/m/img/app/tuangou/startup5.100ee1ca3bfbcf9c295ce8cc91659f60.png" media="(device-height:568px)">
+                                                    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="//www.dpfile.com/m/img/app/tuangou/apple-touch-icon-57x57.b65964186a2866605deb078a5e8d31be.png">
+                                                        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//www.dpfile.com/m/img/app/tuangou/apple-touch-icon-72x72.6956ac9c5c482a13efe1b6bd06e717b6.png">
+                                                            <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//www.dpfile.com/m/img/app/tuangou/apple-touch-icon-114x114.5e782d534b6f7c3f7d928832f0f83613.png">
+                                                                <title>团购详情-大众点评团成都站</title>
+                                                                <script>var G_rtop=+new Date,_gaq=[
+                                                                                                   ['_setAccount','UA-16496742-2'],
+                                                                                                   ['_addOrganic','soso','w'],
+                                                                                                   ['_addOrganic','sogou','query'],
+                                                                                                   ['_addOrganic','yodao','q'],
+                                                                                                   ['_addOrganic','bing','q'],
+                                                                                                   ['_addOrganic','360','q'],
+                                                                                                   ['_addOrganic','gougou','search'],
+                                                                                                   ['_setDomainName', 'http://m.dianping.com'],
+                                                                                                   ['_setAllowHash', false]]
+                                                                                                   dpga=function(key){_gaq.push(['_trackPageview', key||''])},
+                                                                                                   pageTracker={_trackPageview:dpga},_hip=[
+                                                                                                                                           ['_setPageId', 171020],
+                                                                                                                                           ['_setCityId', 8],
+                                                                                                                                           ['_setPVInitData', '']
+                                                                                                                                           ];
+                                                                    </script>
+                                                                
+                                                                
+                                                                <script>
+                                                                    //for weixin share
+                                                                    function weixinShare(type){
+                                                                        var appid = 'wx841a97238d9e17b2';
+                                                                        var img_url = "http://m1.s1.dpfile.com/sc/2014/mobile_pay5/dp_icon_100.png";
+                                                                        var link = window.location.href;
+                                                                        var desc = '团购详情-大众点评团成都站';
+                                                                        var title = '大众点评团';
+                                                                        var shareFriend = function () {
+                                                                            WeixinJSBridge.invoke('sendAppMessage',{
+                                                                                                  "appid":appid,
+                                                                                                  "img_url":img_url,
+                                                                                                  "img_width":"640",
+                                                                                                  "img_height":"640",
+                                                                                                  "link":link,
+                                                                                                  "desc":desc,
+                                                                                                  "title":title
+                                                                                                  },function(res) {
+                                                                                                  _report('send_msg', res.err_msg);
+                                                                                                  })
+                                                                        }
+                                                                        var shareTimeline = function () {
+                                                                            WeixinJSBridge.invoke('shareTimeline',{
+                                                                                                  "appid":appid,
+                                                                                                  "img_url":img_url,
+                                                                                                  "img_width":"640",
+                                                                                                  "img_height":"640",
+                                                                                                  "link":link,
+                                                                                                  "desc":desc,
+                                                                                                  "title":title
+                                                                                                  },function(res) {
+                                                                                                  _report('timeline', res.err_msg);
+                                                                                                  });
+                                                                        }
+                                                                        if(type == 'friend'){
+                                                                            return shareFriend;
+                                                                        }else if(type == 'timeline'){
+                                                                            return shareTimeline;
+                                                                        }
+                                                                    }
+                                                                
+                                                                var shareFriend = weixinShare('friend');
+                                                                var shareTimeline = weixinShare('timeline');
+                                                                document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                                                                                          WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                                                                                                            shareFriend();
+                                                                                                            });
+                                                                                          WeixinJSBridge.on('menu:share:timeline', function(argv){
+                                                                                                            shareTimeline();
+                                                                                                            });
+                                                                                          WeixinJSBridge.invoke("getInstallState",{
+                                                                                                                "packageUrl": "dianping://home",
+                                                                                                                "packageName": "com.dianping.v1"
+                                                                                                                },function(res){
+                                                                                                                });
+                                                                                          }, false);
+                                                                    </script>
+</head>
+
+<body>
+    <link rel="stylesheet" href="http://m1.s2.dpfile.com/concat/~mod~fun-base-theme~0.1.3~css~style.css,~mod~r-tuan-detail-description~0.2.11~css~index.css,~mod~easy-login~0.2.9~css~style.css,~mod~mobile-common-search~0.4.3~css~style.css,~mod~mobile-download-banner~0.1.13~css~style.css,~mod~ktv-structure-static~0.1.11~css~style.css,~mod~app-m-tuangou~1.3.25~css~style.css" type="text/css">
+        <header>
+            <a class="back back-gray" href="javascript:history.go(-1)">返回</a>
+            <div class="info">图文详情</div>
+        </header>
+        <div class="cost-box">
+            <div class="buy-box">
+                <div class="price">¥</div>
+                <div class="price sum">21.2</div>
+                <div class="past Fix">
+                    <div class="t">
+                        <span class="o-price">¥25</span>
+                    </div>
+                </div>
+                
+                
+                <div class="last">
+                    <a onclick="_hip.push(['mv', {module: '5_button_buy', action:'click', type:'up', dealgrp_id:'12331769'}]);" href="/tuan/buy/12345861" class="buy-btn ">
+                        
+                        立即购买
+                    </a>
+                </div>
+            </div>	</div>
+        
+        <div class="detail-info group-detail">
+            <div class="con">
+                <div class="info Fix">
+                    <div class="detail-box"><h3 class="tit">团购详情<i class="icon-comm detail"></i></h3><div class="detail-tit"></div>
+                        <table width="100%" cellpadding="0" cellspacing="0" class="detail-table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">名称</th>
+                                    <th width="25%">数量</th>
+                                    <th width="25%">单价</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>现金券</td>
+                                    <td class="tc">1张</td>
+                                    <td class="tc">25元</td>
+                                </tr>
+                                <tr class="total">
+                                    <td></td>
+                                    <td class="tc">价值<br><strong>团购价</strong></td>
+                                    <td class="tc">25元<br><strong>21.2元</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div><p><b>店内人均消费参考价</b>：18元</p>
+                            <p><b>适用范围</b>：全场通用</p>
+                            <p><b>店内部分菜品价格参考</b>：<br>蛋挞（3.50元/个）<br>毛毛虫面包（4.00元/个）<br>迷你蛋糕（18.00元/个）<br>仙贝蛋糕（5.00元/个）<br>草莓乳酪（10.00元/个）<br>思思面包（4.00元/个）<br>提子吐司（6.50元/个）</p>
+                            <p>以下产品价格仅供参考：</p>
+                            <p>面包类：毛毛虫面包4元/个 &nbsp;提子吐司6.5元/个&nbsp;思思面包4元/个蛋糕类：红枣枸杞蛋糕4.5元/个 仙贝蛋糕5元/个酥点类：红糖酥饼5元/个 花生糖4元/袋 蛋黄沙司12元/盒 &nbsp;草莓乳酪10元/个西点类：迷你蛋糕18元/个 提拉米苏8元/杯 熊宝宝12/盒 蓝莓慕斯8元/杯</p></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detail-info buy-know">
+            <div class="con">
+                <div class="detail-box"><h3 class="tit">购买须知<i class="icon-comm buy"></i></h3><div class="detail-box">
+                    <div class="purchase-notes">
+                        <dl>
+                            <dt>有效期</dt>
+                            <dd>
+                                <p class="listitem">2016-03-24至2016-07-18</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>除外日期</dt>
+                            <dd>
+                                <p class="listitem">有效期内周末、法定节假日通用</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>使用时间</dt>
+                            <dd>
+                                <p class="listitem">团购券24小时可用</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>预约提醒</dt>
+                            <dd>
+                                <p class="listitem">无需预约，消费高峰时可能需要等位</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>规则提醒</dt>
+                            <dd>
+                                <p class="listitem">可叠加使用</p>
+                                <p class="listitem">不兑现、不找零</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>包间</dt>
+                            <dd>
+                                <p class="listitem">可免费使用包间</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>堂食外带</dt>
+                            <dd>
+                                <p class="listitem">堂食外带均可，可免费打包</p>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>温馨提示</dt>
+                            <dd>
+                                <p class="listitem">团购用户不可同时享受商家其他优惠</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="detail-info group-detail">
+            <div class="con">
+                <div class="info Fix">
+                    <div class="detail-box"><h3 class="tit">产品介绍</h3><p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/deal/3267921d26b2384ba39fb03ef5245526113682.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/8f2acf5de0ff91a7c141d332c690d698109522.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/fd572af6732c9299bd6ae40ed472c5f250685.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/35109fc52f133d1e69827d7fe7efb48846304.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/22c5f3d169f8d7d59ebc2cd98c9a017b58544.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/b5b4bfc7ac0c781a75b5e43d8040fe2245034.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/ceb1ad6f2c3a192c7079a9573d8edda957551.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/54debd6f24c059ad907a290a844b889a52938.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/e83a6f325ec68b8b1ba5a9564fb4ed5139279.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/8b41be868963ab152c0eeae21eaa3af059361.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/a29c31f97c84c5b4db786790c70a7ad472892.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/9886a0eb3e3a3a99f73ed048ce72f94e54485.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/dc24e8dae6856f8017470c2b9bb41b7155189.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/d90dc9bf5f78ea14cf6df7c76307fde149449.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detail-info group-detail">
+            <div class="con">
+                <div class="info Fix">
+                    <div class="detail-box"><h3 class="tit">商户介绍</h3><p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/ae7298cbb994d7762e9e7551296b66211075731.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <div><p>四川家佰利食品有限责任公司（原家好食品）创建于上世纪90年代初，位于川西重镇什邡市雍城西路899号，公司目前占地面积5000平方米，家佰利主要生产中式糕点，面包，蛋糕，粽子，月饼等的基础上已经发展成为一家具有现代经营理念的食品企业。年总产值达2000多万元，现有员工总数180余人，直营店分布什邡，广汉，彭州，崇州，温江，邛崃等地。
+                            现有店铺34个公司技术力量雄厚，拥有大批生产技术骨干，专业从事现代食品的研发和生产，并于2007年2月12日正式成立公司-----四川家佰利食品有限责任公司，2007年8月14日注册商标“家佰利”品牌，为德阳市知名品牌，公司长期聘请国内外烘焙大师亲临公司同台制作，推陈出新，在品色和口感等方面，多年来受到消费者的一致好评。自2004年以来，长期评为“消费者信得过单位”，自2005年以来，多次获“全国烘培技术大赛银奖”“四川烘培技术大赛金奖”。为扩大生产能力优化结构，完善生产工艺条件，增强公司的竞争力，提高企业的效益，满足顾客的需求，公司在当地各级政府和部门的大力支持下，决定在今年底开工建设一条现代化的食品生产线，投入资金6800万元，兴建符合高标准高要求的环境空气净化生产车间，仓储，办公区，宿舍区，综合食堂，产品展示区，冷冻冷藏车间，总计占地面积20000多平方米。公司生产经营模式为自产自销，连锁经营以“树形象，创品牌，服务优，高质量”为经营理 念，创造本行业品牌，发展经营规模，不断开发新产品，提高知名度，在全体员工共同努力下发展壮大。家佰利尊重顾客的需求，不断努力，不断进取，将给尊敬的顾客带来天然，健康，美味的食品。</p></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/ef1ab3c9f8c5e74ccda380377d80a42d40510.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/dealwatera/f50ddcc9360263100ee1cfcb96c965c849591.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/bcc5b6677022e27210aad9e8bce4323b48814.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p0.meituan.net/dealwatera/2235f95f2c67b026569132ae45d2b6ec36035.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/1f5376b2e3a876f4a01a20a6739e2e1c1138220.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/b39daaafef9c2d6d620f082442ff6ba91009475.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        <p class="listitem"></p>
+                        <p class="explain"></p>
+                        <div class="img"><img src="http://p1.meituan.net/deal/b11d49d1e2c4d88b9ac0eafdb25dc9c6999751.jpg%40640w_1024h_1e_1l%7Cwatermark%3D1%26%26object%3DL2RwZGVhbC9hMWQ4Yzc5ZjUxZGVlNWZjOGM5MzkwYTBjZDNjODIyZDgxOTIucG5nQDIwUA%3D%3D%26p%3D9%26x%3D20%26y%3D2"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a onclick="_hip.push(['mv', {module: '5_button_buy', action:'click', type:'down', dealgrp_id:'12331769'}]);" href="/tuan/buy/12345861" class="buy-now ">
+            
+            <span>立即购买</span>
+        </a>
+        
+        <script type="text/javascript">_gaq.push(['_trackPageview', 'dealdetail/成都']);</script>
+        
+        <script>!function(n){"use strict";function t(n,t){for(var r in t)n[r]||(n[r]=t[r])}function r(n,r){t(n.prototype,r)}function i(n){var t=n.match(U),r=t[1],i=t[2]||"*",o=t[3]||"";return e({n:r,v:i,p:o})}function e(n){var t=n.n+"@"+n.v;return n.id=t+n.p,n.k=t,n}function o(n,t){return t.map?n:n+".js"}function a(n,t){for(var r in t)n[r]=t[r]}function f(n){var t=n.match(V);return t?t[0]:n}function u(n,t){return h(f(t.p).slice(1),n)}function c(n,t){return n=u(n,t),n?t.k+"/"+n:t.k}function h(n,t){var r=(n+"/"+t).split("/").filter(Boolean);return s(r).join("/")}function s(n){for(var t=0,r=n.length-1;r>=0;r--){var i=n[r];"."===i?n.splice(r,1):".."===i?(n.splice(r,1),t++):t&&(n.splice(r,1),t--)}for(;t--;)n.unshift("..");return n}function l(n){return 0===n.indexOf("./")||0===n.indexOf("../")}function d(n){throw new Error("neuron: "+n)}function v(n){d("Cannot find module '"+n+"'")}function p(n){return W[n]||(W[n]=[])}function g(n,t){p(n).push(t)}function m(n,t){var r=p(n);r.forEach(function(n){n(t)})}function y(n,t){n||d("null id"),t||(t={});var r=t.map||{};n=r[n]||n;var a,f=l(n);if(f?(t.id||v(n),n=c(n,t),n=o(n,t),a=i(n)):(n=t.m&&t.m[n]||n,a=i(n)),a.k===t.k)a.graph=t.graph;else{var u=w(a.k,t.graph)||[];a.graph=u,a.v=u[0]||a.v,e(a)}return a}function w(n,t){var r=rt.graph._,i=t?t[1]:r;return i&&n in i?rt.graph[i[n]]:r}function k(n){return n.loaded?n.exports:O(n)}function O(n){n.loaded=!0;var t=n.exports={},r=P(n.id),i=f(r),e=n.factory;return e(R(n),t,n,r,i),n.exports}function b(n,t,r){var i=y(n,t),e=i.graph,o=E(i),a=o.main?i.k:i.id,f=e[a];return f||(!r||v(n),f=e[a]=j(o),f.graph=e,f.g||(f.g=X++)),f}function x(n,t){G.ready(n,function(){t(k(n))})}function E(n){var t=n.id;return et[t]||(et[t]={n:n.n,v:n.v,p:n.p,id:t,k:n.k,m:{},l:[],main:!n.p})}function j(n){function t(){this.r=[]}return t.prototype=n,new t}function S(n){!~n.indexOf("@")||d("id with '@' is prohibited")}function R(n){var t=function(t){S(t);var r=b(t,n,!0);return k(r)};return t.async=function(t,r){var i=t;if(r){S(t);var e=l(t);if(e){t=c(t,n);var a=n.entries;t=a?L(t,a)||L(t+".js",a)||L(t+".json",a)||v(i):o(t,n)}var f=b(t,n);if(!f.main){if(!e)return;f.a=!0}x(f,r)}},t.resolve=function(t){return l(t)&&(t=u(t,n),!~t.indexOf("../"))?P(n.k+"/"+t):void 0},t}function L(n,t){return~t.indexOf(n)?n:J}function M(n){var t=Y.createElement("script");t.src=n,t.async=!0,nt(t,function(){Z.removeChild(t)}),setTimeout(function(){Z.insertBefore(t,Z.firstChild)},0)}function $(n,t,r,i){i||(i={});var f=y(n);f.p&&(f.p=o(f.p,i),e(f));var u,c=f.k;i.main&&(u=et[c]);var h=et[f.id]=u||et[f.id]||E(f);if(i.main&&(et[c]=h,a(h,f)),a(h,i),!h.factory){h.factory=r,h.deps=t,_(t,h.m);var s=i.asyncDeps;s&&_(s,h.m),B(h,"l")}}function _(n,t){n.forEach(function(n){var r=n.split("@")[0];t[r]=n})}function B(n,t){var r,i=n[t];for(n[t]=J;r=i.pop();)r()}function C(n,t){var r=et[n.id];r.f=n.f,r.a=n.a;var i=r.l;i&&(i.push(t),i.length<2&&I(r))}function I(n){if(!n.d){n.d=!0;var t=n.f,r=n.a,i=n.k;if(~tt.indexOf(i)){if(!t&&!r)return}else tt.push(i);var e=rt.loaded,o=t?n.id:i;if(~e.indexOf(o)){if(!r)return}else e.push(o);M(N(n))}}function N(n){var t=n.main?n.k+"/"+n.n+".js":n.id;return P(t)}function P(n){var t=n.replace("@","/"),r=rt.path;return r||d("config.path must be specified"),r=r.replace("{n}",t.length%3+1),t+=rt.cache===!1?"?f="+K:"",r+t}function T(n,t,r){if(m("beforeready",A(n)+":"+n.g),!n.factory)return m("beforeload",n.id),C(n,function(){m("load",A(n)),T(n,t,r)});var i=n.deps,e=i.length,o=n.r;if(!e||!o)return n.r=J,D(n),t();if(o.push(t),!(o.length>1)){var a=function(){--e||(r.length=0,r=H,D(n),B(n,"r"))};r=r?[n].concat(r):[n],i.forEach(function(t){var i=b(t,n);return~r.indexOf(i)?a():void T(i,a,r)})}}function D(n){m("ready",A(n)+":"+n.g)}function A(n){return n.main?n.k:n.id}function q(n){return n}function z(n){var t,r;for(t in n)r=it[t],r&&(rt[t]=r(n[t]))}function F(n,t){var r=b(n);r.f=!0,x(r,t)}var G={version:"7.1.4"},H=null,J=!1,K=+new Date;G.ready=function(n,t){t()};var Q=TypeError;r(Array,{indexOf:function(n,t){var r=this.length>>>0;for(t=Number(t)||0,t=Math[0>t?"ceil":"floor"](t),0>t&&(t=Math.max(t+r,0));r>t;t++)if(t in this&&this[t]===n)return t;return-1},lastIndexOf:function(n,t){var r=this.length>>>0;for(t=Number(t)||r-1,t=Math[0>t?"ceil":"floor"](t),0>t&&(t+=r),t=Math.min(t,r-1);t>=0;t--)if(t in this&&this[t]===n)return t;return-1},filter:function(n,t){for(var r=[],i=0,e=this.length;e>i;i++)i in this&&n.call(t,this[i],i,this)&&r.push(this[i]);return r},forEach:function(n,t){for(var r=0,i=this.length;i>r;r++)r in this&&n.call(t,this[r],r,this)},every:function(n,t){for(var r=0,i=this.length;i>r;r++)if(r in this&&!n.call(t,this[r],r,this))return!1;return!0},map:function(n,t){for(var r=[],i=0,e=this.length;e>i;i++)i in this&&(r[i]=n.call(t,this[i],i,this));return r},some:function(n,t){for(var r=0,i=this.length;i>r;r++)if(r in this&&n.call(t,this[r],r,this))return!0;return!1},reduce:function(n){if("function"!=typeof n)throw new Q(n+" is not an function");var t,r=this,i=r.length>>>0,e=0;if(arguments.length>1)t=arguments[1];else for(;;){if(e in r){t=r[e++];break}if(++e>=i)throw new Q("Reduce of empty array with on initial value")}for(;i>e;e++)e in r&&(t=n.call(H,t,r[e],e,r));return t},reduceRight:function(n){if("function"!=typeof n)throw new Q(n+" is not an function");var t,r=this,i=r.length>>>0,e=i-1;if(arguments.length>1)t=arguments[1];else for(;;){if(e in r){t=r[e--];break}if(--e<0)throw new Q("Reduce of empty array with on initial value")}for(;e>=0;e--)e in r&&(t=n.call(H,t,r[e],e,r));return t}}),t(Object,{keys:function(){var n=Object.prototype.hasOwnProperty,t=!{toString:""}.propertyIsEnumerable("toString"),r=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],i=r.length;return function(e){if(e!==Object(e))throw new Q("Object.keys called on non-object");var o,a=[];for(o in e)n.call(e,o)&&a.push(o);if(t)for(var f=0;i>f;f++)n.call(e,r[f])&&a.push(r[f]);return a}}()}),r(String,{trimLeft:function(){return this.replace(/^\s+/,"")},trimRight:function(){return this.replace(/\s+$/,"")},trim:function(){return this.trimLeft().trimRight()}});var U=/^((?:[^\/])+?)(?:@([^\/]+))?(\/.*)?$/,V=/.*(?=\/.*$)/,W={};G.on=g;var X=1,Y=document,Z=Y.getElementsByTagName("head")[0],nt=Y.createElement("script").readyState?function(n,t){n.onreadystatechange=function(){var r=n.readyState;("loaded"===r||"complete"===r)&&(n.onreadystatechange=H,t.call(this))}}:function(n,t){n.addEventListener("load",t,!1)},tt=[];G.ready=T;var rt=G.conf={loaded:[],graph:{_:{}}},it={path:function(n){return n.replace(/\/*$/,"/")},loaded:q,graph:q,cache:q};G.config=z,n.neuron=G,n.define=$,n.facade=function(n){F(n.entry,function(t){t.init&&t.init(n.data)})},n._use=function(n,t){F(n,t)},n._load=M;var et=G.mods={}}(this);</script><script>neuron.config({path: "http://m1.s2.dpfile.com/mod", loaded:["app-m-tuangou@1.3.25/js/page/detail.js","wepp-module-event@0.2.1","load-event@0.1.0","env@0.1.1","iscroll@5.0.11","logger@0.1.9","model-data@0.1.10","react@0.14.1","cookie@0.1.2","xss@0.1.0","cookie@0.2.0","openapp@0.1.10","underscore@1.5.3","mobile-common-nav@1.1.0","fun-base-theme@0.1.3","r-tuan-detail-description@0.2.11","tpl@0.2.1","mobile-common@0.1.27","easy-login@0.2.9","mobile-common-search@0.4.3","huatuo@1.0.6","util-m-swipe@0.2.5","base-m-lazyload@3.1.5","whereami@0.2.1","mobile-download-banner@0.1.13","wepp-module-toast@0.1.5","ktv-structure-static@0.1.11"], graph:{"0":["1.3.25",{"r-tuan-detail-description@~0.2.0":1,"util-m-swipe@~0.2.5":7,"tpl@~0.2.1":8,"mobile-download-banner@~0.1.0":9,"fun-base-theme@~0.1.3":13,"wepp-module-toast@~0.1.0":14,"mobile-common@~0.1.0":17,"underscore@~1.5.0":18,"cookie@~0.1.0":12,"openapp@~0.1.3":10,"whereami@~0.2.1":19,"ktv-structure-static@~0.1.11":28,"mobile-common-search@~0.4.3":29,"mobile-common-nav@~1.1.0":31,"huatuo@^1.0.3":33,"logger@~0.1.8":3,"env@~0.1.1":4,"base-m-lazyload@^3.1.4":34,"zepto-wepp@~1.1.0":11,"easy-login@~0.2.3":35}],"1":["0.2.11",{"model-data@~0.1.9":2,"logger@~0.1.8":3,"react@~0.14.1":6,"env@~0.1.1":4}],"2":["0.1.10"],"3":["0.1.9",{"env@~0.1.0":4,"load-event@~0.1.0":5}],"4":["0.1.1"],"5":["0.1.0"],"6":["0.14.1"],"7":["0.2.5"],"8":["0.2.1"],"9":["0.1.13",{"openapp@~0.1.1":10,"zepto-wepp@~1.1.4":11,"cookie@~0.1.2":12}],"10":["0.1.10"],"11":["1.1.6"],"12":["0.1.2"],"13":["0.1.3"],"14":["0.1.5",{"wepp-module-overlay@~0.2.0":15,"zepto-wepp@~1.1.0":11}],"15":["0.2.2",{"wepp-module-event@~0.2.0":16,"zepto-wepp@~1.1.0":11}],"16":["0.2.1"],"17":["0.1.27",{"cookie@~0.1.0":12,"zepto-wepp@~1.1.0":11}],"18":["1.5.3"],"19":["0.2.1",{"cookie@~0.2.0":20,"weixin-js-sdk-loader@~0.1.0":21,"dpapp@^1.1.11":22}],"20":["0.2.0"],"21":["0.1.1"],"22":["1.4.2",{"dpapp-core@^1.1.1":23,"mix@^1.0.1":26,"dpapp-share@~0.1.0":27}],"23":["1.1.2",{"promise@^6.1.0":24,"mix@^1.0.1":26}],"24":["6.1.0",{"asap@^1.0.0":25}],"25":["1.0.0"],"26":["1.0.1"],"27":["0.1.0"],"28":["0.1.11",{"underscore@^1.5.3":18,"zepto-wepp@^1.1.6":11}],"29":["0.4.3",{"xss@~0.1.0":30,"zepto-wepp@~1.1.4":11}],"30":["0.1.0"],"31":["1.1.0",{"wepp-module-overlay@~0.2.0":15,"zepto-wepp@~1.1.4":11,"iscroll@~5.0.10":32}],"32":["5.0.11"],"33":["1.0.6",{"env@~0.1.1":4,"logger@~0.1.6":3}],"34":["3.1.5"],"35":["0.2.9"],"_":{"app-m-tuangou@*":0}}})</script>
+        <script async="" src="http://m1.s2.dpfile.com/concat/~mod~app-m-tuangou~1.3.25~js~page~detail.js,~mod~wepp-module-event~0.2.1~wepp-module-event.js,~mod~load-event~0.1.0~load-event.js,~mod~env~0.1.1~env.js,~mod~iscroll~5.0.11~iscroll.js,~mod~logger~0.1.9~logger.js,~mod~model-data~0.1.10~model-data.js,~mod~react~0.14.1~react.js,~mod~cookie~0.1.2~cookie.js,~mod~xss~0.1.0~xss.js,~mod~cookie~0.2.0~cookie.js,~mod~openapp~0.1.10~openapp.js,~mod~underscore~1.5.3~underscore.js,~mod~mobile-common-nav~1.1.0~mobile-common-nav.js,~mod~fun-base-theme~0.1.3~fun-base-theme.js,~mod~r-tuan-detail-description~0.2.11~r-tuan-detail-description.js,~mod~tpl~0.2.1~tpl.js,~mod~mobile-common~0.1.27~mobile-common.js,~mod~easy-login~0.2.9~easy-login.js,~mod~mobile-common-search~0.4.3~mobile-common-search.js,~mod~huatuo~1.0.6~huatuo.js,~mod~util-m-swipe~0.2.5~util-m-swipe.js,~mod~base-m-lazyload~3.1.5~base-m-lazyload.js,~mod~whereami~0.2.1~whereami.js,~mod~mobile-download-banner~0.1.13~mobile-download-banner.js,~mod~wepp-module-toast~0.1.5~wepp-module-toast.js,~mod~ktv-structure-static~0.1.11~ktv-structure-static.js"></script>
+        <script>
+            facade({entry:"app-m-tuangou/js/page/detail.js"});
+            </script>
+        <footer class="footer">
+            <a href="/tuan">首页</a><em>|</em>
+            <a href="/tuan/receiptlist">我的点评团</a><em>|</em>
+            <a href="http://www.dianping.com/events/m/index.htm">客户端</a><em>|</em>
+            <br>
+            <a href="http://t.dianping.com">电脑版</a><em>|</em>
+            <a href="http://m.dianping.com">大众点评网</a><em>|</em>
+            <a href="http://m.dianping.com/feedback">意见反馈</a>
+            <br>
+            <p class="copyright">copyright 2014 dianping.com</p>
+            <iframe id="J_shop_frameMobile" frameborder="0" src="" style="display:none"></iframe>
+        </footer>
+        
+        <script>
+            try{
+                window.onload =function(){
+                    document.body.scrollTop = 1;
+                }
+            }catch(e){
+                
+            }
+        </script>
+        <script type="text/javascript" src="//www.dpfile.com/hls/hippo2.min.376e5aee201f773050a4842e4fd097c4.js"></script>
+</body></html>

@@ -10,6 +10,7 @@
 		330C64F41CE0D1F3005E2A97 /* MTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C64F21CE0D1F3005E2A97 /* MTDetailViewController.m */; };
 		330C64F51CE0D1F3005E2A97 /* MTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330C64F31CE0D1F3005E2A97 /* MTDetailViewController.xib */; };
 		3318960F1CD3845D00C59260 /* MTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3318960E1CD3845D00C59260 /* MTNavigationController.m */; };
+		331B18881CE2029F009C69D7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 331B18871CE2029F009C69D7 /* test.html */; };
 		3334C3421CD38B6900D42F7C /* MTHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */; };
 		3334C3451CD38DD000D42F7C /* MTConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3441CD38DD000D42F7C /* MTConstant.m */; };
 		3334C3481CD3912900D42F7C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334C3471CD3912900D42F7C /* UIView+Extension.m */; };
@@ -116,6 +117,7 @@
 		330C64F31CE0D1F3005E2A97 /* MTDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDetailViewController.xib; sourceTree = "<group>"; };
 		3318960D1CD3845D00C59260 /* MTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNavigationController.h; sourceTree = "<group>"; };
 		3318960E1CD3845D00C59260 /* MTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNavigationController.m; sourceTree = "<group>"; };
+		331B18871CE2029F009C69D7 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		3334C3401CD38B6900D42F7C /* MTHomeCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeCollectionController.h; sourceTree = "<group>"; };
 		3334C3411CD38B6900D42F7C /* MTHomeCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeCollectionController.m; sourceTree = "<group>"; };
 		3334C3431CD38DD000D42F7C /* MTConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTConstant.h; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				339C0BDC1CDF522400D133A9 /* Search(搜索) */,
 				335AD7631CD3815700335CC3 /* Home(首页) */,
 				335AD7671CD3815700335CC3 /* Main(主要) */,
+				331B18871CE2029F009C69D7 /* test.html */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				3334C3551CD3A3D400D42F7C /* categories.plist in Resources */,
 				3334C3561CD3A3D400D42F7C /* cities.plist in Resources */,
 				339C0BD41CDF2B9100D133A9 /* MJRefresh.bundle in Resources */,
+				331B18881CE2029F009C69D7 /* test.html in Resources */,
 				339C0BC11CDF2AF400D133A9 /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

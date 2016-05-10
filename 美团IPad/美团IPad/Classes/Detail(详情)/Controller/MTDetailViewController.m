@@ -49,10 +49,36 @@
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
         
     } else {//更多详情加载完成
-        //显示webView
-        self.webView.hidden = NO;
-        //网络加载动画停止
-        [self.activityIndicator stopAnimating];
+        NSMutableString *js = [NSMutableString string];
+        //删除头部header
+        [js appendString:@"var header = document.getElementsByTagName('header')[0];"];
+        [js appendString:@"header.parentNode.removeChild(header);"];
+        // 删除顶部的购买
+        [js appendString:@"var box = document.getElementsByClassName('cost-box')[0];"];
+        [js appendString:@"box.parentNode.removeChild(box);"];
+        // 删除底部部的购买
+        [js appendString:@"var buyNow = document.getElementsByClassName('buy-now')[0];"];
+        [js appendString:@"buyNow.parentNode.removeChild(buyNow);"];
+        // 删除footer
+        [js appendString:@"var footer = document.getElementsByTagName('footer')[0];"];
+        [js appendString:@"footer.parentNode.removeChild(footer);"];
+
+        //执行js代码
+        [webView stringByEvaluatingJavaScriptFromString:js];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //显示webView
+            self.webView.hidden = NO;
+            //网络加载动画停止
+            [self.activityIndicator stopAnimating];
+        });
+        
+        
+        
+        
+        //        //获得网页数据
+        //        NSString *html = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].outerHTML;"];
+        //        NSLog(@"%@",html);
     }
 }
 
