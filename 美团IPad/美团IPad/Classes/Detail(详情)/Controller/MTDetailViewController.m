@@ -10,8 +10,9 @@
 #import "MTConstant.h"
 #import "MTDeals.h"
 
-@interface MTDetailViewController ()
+@interface MTDetailViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -22,7 +23,12 @@
     
     self.view.backgroundColor = MTHomeBg;
     
+    //隐藏webView
+    self.webView.hidden = YES;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.deal.deal_h5_url]]];
+    //网络加载动画开始
+    [self.activityIndicator startAnimating];
+    
 }
 
 /**
@@ -30,6 +36,24 @@
  */
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskLandscape;
+}
+
+#pragma mark - UIWebViewDelegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    //MTLog(@"%@--%@",self.deal.deal_id, webView.request.URL.absoluteString);
+    if ([self.deal.deal_h5_url isEqualToString:webView.request.URL.absoluteString]) {
+        NSString *deal_id = [self.deal.deal_id substringFromIndex:[self.deal.deal_id rangeOfString:@"-"].location + 1];
+        //MTLog(@"%@", deal_id);
+        //更多详情的界面
+        NSString *urlStr = [NSString stringWithFormat:@"http://m.dianping.com/tuan/deal/moreinfo/%@", deal_id];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+        
+    } else {//更多详情加载完成
+        //显示webView
+        self.webView.hidden = NO;
+        //网络加载动画停止
+        [self.activityIndicator stopAnimating];
+    }
 }
 
 

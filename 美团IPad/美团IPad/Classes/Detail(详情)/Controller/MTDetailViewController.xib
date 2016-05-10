@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MTDetailViewController">
             <connections>
+                <outlet property="activityIndicator" destination="SIW-Qe-eK5" id="IiQ-Gz-z2b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="RSd-cz-csw" id="2RX-mV-694"/>
             </connections>
@@ -26,16 +27,24 @@
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSd-cz-csw">
                     <rect key="frame" x="405" y="0.0" width="195" height="600"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="hfq-oD-NPD"/>
+                    </connections>
                 </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SIW-Qe-eK5">
+                    <rect key="frame" x="492" y="290" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="SIW-Qe-eK5" firstAttribute="centerX" secondItem="RSd-cz-csw" secondAttribute="centerX" id="3QF-la-oE8"/>
                 <constraint firstItem="RSd-cz-csw" firstAttribute="leading" secondItem="5se-nT-iBV" secondAttribute="trailing" constant="5" id="ObM-G2-WWE"/>
                 <constraint firstAttribute="trailing" secondItem="RSd-cz-csw" secondAttribute="trailing" id="RFq-9T-DOz"/>
                 <constraint firstAttribute="bottom" secondItem="5se-nT-iBV" secondAttribute="bottom" id="abO-hx-Fk1"/>
                 <constraint firstItem="5se-nT-iBV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="egO-xb-jFk"/>
                 <constraint firstItem="RSd-cz-csw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fdE-pj-LFI"/>
                 <constraint firstItem="5se-nT-iBV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mpk-Kl-44C"/>
+                <constraint firstItem="SIW-Qe-eK5" firstAttribute="centerY" secondItem="RSd-cz-csw" secondAttribute="centerY" id="qiM-e5-qUp"/>
                 <constraint firstAttribute="bottom" secondItem="RSd-cz-csw" secondAttribute="bottom" id="rNt-CW-qZa"/>
             </constraints>
         </view>
