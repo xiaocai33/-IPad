@@ -10,8 +10,12 @@
 #import "MTConstant.h"
 #import "MTDeals.h"
 #import "UIImageView+WebCache.h"
+#import "DPAPI.h"
+#import "MBProgressHUD+MJ.h"
+#import "MJExtension.h"
+#import "MTRestrictions.h"
 
-@interface MTDetailViewController () <UIWebViewDelegate>
+@interface MTDetailViewController () <UIWebViewDelegate, DPRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 /** 订单详情图片 */
@@ -26,8 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *collectBtn;
 /** 订单随时退 */
 @property (weak, nonatomic) IBOutlet UIButton *refundableAnyTimeButton;
-/** 订单过期退 */
-@property (weak, nonatomic) IBOutlet UIButton *refundableExpireButton;
+/** 订单是否需要提前预约 */
+@property (weak, nonatomic) IBOutlet UIButton *reservationRequiredButton;
 /** 订单剩余时间 */
 @property (weak, nonatomic) IBOutlet UIButton *leftTimeButton;
 /** 订单购买人数 */
@@ -79,8 +83,31 @@
         [self.leftTimeButton setTitle:[NSString stringWithFormat:@"剩余%zd天%zd小时%zd分", cmps.day,cmps.hour,cmps.minute] forState:UIControlStateNormal];
     }
     
+    // 发送请求获得更详细的团购数据
+    DPAPI *api = [[DPAPI alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    // 页码
+    params[@"deal_id"] = self.deal.deal_id;
+    [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    
 }
 
+#pragma mark - DPRequestDelegate
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
+    //NSLog(@"%@",result);
+    self.deal = [MTDeals objectWithKeyValues:[result[@"deals"] firstObject]];
+
+    //设置退款预约消息
+    self.refundableAnyTimeButton.selected = self.deal.restrictions.is_refundable;
+    self.reservationRequiredButton.selected = self.deal.restrictions.is_reservation_required;
+}
+
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error{
+    [MBProgressHUD showError:@"网络超时,请稍后再试..." toView:self.view];
+}
+
+
+#pragma mark - 返回控制器支持的方向
 /**
  *  返回控制器支持的方向(横屏)
  */

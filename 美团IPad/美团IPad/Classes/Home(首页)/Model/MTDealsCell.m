@@ -176,7 +176,15 @@
     //订单描述
     self.descLabel.text = deal.desc;
     //现价
+    //NSLog(@"%@", deal.current_price);
     self.currentPriceLabel.text = [NSString stringWithFormat:@"¥ %@", deal.current_price];
+    NSUInteger currentDotLoc = [self.currentPriceLabel.text rangeOfString:@"."].location;
+    if (currentDotLoc != NSNotFound) {
+        // 超过2位小数
+        if (self.currentPriceLabel.text.length - currentDotLoc > 3) {
+            self.currentPriceLabel.text = [self.currentPriceLabel.text substringToIndex:currentDotLoc + 2];
+        }
+    }
     //原价
     self.listPriceLabel.text = [NSString stringWithFormat:@"¥ %@", deal.list_price];
     NSUInteger dotLoc = [self.listPriceLabel.text rangeOfString:@"."].location;

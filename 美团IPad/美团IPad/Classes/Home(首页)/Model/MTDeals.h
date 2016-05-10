@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class MTRestrictions;
 @interface MTDeals : NSObject
 /** 团购单ID */
 @property (copy, nonatomic) NSString *deal_id;
@@ -33,4 +33,6 @@
 /** string	团购HTML5页面链接，适用于移动应用和联网车载应用 */
 @property (nonatomic, copy) NSString *deal_h5_url;
 
+/** MTRestrictions	附加信息 */
+@property (nonatomic, strong) MTRestrictions *restrictions;
 @end

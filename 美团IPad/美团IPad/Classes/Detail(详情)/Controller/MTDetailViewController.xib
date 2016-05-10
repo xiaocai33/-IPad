@@ -15,7 +15,7 @@
                 <outlet property="haveBuyNow" destination="Fak-7X-Xf4" id="wdP-IX-8Nd"/>
                 <outlet property="leftTimeButton" destination="0Ff-0p-0qD" id="YhM-0u-BnW"/>
                 <outlet property="refundableAnyTimeButton" destination="lii-5M-XyG" id="j1x-2J-VDC"/>
-                <outlet property="refundableExpireButton" destination="ObD-Mk-A52" id="kqe-P2-PWj"/>
+                <outlet property="reservationRequiredButton" destination="ObD-Mk-A52" id="PCC-TH-XVh"/>
                 <outlet property="sharedBtn" destination="W0g-75-MUU" id="ytx-Xx-cjL"/>
                 <outlet property="titleLabel" destination="zlC-pc-gDx" id="BNi-Ml-2Fc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -144,7 +144,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            <state key="normal" title="支持过期退" image="icon_order_unrefundable">
+                                            <state key="normal" title="是否需要提前预约" image="icon_order_unrefundable">
                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <state key="selected" image="icon_order_refundable"/>
