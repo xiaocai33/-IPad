@@ -14,6 +14,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "MJExtension.h"
 #import "MTRestrictions.h"
+#import "MTDealTool.h"
 
 @interface MTDetailViewController () <UIWebViewDelegate, DPRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -89,6 +90,9 @@
     // 页码
     params[@"deal_id"] = self.deal.deal_id;
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    
+    //判断当前团购是否被收藏
+    self.collectBtn.selected = [MTDealTool isCollected:self.deal];
     
 }
 
@@ -167,17 +171,27 @@
 }
 
 /**
+ *  收藏
+ */
+- (IBAction)collect:(UIButton *)btn {
+    if(btn.selected){//已经收藏过了 再次单击 移除
+        [MTDealTool removeCollectDeal:self.deal];
+        [MBProgressHUD showSuccess:@"取消收藏成功" toView:self.view];
+    }else{ //收藏
+        [MTDealTool addCollectDeal:self.deal];
+        [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
+    }
+    
+    //是否选中取反
+    btn.selected = !btn.isSelected;
+    
+}
+
+/**
  *  立即购买
  */
 - (IBAction)buy {
 }
-
-/**
- *  收藏
- */
-- (IBAction)collect:(UIButton *)sender {
-}
-
 
 
 @end
