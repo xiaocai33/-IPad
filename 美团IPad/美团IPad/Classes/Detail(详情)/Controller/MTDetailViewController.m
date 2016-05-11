@@ -64,11 +64,13 @@
     
     //图片
     [self.dealImageView sd_setImageWithURL:[NSURL URLWithString:self.deal.image_url] placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
+    //NSLog(@"%@", self.deal.image_url);
     
     //计算过期时间
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"yyyy-MM-dd";
     NSDate *deadline = [fmt dateFromString:self.deal.purchase_deadline];
+    
     //延迟1天
     deadline = [deadline dateByAddingTimeInterval:24 * 3600];
     
@@ -84,12 +86,15 @@
         [self.leftTimeButton setTitle:[NSString stringWithFormat:@"剩余%zd天%zd小时%zd分", cmps.day,cmps.hour,cmps.minute] forState:UIControlStateNormal];
     }
     
-    // 发送请求获得更详细的团购数据
-    DPAPI *api = [[DPAPI alloc] init];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    // 页码
-    params[@"deal_id"] = self.deal.deal_id;
-    [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    //在子线程中执行
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 发送请求获得更详细的团购数据
+        DPAPI *api = [[DPAPI alloc] init];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        // 页码
+        params[@"deal_id"] = self.deal.deal_id;
+        [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    });
     
     //判断当前团购是否被收藏
     self.collectBtn.selected = [MTDealTool isCollected:self.deal];
@@ -98,16 +103,24 @@
 
 #pragma mark - DPRequestDelegate
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
-    //NSLog(@"%@",result);
-    self.deal = [MTDeals objectWithKeyValues:[result[@"deals"] firstObject]];
-
-    //设置退款预约消息
-    self.refundableAnyTimeButton.selected = self.deal.restrictions.is_refundable;
-    self.reservationRequiredButton.selected = self.deal.restrictions.is_reservation_required;
+    
+    //回到主线程加载界面
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //NSLog(@"%@",result);
+        self.deal = [MTDeals objectWithKeyValues:[result[@"deals"] firstObject]];
+        
+        //设置退款预约消息
+        self.refundableAnyTimeButton.selected = self.deal.restrictions.is_refundable;
+        self.reservationRequiredButton.selected = self.deal.restrictions.is_reservation_required;
+    });
+    
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error{
-    [MBProgressHUD showError:@"网络超时,请稍后再试..." toView:self.view];
+    //回到主线程加载界面
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showError:@"网络超时,请稍后再试..." toView:self.view];
+    });
 }
 
 
@@ -147,19 +160,14 @@
         //执行js代码
         [webView stringByEvaluatingJavaScriptFromString:js];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //显示webView
-            self.webView.hidden = NO;
-            //网络加载动画停止
-            [self.activityIndicator stopAnimating];
-        });
+        //显示webView
+        self.webView.hidden = NO;
+        //网络加载动画停止
+        [self.activityIndicator stopAnimating];
         
-        
-        
-        
-        //        //获得网页数据
-        //        NSString *html = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].outerHTML;"];
-        //        NSLog(@"%@",html);
+//        //获得网页数据
+//        NSString *html = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].outerHTML;"];
+//        NSLog(@"%@",html);
     }
 }
 
@@ -174,16 +182,26 @@
  *  收藏
  */
 - (IBAction)collect:(UIButton *)btn {
+    
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    info[MTCollectDealKey] = self.deal;
+    
     if(btn.selected){//已经收藏过了 再次单击 移除
         [MTDealTool removeCollectDeal:self.deal];
         [MBProgressHUD showSuccess:@"取消收藏成功" toView:self.view];
+        info[MTIsCollectKey] = @(NO);
     }else{ //收藏
         [MTDealTool addCollectDeal:self.deal];
         [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
+        info[MTIsCollectKey] = @(YES);
     }
     
     //是否选中取反
     btn.selected = !btn.isSelected;
+    
+    //发送通知
+    [MTNotificationCenter postNotificationName:MTCollectStateDidChangeNotification object:nil userInfo:info];
+    
     
 }
 

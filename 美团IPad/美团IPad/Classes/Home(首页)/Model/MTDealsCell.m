@@ -169,6 +169,7 @@
 
 - (void)setDeal:(MTDeals *)deal{
     _deal = deal;
+    //NSLog(@"setDeal---%@", deal.image_url);
     
     [self.dealImageView sd_setImageWithURL:[NSURL URLWithString:deal.image_url] placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
     //订单名称

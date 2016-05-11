@@ -46,3 +46,9 @@ extern NSString *const MTSelectRegion;
 /** 选中的子区域名称 */
 extern NSString *const MTSelectSubregionName;
 
+/** 收藏改变通知 */
+extern NSString *const MTCollectStateDidChangeNotification;
+/** 是否收藏 */
+extern NSString *const MTIsCollectKey;
+/** 收藏订单详情 */
+extern NSString *const MTCollectDealKey;

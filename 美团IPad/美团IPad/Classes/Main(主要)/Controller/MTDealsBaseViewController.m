@@ -173,7 +173,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     //MTLog(@"%zd", self.deals.count);
     
-    //设置下拉控件的显示
+    //设置上拉控件的显示
     self.collectionView.footerHidden = (self.totalCount == self.deals.count);
     
     //数据的显示

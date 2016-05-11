@@ -7,6 +7,7 @@
 //
 
 #import "MTNavigationController.h"
+#import "MTConstant.h"
 
 @interface MTNavigationController ()
 
@@ -19,6 +20,11 @@
     //设置所有导航栏的样式
     UINavigationBar *bar = [UINavigationBar appearance];
     [bar setBackgroundImage:[UIImage imageNamed:@"bg_navigationBar_normal"] forBarMetrics:UIBarMetricsDefault];
+    
+    //设置所有 UIBarButtonItem 的样式
+    UIBarButtonItem *item = [UIBarButtonItem appearance];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : MTHomeColor(21, 188, 173)} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateDisabled];
 }
 
 - (void)viewDidLoad {
