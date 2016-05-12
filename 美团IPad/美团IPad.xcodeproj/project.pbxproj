@@ -98,6 +98,7 @@
 		339C0BED1CDF5F0400D133A9 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BEB1CDF5F0400D133A9 /* AwesomeMenuItem.m */; };
 		339C0BF41CDF686200D133A9 /* MTCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BF31CDF686200D133A9 /* MTCollectViewController.m */; };
 		339C0BF71CDF687700D133A9 /* MTRecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0BF61CDF687700D133A9 /* MTRecentViewController.m */; };
+		33D53CAE1CE4C83500E3F670 /* MTCRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D53CAD1CE4C83500E3F670 /* MTCRBaseViewController.m */; };
 		33E5B60D1CDA080A009B5897 /* MTDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60C1CDA080A009B5897 /* MTDataTool.m */; };
 		33E5B6101CDA0A8B009B5897 /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B60F1CDA0A8B009B5897 /* MTSort.m */; };
 		33E5B6131CDA1FB8009B5897 /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5B6121CDA1FB8009B5897 /* MTSortViewController.m */; };
@@ -298,6 +299,8 @@
 		339C0BF31CDF686200D133A9 /* MTCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCollectViewController.m; sourceTree = "<group>"; };
 		339C0BF51CDF687700D133A9 /* MTRecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRecentViewController.h; sourceTree = "<group>"; };
 		339C0BF61CDF687700D133A9 /* MTRecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRecentViewController.m; sourceTree = "<group>"; };
+		33D53CAC1CE4C83500E3F670 /* MTCRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCRBaseViewController.h; sourceTree = "<group>"; };
+		33D53CAD1CE4C83500E3F670 /* MTCRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCRBaseViewController.m; sourceTree = "<group>"; };
 		33E5B60B1CDA080A009B5897 /* MTDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDataTool.h; sourceTree = "<group>"; };
 		33E5B60C1CDA080A009B5897 /* MTDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDataTool.m; sourceTree = "<group>"; };
 		33E5B60E1CDA0A8B009B5897 /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				3318960E1CD3845D00C59260 /* MTNavigationController.m */,
 				339C0BE11CDF54AC00D133A9 /* MTDealsBaseViewController.h */,
 				339C0BE21CDF54AC00D133A9 /* MTDealsBaseViewController.m */,
+				33D53CAC1CE4C83500E3F670 /* MTCRBaseViewController.h */,
+				33D53CAD1CE4C83500E3F670 /* MTCRBaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -958,6 +963,7 @@
 				33864E011CD78814007ED5A1 /* MTRegion.m in Sources */,
 				339C0BD71CDF2B9100D133A9 /* MJRefreshFooterView.m in Sources */,
 				3334C3811CD3A7CC00D42F7C /* MTCategoryViewController.m in Sources */,
+				33D53CAE1CE4C83500E3F670 /* MTCRBaseViewController.m in Sources */,
 				33864DF21CD72587007ED5A1 /* MTSubHomeTableCell.m in Sources */,
 				33864DFE1CD769E6007ED5A1 /* MTCitiy.m in Sources */,
 				339C0BAA1CDF01F500D133A9 /* MKAnnotationView+WebCache.m in Sources */,

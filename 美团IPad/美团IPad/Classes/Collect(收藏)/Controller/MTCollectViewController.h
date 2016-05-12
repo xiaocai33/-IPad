@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface MTCollectViewController : UICollectionViewController
+#import "MTCRBaseViewController.h"
+@interface MTCollectViewController : MTCRBaseViewController
 
 @end

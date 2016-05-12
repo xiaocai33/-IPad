@@ -211,6 +211,8 @@
  *  立即购买
  */
 - (IBAction)buy {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.deal.deal_url]];
+    
 }
 
 
