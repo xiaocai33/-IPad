@@ -30,6 +30,11 @@
 @property (nonatomic, weak) MTCenterLineLabel *listPriceLabel;
 /** 订单销售量 */
 @property (nonatomic, weak) UILabel *purchaseCountLabel;
+
+/** 遮盖按钮 */
+@property (nonatomic, weak) UIButton *coverBtn;
+/** 选中图片View */
+@property (nonatomic, weak) UIImageView *checkView;
 @end
 
 @implementation MTDealsCell
@@ -81,6 +86,23 @@
     
     //底部描述\价格详情View
     [self setupDetailView];
+    
+    UIButton *coverBtn = [[UIButton alloc] init];
+    coverBtn.backgroundColor = [UIColor whiteColor];
+    coverBtn.alpha = 0.7;
+    //coverBtn.hidden = YES;
+    [coverBtn addTarget:self action:@selector(coverBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:coverBtn];
+    self.coverBtn = coverBtn;
+    
+    coverBtn.sd_layout.leftEqualToView(self).rightEqualToView(self).topEqualToView(self).bottomEqualToView(self);
+    
+    UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_choosed"]]; //26
+    //checkView.hidden = YES;
+    [self addSubview:checkView];
+    self.checkView = checkView;
+    
+    checkView.sd_layout.bottomEqualToView(self).rightEqualToView(self).heightIs(26).widthIs(26);
 }
 
 /**
@@ -207,6 +229,10 @@
     // 隐藏: 发布日期 < 今天
     self.dealNewImage.hidden = ([deal.publish_date compare:nowStr] == NSOrderedAscending);
     
+}
+
+- (void)coverBtnClick:(UIButton *)btn{
+
 }
 
 @end
