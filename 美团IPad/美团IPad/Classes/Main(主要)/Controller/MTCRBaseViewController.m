@@ -163,13 +163,12 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - 上拉加载
 - (void)loadMoreDeals{
     
+    // 1 页数加1
     self.currentPage++;
     
-    //1 添加新收藏数据
-    //NSMutableArray *arrayM = [NSMutableArray array];
+    //2 添加新收藏数据
     [self setupArray:self.deals withCount:self.currentPage];
-    //NSLog(@"CR---%zd", arrayM.count);
-    
+
     //[self.deals addObjectsFromArray:arrayM];
     
     //2 刷新表格
@@ -236,7 +235,8 @@ static NSString * const reuseIdentifier = @"Cell";
     for (MTDeals *deal in self.deals) {
         if (deal.isChecking) {
             [tempArray addObject:deal];
-            [MTDealTool removeCollectDeal:deal];
+            
+            [self removeDeal:deal];
         }
     }
     
@@ -278,7 +278,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self viewWillTransitionToSize:collectionView.size withTransitionCoordinator:nil];
     
     //设置上拉控件的显示
-    self.collectionView.footerHidden = ([MTDealTool collectDealsCount] == self.deals.count);
+    self.collectionView.footerHidden = ([self allCount] == self.deals.count);
     
     //数据的显示
     self.noDataView.hidden = (self.deals.count != 0);

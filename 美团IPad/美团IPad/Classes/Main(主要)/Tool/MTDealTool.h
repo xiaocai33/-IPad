@@ -30,4 +30,26 @@
  */
 + (BOOL)isCollected:(MTDeals *)deal;
 
+
+/**
+ *  返回第page页的最近团购数据:page从1开始
+ */
++ (NSArray *)recentDeals:(int)page;
+/**
+ *  最近团购的数目
+ */
++ (int)recentDealsCount;
+/**
+ *  最近一个团购
+ */
++ (void)addRecentDeal:(MTDeals *)deal;
+/**
+ *  删除最近一个团购
+ */
++ (void)removeRecentDeal:(MTDeals *)deal;
+/**
+ *  最近是否浏览该团购
+ */
++ (BOOL)isRecented:(MTDeals *)deal;
+
 @end

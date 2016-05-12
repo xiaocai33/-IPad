@@ -18,20 +18,32 @@
 
 @implementation MTCollectViewController
 
-- (void)setupArray:(NSMutableArray *)array withCount:(int)count{
-    
-    [array addObjectsFromArray:[MTDealTool collectDeals:count]];
-    NSLog(@"%zd---%zd", array.count, count);
-    
-    [self.collectionView footerBeginRefreshing];
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"收藏的团购";
     
 }
+
+#pragma mark - 实现父控制的接口
+/**
+ *  <#Description#>
+ */
+- (void)setupArray:(NSMutableArray *)array withCount:(int)count{
+    
+    [array addObjectsFromArray:[MTDealTool collectDeals:count]];
+    
+    [self.collectionView footerBeginRefreshing];
+}
+
+- (int)allCount{
+    return [MTDealTool collectDealsCount];
+}
+
+- (void)removeDeal:(MTDeals *)deal{
+    [MTDealTool removeCollectDeal:deal];
+}
+
+
 
 @end

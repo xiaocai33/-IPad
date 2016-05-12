@@ -66,4 +66,46 @@ static FMDatabase *_db;
     return [set intForColumn:@"deal_count"];
 }
 
+
+/** 添加最近一个团购 */
++ (void)addRecentDeal:(MTDeals *)deal{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:deal];
+    [_db executeUpdateWithFormat:@"INSERT INTO t_recent_deal(deal, deal_id) VALUES (%@, %@);", data, deal.deal_id];
+}
+/** 删除最近一个团购 */
++ (void)removeRecentDeal:(MTDeals *)deal{
+    [_db executeUpdateWithFormat:@"DELETE FROM t_recent_deal WHERE deal_id = %@;", deal.deal_id];
+}
+
+/** 返回第page页的最近团购数据:page从1开始 */
++ (NSArray *)recentDeals:(int)page{
+    int size = 20;
+    int pos = (page - 1) * size;
+    
+    FMResultSet *set =[_db executeQueryWithFormat:@"SELECT * FROM t_recent_deal ORDER BY id DESC LIMIT %d,%d;", pos, size];
+    NSMutableArray *deals = [NSMutableArray array];
+    while (set.next) {
+        NSData *data = [set objectForColumnName:@"deal"];
+        MTDeals *deal = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        [deals addObject:deal];
+    }
+    
+    return deals;
+}
+
+/** 最近是否浏览该团购 */
++ (BOOL)isRecented:(MTDeals *)deal{
+    FMResultSet *set = [_db executeQueryWithFormat:@"SELECT count(*) AS recent_count FROM t_recent_deal WHERE deal_id = %@;", deal.deal_id];
+    [set next];
+    return [set intForColumn:@"recent_count"] == 1;
+}
+
+/** 最近团购的数目 */
++ (int)recentDealsCount{
+    FMResultSet *set = [_db executeQuery:@"SELECT count(*) AS recent_count FROM t_recent_deal;"];
+    [set next];
+    return [set intForColumn:@"recent_count"];
+}
+
+
 @end
