@@ -16,5 +16,8 @@ MJCodingImplementation
     return @{@"desc" : @"description"};
 }
 
+- (BOOL)isEqual:(MTDeals *)object{
+    return [self.deal_id isEqualToString:object.deal_id];
+}
 
 @end

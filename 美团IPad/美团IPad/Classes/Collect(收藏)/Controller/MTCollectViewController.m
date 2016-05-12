@@ -14,6 +14,7 @@
 #import "MTDealsCell.h"
 #import "MTDetailViewController.h"
 #import "MTDealTool.h"
+#import "MTDeals.h"
 
 #define MTEdit @"编辑"
 #define MTDone @"完成"
@@ -187,10 +188,19 @@ static NSString * const reuseIdentifier = @"Cell";
         btnItem.title = MTDone;
         self.navigationItem.leftBarButtonItems = @[self.closeBtnItem, self.selectedAllBtnItem, self.unSelectedAllBtnItem, self.deleteBtnItem];
         
+        for (MTDeals *deal in self.deals) {
+            deal.editing = YES;
+        }
+        
     } else{ // 完成 --> 编辑
         btnItem.title = MTEdit;
         self.navigationItem.leftBarButtonItems = @[self.closeBtnItem];
+        for (MTDeals *deal in self.deals) {
+            deal.editing = NO;
+        }
     }
+    
+    [self.collectionView reloadData];
 }
 
 /** 全选 */

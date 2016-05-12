@@ -35,4 +35,9 @@
 
 /** MTRestrictions	附加信息 */
 @property (nonatomic, strong) MTRestrictions *restrictions;
+
+/** 是否正在编辑 */
+@property (nonatomic, assign, getter=isEditting) BOOL editing;
+/** 是否被勾选了 */
+@property (nonatomic, assign, getter=isChecking) BOOL checking;
 @end

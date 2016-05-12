@@ -90,7 +90,7 @@
     UIButton *coverBtn = [[UIButton alloc] init];
     coverBtn.backgroundColor = [UIColor whiteColor];
     coverBtn.alpha = 0.7;
-    //coverBtn.hidden = YES;
+    coverBtn.hidden = YES;
     [coverBtn addTarget:self action:@selector(coverBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:coverBtn];
     self.coverBtn = coverBtn;
@@ -98,7 +98,7 @@
     coverBtn.sd_layout.leftEqualToView(self).rightEqualToView(self).topEqualToView(self).bottomEqualToView(self);
     
     UIImageView *checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_choosed"]]; //26
-    //checkView.hidden = YES;
+    checkView.hidden = YES;
     [self addSubview:checkView];
     self.checkView = checkView;
     
@@ -176,6 +176,7 @@
     
     purchaseCountLabel.sd_layout.rightEqualToView(detailView).bottomEqualToView(detailView).heightIs(15).widthIs(100);
     
+    
 }
 
 /**
@@ -228,6 +229,12 @@
     
     // 隐藏: 发布日期 < 今天
     self.dealNewImage.hidden = ([deal.publish_date compare:nowStr] == NSOrderedAscending);
+    
+    // 根据模型属性来控制cover的显示和隐藏
+    self.coverBtn.hidden = !deal.isEditting;
+    
+    // 根据模型属性来控制打钩的显示和隐藏
+    //self.checkView.hidden = !deal.isChecking;
     
 }
 
