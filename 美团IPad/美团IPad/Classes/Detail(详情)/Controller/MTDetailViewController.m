@@ -87,15 +87,17 @@
     }
     
     //在子线程中执行
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 发送请求获得更详细的团购数据
-        DPAPI *api = [[DPAPI alloc] init];
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        // 页码
-        params[@"deal_id"] = self.deal.deal_id;
-        [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
-    });
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    // 发送请求获得更详细的团购数据
+    DPAPI *api = [[DPAPI alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    // 页码
+    params[@"deal_id"] = self.deal.deal_id;
+    [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    //});
     
+    //NSLog(@"%@", self.deal.deal_id);
+    //NSLog(@"%zd", [MTDealTool isCollected:self.deal]);
     //判断当前团购是否被收藏
     self.collectBtn.selected = [MTDealTool isCollected:self.deal];
     
@@ -105,14 +107,14 @@
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result{
     
     //回到主线程加载界面
-    dispatch_async(dispatch_get_main_queue(), ^{
+    //dispatch_async(dispatch_get_main_queue(), ^{
         //NSLog(@"%@",result);
-        self.deal = [MTDeals objectWithKeyValues:[result[@"deals"] firstObject]];
+    self.deal = [MTDeals objectWithKeyValues:[result[@"deals"] firstObject]];
         
-        //设置退款预约消息
-        self.refundableAnyTimeButton.selected = self.deal.restrictions.is_refundable;
-        self.reservationRequiredButton.selected = self.deal.restrictions.is_reservation_required;
-    });
+    //设置退款预约消息
+    self.refundableAnyTimeButton.selected = self.deal.restrictions.is_refundable;
+    self.reservationRequiredButton.selected = self.deal.restrictions.is_reservation_required;
+    //});
     
 }
 

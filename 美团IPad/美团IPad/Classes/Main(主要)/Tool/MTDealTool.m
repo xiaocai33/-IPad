@@ -15,6 +15,7 @@ static FMDatabase *_db;
 + (void)initialize{
     // 1.打开数据库
     NSString *dicPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"deals.sqlite"];
+    //NSLog(@"%@",dicPath);
     _db = [FMDatabase databaseWithPath:dicPath];
     [_db open];
     
@@ -27,11 +28,12 @@ static FMDatabase *_db;
 /** 收藏一个团购 */
 + (void)addCollectDeal:(MTDeals *)deal{
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:deal];
-    [_db executeUpdateWithFormat:@"INSERT INTO t_collect_deal(deal, deal_id) VALUES (%@, '%@');", data, deal.deal_id];
+    [_db executeUpdateWithFormat:@"INSERT INTO t_collect_deal(deal, deal_id) VALUES (%@, %@);", data, deal.deal_id];
 }
 /** 取消收藏一个团购 */
 + (void)removeCollectDeal:(MTDeals *)deal{
-    [_db executeUpdateWithFormat:@"DELETE FROM t_collect_deal WHERE deal_id = '%@';", deal.deal_id];
+    //[_db executeUpdateWithFormat:@"DELETE FROM t_collect_deal WHERE deal_id = '%@';", deal.deal_id];
+    [_db executeUpdateWithFormat:@"DELETE FROM t_collect_deal WHERE deal_id = %@;", deal.deal_id];
 }
 
 /** 返回第page页的收藏团购数据:page从1开始 */
@@ -52,7 +54,7 @@ static FMDatabase *_db;
 
 /** 团购是否收藏 */
 + (BOOL)isCollected:(MTDeals *)deal{
-    FMResultSet *set = [_db executeQueryWithFormat:@"SELECT count(*) AS deal_count FROM t_collect_deal WHERE deal_id = '%@';", deal.deal_id];
+    FMResultSet *set = [_db executeQueryWithFormat:@"SELECT count(*) AS deal_count FROM t_collect_deal WHERE deal_id = %@;", deal.deal_id];
     [set next];
     return [set intForColumn:@"deal_count"] == 1;
 }
