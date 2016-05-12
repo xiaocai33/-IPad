@@ -205,12 +205,24 @@ static NSString * const reuseIdentifier = @"Cell";
 
 /** 全选 */
 - (void)selectedAllDeal{
+    for (MTDeals *deal in self.deals) {
+        deal.checking = YES;
+    }
     
+    [self.collectionView reloadData];
+    
+    self.deleteBtnItem.enabled = YES;
 }
 
 /** 全部选 */
 - (void)unSelectedAllDeal{
+    for (MTDeals *deal in self.deals) {
+        deal.checking = NO;
+    }
     
+    [self.collectionView reloadData];
+    
+    self.deleteBtnItem.enabled = NO;
 }
 
 /** 删除 */

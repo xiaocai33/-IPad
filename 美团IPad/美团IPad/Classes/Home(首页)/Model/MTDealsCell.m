@@ -234,11 +234,15 @@
     self.coverBtn.hidden = !deal.isEditting;
     
     // 根据模型属性来控制打钩的显示和隐藏
-    //self.checkView.hidden = !deal.isChecking;
+    self.checkView.hidden = !deal.isChecking;
     
 }
 
 - (void)coverBtnClick:(UIButton *)btn{
+    // 设置模型
+    self.deal.checking = !self.deal.isChecking;
+    // 直接修改状态
+    self.checkView.hidden = !self.checkView.isHidden;
 
 }
 
