@@ -243,7 +243,12 @@
     self.deal.checking = !self.deal.isChecking;
     // 直接修改状态
     self.checkView.hidden = !self.checkView.isHidden;
-
+    
+    if ([self.delegate respondsToSelector:@selector(dealCellCheckingStateDidChange:)]) {
+        [self.delegate dealCellCheckingStateDidChange:self];
+    }
 }
+
+
 
 @end

@@ -19,7 +19,7 @@
 #define MTEdit @"编辑"
 #define MTDone @"完成"
 
-@interface MTCollectViewController ()
+@interface MTCollectViewController () <MTDealsCellDelegate>
 /** 团购收藏数据 */
 @property (nonatomic, strong) NSMutableArray *deals;
 /** 没有收藏数据提示 */
@@ -227,9 +227,34 @@ static NSString * const reuseIdentifier = @"Cell";
 
 /** 删除 */
 - (void)deleteDeal{
+    //切记在遍历数组的时候,不能对当前遍历的数组进行删除\插入操作
+    //解决办法:将要删除的数据,放到一个临时的数组中,然后删除
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (MTDeals *deal in self.deals) {
+        if (deal.isChecking) {
+            [tempArray addObject:deal];
+            [MTDealTool removeCollectDeal:deal];
+        }
+    }
     
+    // 删除所有打钩的模型
+    [self.deals removeObjectsInArray:tempArray];
+    [self.collectionView reloadData];
+    self.deleteBtnItem.enabled = NO;
 }
 
+#pragma mark - cell的代理
+- (void)dealCellCheckingStateDidChange:(MTDealsCell *)cell{
+    BOOL checkStauts = NO;
+    for (MTDeals *deal in self.deals) {
+        if (deal.isChecking) {
+            checkStauts = YES;
+            break;
+        }
+    }
+    // 根据有没有打钩的情况,决定删除按钮是否可用
+    self.deleteBtnItem.enabled = checkStauts;
+}
 
 #pragma mark - 监听屏幕旋转
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
@@ -263,7 +288,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // Configure the cell
     cell.deal = self.deals[indexPath.item];
-    
+    cell.delegate = self;
     return cell;
 }
 
