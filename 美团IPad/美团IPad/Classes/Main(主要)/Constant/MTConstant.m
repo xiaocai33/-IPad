@@ -34,3 +34,6 @@ NSString *const MTSelectSubregionName = @"MTSelectSubregionName";
 NSString *const MTCollectStateDidChangeNotification = @"MTCollectStateDidChangeNotification";
 NSString *const MTIsCollectKey = @"MTIsCollectKey";
 NSString *const MTCollectDealKey = @"MTCollectDealKey";
+
+NSString *const MTRecentStateDidChangeNotification = @"MTRecentStateDidChangeNotification";
+NSString *const MTRecentDealKey = @"MTRecentDealKey";

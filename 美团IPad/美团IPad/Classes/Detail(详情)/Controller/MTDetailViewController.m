@@ -107,6 +107,9 @@
     }
     [MTDealTool addRecentDeal:self.deal];//插入数据库
     
+    //发送最近浏览改变的通知
+    [MTNotificationCenter postNotificationName:MTRecentStateDidChangeNotification object:nil userInfo:@{MTRecentDealKey: self.deal}];
+    
 }
 
 #pragma mark - DPRequestDelegate
@@ -210,7 +213,10 @@
     //发送通知
     [MTNotificationCenter postNotificationName:MTCollectStateDidChangeNotification object:nil userInfo:info];
     
-    
+}
+
+- (void)dealloc{
+    [MTNotificationCenter removeObserver:self];
 }
 
 /**

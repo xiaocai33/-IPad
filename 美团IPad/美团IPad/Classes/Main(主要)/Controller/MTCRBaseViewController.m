@@ -135,6 +135,9 @@ static NSString * const reuseIdentifier = @"Cell";
     //接收收藏改变的通知
     [MTNotificationCenter addObserver:self selector:@selector(collectStateDidChange:) name:MTCollectStateDidChangeNotification object:nil];
     
+    //接收最近改变的通知
+    [MTNotificationCenter addObserver:self selector:@selector(recentStateDidChange:) name:MTRecentStateDidChangeNotification object:nil];
+    
 }
 
 - (void)dealloc{
@@ -157,6 +160,19 @@ static NSString * const reuseIdentifier = @"Cell";
     self.currentPage = 0;
     
     [self loadMoreDeals];
+}
+
+- (void)recentStateDidChange:(NSNotification *)info{
+    //NSLog(@"%@", info.userInfo[MTRecentDealKey]);
+    if ([self.deals containsObject:info.userInfo[MTRecentDealKey]]) {
+        //先从数组中删除
+        [self.deals removeObject:info.userInfo[MTRecentDealKey]];
+    }
+    
+    //将记录插到数组的最前面
+    [self.deals insertObject:info.userInfo[MTRecentDealKey] atIndex:0];
+    //刷新表格
+    [self.collectionView reloadData];
 }
 
 

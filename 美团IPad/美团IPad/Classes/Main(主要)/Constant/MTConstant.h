@@ -52,3 +52,7 @@ extern NSString *const MTCollectStateDidChangeNotification;
 extern NSString *const MTIsCollectKey;
 /** 收藏订单详情 */
 extern NSString *const MTCollectDealKey;
+
+/** 最近改变通知 */
+extern NSString *const MTRecentStateDidChangeNotification;
+extern NSString *const MTRecentDealKey;

@@ -31,10 +31,8 @@
 }
 
 - (void)removeDeal:(MTDeals *)deal{
-    NSLog(@"%@", deal.deal_id);
     [MTDealTool removeRecentDeal:deal];
     
-    //[self.collectionView footerBeginRefreshing];
 }
 
 
