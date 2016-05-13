@@ -88,7 +88,7 @@ static NSString * const reuseIdentifier = @"Cell";
 /** 没有收藏数据提示 */
 - (UIImageView *)noDataView{
     if (_noDataView == nil) {
-        UIImageView *noDataView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_collects_empty"]];
+        UIImageView *noDataView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[self setNoDataImage]]];
         [self.view addSubview:noDataView];
         noDataView.sd_layout.centerXEqualToView(self.view).centerYEqualToView(self.view);
         

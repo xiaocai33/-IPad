@@ -26,9 +26,6 @@
 }
 
 #pragma mark - 实现父控制的接口
-/**
- *  <#Description#>
- */
 - (void)setupArray:(NSMutableArray *)array withCount:(int)count{
     
     [array addObjectsFromArray:[MTDealTool collectDeals:count]];
@@ -44,6 +41,9 @@
     [MTDealTool removeCollectDeal:deal];
 }
 
+- (NSString *)setNoDataImage{
+    return @"icon_collects_empty";
+}
 
 
 @end

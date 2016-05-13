@@ -22,4 +22,7 @@
 /** 根据父控制得到的模型数据, 由子控制实现具体的数据库删除操作 */
 - (void)removeDeal:(MTDeals *)deal;
 
+/** 由子控件提供没有数据时,显示的图片 */
+- (NSString *)setNoDataImage;
+
 @end

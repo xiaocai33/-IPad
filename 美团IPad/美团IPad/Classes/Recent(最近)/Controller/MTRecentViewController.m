@@ -17,8 +17,13 @@
 @end
 
 @implementation MTRecentViewController
-
-
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"最近浏览的团购";
+    
+}
+#pragma mark - 实现父控制的接口
 - (void)setupArray:(NSMutableArray *)array withCount:(int)count{
     
     [array addObjectsFromArray:[MTDealTool recentDeals:count]];
@@ -35,11 +40,9 @@
     
 }
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.title = @"最近浏览的团购";
-    
+- (NSString *)setNoDataImage{
+    return @"icon_latestBrowse_empty";
 }
+
+
 @end
