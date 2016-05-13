@@ -104,11 +104,13 @@
     //判断当前团购是否已经被浏览过
     if ([MTDealTool isRecented:self.deal]) {//被浏览过
         [MTDealTool removeRecentDeal:self.deal];//从数据库删除
+        
+        //发送最近浏览改变的通知
+        [MTNotificationCenter postNotificationName:MTRecentStateDidChangeNotification object:nil userInfo:@{MTRecentDealKey: self.deal}];
     }
     [MTDealTool addRecentDeal:self.deal];//插入数据库
     
-    //发送最近浏览改变的通知
-    [MTNotificationCenter postNotificationName:MTRecentStateDidChangeNotification object:nil userInfo:@{MTRecentDealKey: self.deal}];
+    
     
 }
 

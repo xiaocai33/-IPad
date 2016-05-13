@@ -164,7 +164,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)recentStateDidChange:(NSNotification *)info{
     //NSLog(@"%@", info.userInfo[MTRecentDealKey]);
-    if ([self.deals containsObject:info.userInfo[MTRecentDealKey]]) {
+    if ([self.deals containsObject:info.userInfo[MTRecentDealKey]]) {//判断是否在当前数组中
         //先从数组中删除
         [self.deals removeObject:info.userInfo[MTRecentDealKey]];
     }
