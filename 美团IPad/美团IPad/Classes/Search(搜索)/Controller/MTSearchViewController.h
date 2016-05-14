@@ -10,5 +10,5 @@
 #import "MTDealsBaseViewController.h"
 
 @interface MTSearchViewController : MTDealsBaseViewController
-
+@property (nonatomic, copy) NSString *cityName;
 @end

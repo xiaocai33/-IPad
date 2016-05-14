@@ -19,7 +19,7 @@
 #import "MTDataTool.h"
 #import "MTCategory.h"
 #import "MTRegion.h"
-
+#import "MBProgressHUD+MJ.h"
 #import "MJRefresh.h"
 
 #import "MTSearchViewController.h"
@@ -322,10 +322,16 @@
  *  监听搜索按钮事件
  */
 - (void)searchBarDidClick{
-    MTSearchViewController *searchVc = [[MTSearchViewController alloc] init];
-    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:searchVc];
+    if (self.selectedCityName) {
+        MTSearchViewController *searchVc = [[MTSearchViewController alloc] init];
+        searchVc.cityName = self.selectedCityName;
+        MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:searchVc];
+        
+        [self presentViewController:nav animated:YES completion:nil];
+    }else{
+        [MBProgressHUD showError:@"请选择城市后再搜索" toView:self.view];
+    }
     
-    [self presentViewController:nav animated:YES completion:nil];
 }
 
 /**

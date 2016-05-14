@@ -51,7 +51,7 @@
 
 #pragma mark - 给服务发送参数
 - (void)setupParams:(NSMutableDictionary *)params{
-    params[@"city"] = @"成都";
+    params[@"city"] = self.cityName;
     UISearchBar *searchBar = (UISearchBar *)self.navigationItem.titleView;
     params[@"keyword"] = searchBar.text;
 }
