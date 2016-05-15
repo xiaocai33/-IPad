@@ -28,7 +28,7 @@
 #import "UIView+SDAutoLayout.h"
 #import "MTCollectViewController.h"
 #import "MTRecentViewController.h"
-
+#import "MTMapViewController.h"
 
 @interface MTHomeCollectionController () <AwesomeMenuDelegate>
 /** 分类 */
@@ -275,7 +275,7 @@
  */
 - (void)setupRightNav{
     
-    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highlightedImage:@"icon_map_highlighted"];
+    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:self action:@selector(mapBarDidClick) image:@"icon_map" highlightedImage:@"icon_map_highlighted"];
     mapItem.customView.width = 60;
     
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(searchBarDidClick) image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
@@ -318,6 +318,16 @@
 }
 
 #pragma mark - 监听导航栏按钮点击事件
+/**
+ *  监听地图按钮事件
+ */
+- (void)mapBarDidClick{
+    MTMapViewController *mapVc = [[MTMapViewController alloc] init];
+    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:mapVc];
+    
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 /**
  *  监听搜索按钮事件
  */
