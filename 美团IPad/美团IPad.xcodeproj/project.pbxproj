@@ -63,6 +63,8 @@
 		33864E011CD78814007ED5A1 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E001CD78814007ED5A1 /* MTRegion.m */; };
 		33864E041CD79CDA007ED5A1 /* MTSearchResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */; };
 		3396E7A81CE819FF005774E4 /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3396E7A71CE819FF005774E4 /* MTMapViewController.m */; };
+		3396E7AB1CE85CBF005774E4 /* MTDealAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3396E7AA1CE85CBF005774E4 /* MTDealAnnotation.m */; };
+		3396E7AE1CE86009005774E4 /* MTBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 3396E7AD1CE86009005774E4 /* MTBusiness.m */; };
 		339C0B841CDEE61E00D133A9 /* MTDealsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0B831CDEE61E00D133A9 /* MTDealsCell.m */; };
 		339C0B871CDEFE4200D133A9 /* MTDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0B861CDEFE4200D133A9 /* MTDeals.m */; };
 		339C0BAA1CDF01F500D133A9 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0B8A1CDF01F500D133A9 /* MKAnnotationView+WebCache.m */; };
@@ -230,6 +232,10 @@
 		33864E031CD79CDA007ED5A1 /* MTSearchResultTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSearchResultTableController.m; sourceTree = "<group>"; };
 		3396E7A61CE819FF005774E4 /* MTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMapViewController.h; sourceTree = "<group>"; };
 		3396E7A71CE819FF005774E4 /* MTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMapViewController.m; sourceTree = "<group>"; };
+		3396E7A91CE85CBF005774E4 /* MTDealAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealAnnotation.h; sourceTree = "<group>"; };
+		3396E7AA1CE85CBF005774E4 /* MTDealAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealAnnotation.m; sourceTree = "<group>"; };
+		3396E7AC1CE86009005774E4 /* MTBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBusiness.h; sourceTree = "<group>"; };
+		3396E7AD1CE86009005774E4 /* MTBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBusiness.m; sourceTree = "<group>"; };
 		339C0B821CDEE61E00D133A9 /* MTDealsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTDealsCell.h; path = ../Model/MTDealsCell.h; sourceTree = "<group>"; };
 		339C0B831CDEE61E00D133A9 /* MTDealsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTDealsCell.m; path = ../Model/MTDealsCell.m; sourceTree = "<group>"; };
 		339C0B851CDEFE4200D133A9 /* MTDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDeals.h; sourceTree = "<group>"; };
@@ -557,6 +563,8 @@
 				339C0B861CDEFE4200D133A9 /* MTDeals.m */,
 				331B18891CE22762009C69D7 /* MTRestrictions.h */,
 				331B188A1CE22762009C69D7 /* MTRestrictions.m */,
+				3396E7AC1CE86009005774E4 /* MTBusiness.h */,
+				3396E7AD1CE86009005774E4 /* MTBusiness.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -685,6 +693,8 @@
 		3396E7A51CE819D3005774E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3396E7A91CE85CBF005774E4 /* MTDealAnnotation.h */,
+				3396E7AA1CE85CBF005774E4 /* MTDealAnnotation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -990,6 +1000,7 @@
 				3334C37B1CD3A4DB00D42F7C /* MJTypeEncoding.m in Sources */,
 				339C0BAE1CDF01F500D133A9 /* SDWebImageDecoder.m in Sources */,
 				33864E011CD78814007ED5A1 /* MTRegion.m in Sources */,
+				3396E7AE1CE86009005774E4 /* MTBusiness.m in Sources */,
 				339C0BD71CDF2B9100D133A9 /* MJRefreshFooterView.m in Sources */,
 				3334C3811CD3A7CC00D42F7C /* MTCategoryViewController.m in Sources */,
 				33D53CAE1CE4C83500E3F670 /* MTCRBaseViewController.m in Sources */,
@@ -1015,6 +1026,7 @@
 				339C0BD51CDF2B9100D133A9 /* MJRefreshBaseView.m in Sources */,
 				33E5B6101CDA0A8B009B5897 /* MTSort.m in Sources */,
 				331B18A01CE2313B009C69D7 /* FMDatabase.m in Sources */,
+				3396E7AB1CE85CBF005774E4 /* MTDealAnnotation.m in Sources */,
 				331B18A11CE2313B009C69D7 /* FMDatabaseAdditions.m in Sources */,
 				33864DF81CD73EA8007ED5A1 /* MTRegionViewController.m in Sources */,
 				3334C3841CD3A9E900D42F7C /* MTHomeDropdownView.m in Sources */,

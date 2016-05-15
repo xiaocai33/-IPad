@@ -8,7 +8,7 @@
 
 #import "MTDeals.h"
 #import "MJExtension.h"
-
+#import "MTBusiness.h"
 @implementation MTDeals
 MJCodingImplementation
 
@@ -18,6 +18,11 @@ MJCodingImplementation
 
 - (BOOL)isEqual:(MTDeals *)object{
     return [self.deal_id isEqualToString:object.deal_id];
+}
+
+- (NSDictionary *)objectClassInArray
+{
+    return @{@"businesses" : [MTBusiness class]};
 }
 
 @end

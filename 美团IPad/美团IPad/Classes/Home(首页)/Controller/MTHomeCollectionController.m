@@ -65,11 +65,20 @@
     [self setupRightNav];//右边内容
     [self setupLeftNav];//左边内容
     
-    /** 监听通知 */
-    [self setupNotication];
-    
     // 创建awesomemenu
     [self setupAwesomeMenu];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    /** 监听通知 */
+    [self setupNotication];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    //移除通知
+    [MTNotificationCenter removeObserver:self];
 }
 
 #pragma mark - 创建awesomemenu
@@ -144,10 +153,10 @@
 }
 
 #pragma mark - 通知相关
-- (void)dealloc{
+//- (void)dealloc{
     //移除通知
-    [MTNotificationCenter removeObserver:self];
-}
+    //[MTNotificationCenter removeObserver:self];
+//}
 
 /**
  *  监听通知

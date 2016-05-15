@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class MTDeals, MTCategory;
 @interface MTDataTool : NSObject
 
 /**
@@ -24,5 +24,7 @@
  *  返回排序数据
  */
 + (NSArray *)sorts;
+
++ (MTCategory *)categoryWithDeal:(MTDeals *)deal;
 
 @end
